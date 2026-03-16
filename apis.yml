@@ -1,0 +1,36 @@
+aid: apache-iceberg
+name: Apache Iceberg
+description: >-
+  Apache Iceberg is an open table format for large analytic datasets that provides ACID transactions, schema evolution, hidden partitioning, and time travel. It works with Spark, Flink, Hive, Presto, and Trino.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Table Format
+  - Data Lake
+  - ACID
+  - Analytics
+  - Lakehouse
+created: '2026-03-16'
+modified: '2026-03-16'
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/apis.yml
+specificationVersion: '0.19'
+apis:
+  - aid: apache-iceberg:apache-iceberg
+    name: Apache Iceberg
+    description: >-
+      Iceberg provides a Java API for table operations, schema management, and partition management, a REST Catalog API for table discovery and metadata management, and integration APIs for Spark, Flink, Hive, and Trino.
+    humanURL: https://iceberg.apache.org/docs/latest/
+    tags:
+      - Java
+      - REST
+      - Catalog
+      - Table Format
+    properties:
+      - type: Documentation
+        url: https://iceberg.apache.org/docs/latest/
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com
