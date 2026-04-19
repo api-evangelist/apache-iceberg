@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-and-or-expression-structure.json",
+  "name": "AndOrExpression",
+  "description": "AndOrExpression schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "type": {
+      "$ref": "#/components/schemas/ExpressionType",
+      "enum": [
+        "and",
+        "or"
+      ]
+    },
+    "left": {
+      "$ref": "#/components/schemas/Expression"
+    },
+    "right": {
+      "$ref": "#/components/schemas/Expression"
+    }
+  },
+  "required": [
+    "type",
+    "left",
+    "right"
+  ]
+}

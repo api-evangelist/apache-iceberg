@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-value-map-schema.json",
+  "title": "ValueMap",
+  "description": "ValueMap schema from Apache Iceberg REST Catalog API",
+  "type": "object",
+  "properties": {
+    "keys": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/IntegerTypeValue"
+      },
+      "description": "List of integer column ids for each corresponding value"
+    },
+    "values": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PrimitiveTypeValue"
+      },
+      "description": "List of primitive type values, matched to 'keys' by index"
+    }
+  },
+  "example": {
+    "keys": [
+      1,
+      2
+    ],
+    "values": [
+      100,
+      "test"
+    ]
+  }
+}

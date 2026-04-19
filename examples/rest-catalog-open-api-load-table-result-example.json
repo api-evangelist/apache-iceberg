@@ -1,0 +1,7 @@
+{
+  "metadata-location": "s3://my-bucket/warehouse/my_database/sales_data",
+  "config": {},
+  "storage-credentials": [
+    "example-value"
+  ]
+}

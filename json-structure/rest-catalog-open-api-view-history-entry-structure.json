@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-view-history-entry-structure.json",
+  "name": "ViewHistoryEntry",
+  "description": "ViewHistoryEntry schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "version-id": {
+      "type": "integer"
+    },
+    "timestamp-ms": {
+      "type": "int64"
+    }
+  },
+  "required": [
+    "version-id",
+    "timestamp-ms"
+  ]
+}

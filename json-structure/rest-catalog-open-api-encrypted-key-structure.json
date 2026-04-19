@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-encrypted-key-structure.json",
+  "name": "EncryptedKey",
+  "description": "EncryptedKey schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "key-id": {
+      "type": "string"
+    },
+    "encrypted-key-metadata": {
+      "type": "string",
+      "format": "byte",
+      "contentEncoding": "base64"
+    },
+    "encrypted-by-id": {
+      "type": "string"
+    },
+    "properties": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "key-id",
+    "encrypted-key-metadata"
+  ]
+}

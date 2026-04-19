@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-assign-uuid-update-structure.json",
+  "name": "AssignUUIDUpdate",
+  "description": "Assigning a UUID to a table/view should only be done when creating the table/view. It is not safe to re-assign the UUID if a table/view already has a UUID assigned",
+  "properties": {
+    "action": {
+      "type": "string",
+      "const": "assign-uuid"
+    },
+    "uuid": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "uuid"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/BaseUpdate"
+    }
+  ]
+}

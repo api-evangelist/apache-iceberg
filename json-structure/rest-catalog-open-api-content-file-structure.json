@@ -1,0 +1,67 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-content-file-structure.json",
+  "name": "ContentFile",
+  "description": "ContentFile schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "content": {
+      "type": "string"
+    },
+    "file-path": {
+      "type": "string"
+    },
+    "file-format": {
+      "$ref": "#/components/schemas/FileFormat"
+    },
+    "spec-id": {
+      "type": "integer"
+    },
+    "partition": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PrimitiveTypeValue"
+      },
+      "description": "A list of partition field values ordered based on the fields of the partition spec specified by the `spec-id`",
+      "example": [
+        1,
+        "bar"
+      ]
+    },
+    "file-size-in-bytes": {
+      "type": "int64",
+      "description": "Total file size in bytes"
+    },
+    "record-count": {
+      "type": "int64",
+      "description": "Number of records in the file"
+    },
+    "key-metadata": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BinaryTypeValue"
+        }
+      ],
+      "description": "Encryption key metadata blob"
+    },
+    "split-offsets": {
+      "type": "array",
+      "items": {
+        "type": "int64"
+      },
+      "description": "List of splittable offsets"
+    },
+    "sort-order-id": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "spec-id",
+    "partition",
+    "content",
+    "file-path",
+    "file-format",
+    "file-size-in-bytes",
+    "record-count"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-async-planning-result-structure.json",
+  "name": "AsyncPlanningResult",
+  "description": "AsyncPlanningResult schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "status": {
+      "$ref": "#/components/schemas/PlanStatus",
+      "const": "submitted"
+    },
+    "plan-id": {
+      "type": "string",
+      "description": "ID used to track a planning request"
+    }
+  },
+  "required": [
+    "status",
+    "plan-id"
+  ]
+}

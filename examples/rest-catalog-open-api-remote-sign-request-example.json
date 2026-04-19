@@ -1,0 +1,8 @@
+{
+  "region": "example-value",
+  "uri": "s3://my-bucket/warehouse/my_database/sales_data",
+  "method": "DELETE",
+  "properties": {},
+  "body": "example-value",
+  "provider": "iceberg-8482"
+}

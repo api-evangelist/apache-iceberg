@@ -1,0 +1,56 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-view-metadata-structure.json",
+  "name": "ViewMetadata",
+  "description": "ViewMetadata schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "view-uuid": {
+      "type": "string"
+    },
+    "format-version": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1
+    },
+    "location": {
+      "type": "string"
+    },
+    "current-version-id": {
+      "type": "integer"
+    },
+    "versions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ViewVersion"
+      }
+    },
+    "version-log": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ViewHistoryEntry"
+      }
+    },
+    "schemas": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Schema"
+      }
+    },
+    "properties": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "view-uuid",
+    "format-version",
+    "location",
+    "current-version-id",
+    "versions",
+    "version-log",
+    "schemas"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-o-auth-token-exchange-request-structure.json",
+  "name": "OAuthTokenExchangeRequest",
+  "description": "The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.\n\nOAuth2 token exchange request\n\nSee https://datatracker.ietf.org/doc/html/rfc8693",
+  "properties": {
+    "grant_type": {
+      "type": "string",
+      "enum": [
+        "urn:ietf:params:oauth:grant-type:token-exchange"
+      ]
+    },
+    "scope": {
+      "type": "string"
+    },
+    "requested_token_type": {
+      "$ref": "#/components/schemas/TokenType"
+    },
+    "subject_token": {
+      "type": "string",
+      "description": "Subject token for token exchange request"
+    },
+    "subject_token_type": {
+      "$ref": "#/components/schemas/TokenType"
+    },
+    "actor_token": {
+      "type": "string",
+      "description": "Actor token for token exchange request"
+    },
+    "actor_token_type": {
+      "$ref": "#/components/schemas/TokenType"
+    }
+  },
+  "required": [
+    "grant_type",
+    "subject_token",
+    "subject_token_type"
+  ],
+  "deprecated": true
+}

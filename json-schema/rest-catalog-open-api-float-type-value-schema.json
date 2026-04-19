@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-float-type-value-schema.json",
+  "title": "FloatTypeValue",
+  "description": "FloatTypeValue schema from Apache Iceberg REST Catalog API",
+  "type": "number",
+  "format": "float",
+  "example": 3.14
+}

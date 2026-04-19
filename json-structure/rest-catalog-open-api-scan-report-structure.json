@@ -1,0 +1,51 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-scan-report-structure.json",
+  "name": "ScanReport",
+  "description": "ScanReport schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "table-name": {
+      "type": "string"
+    },
+    "snapshot-id": {
+      "type": "int64"
+    },
+    "filter": {
+      "$ref": "#/components/schemas/Expression"
+    },
+    "schema-id": {
+      "type": "integer"
+    },
+    "projected-field-ids": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "projected-field-names": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "metrics": {
+      "$ref": "#/components/schemas/Metrics"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "table-name",
+    "snapshot-id",
+    "filter",
+    "schema-id",
+    "projected-field-ids",
+    "projected-field-names",
+    "metrics"
+  ]
+}

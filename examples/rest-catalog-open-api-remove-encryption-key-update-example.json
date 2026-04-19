@@ -1,0 +1,4 @@
+{
+  "action": "remove-encryption-key",
+  "key-id": "abc123def456abc123def456"
+}

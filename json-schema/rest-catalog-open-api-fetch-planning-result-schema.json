@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-fetch-planning-result-schema.json",
+  "title": "FetchPlanningResult",
+  "description": "Result of server-side scan planning for fetchPlanningResult",
+  "type": "object",
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/CompletedPlanningResult"
+    },
+    {
+      "$ref": "#/components/schemas/FailedPlanningResult"
+    },
+    {
+      "$ref": "#/components/schemas/EmptyPlanningResult"
+    }
+  ]
+}

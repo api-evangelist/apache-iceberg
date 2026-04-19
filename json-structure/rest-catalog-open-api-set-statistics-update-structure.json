@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-set-statistics-update-structure.json",
+  "name": "SetStatisticsUpdate",
+  "description": "SetStatisticsUpdate schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "action": {
+      "type": "string",
+      "const": "set-statistics"
+    },
+    "snapshot-id": {
+      "type": "int64",
+      "deprecated": true,
+      "description": "This optional field is **DEPRECATED for REMOVAL** since it contains redundant information. Clients should use the `statistics.snapshot-id` field instead."
+    },
+    "statistics": {
+      "$ref": "#/components/schemas/StatisticsFile"
+    }
+  },
+  "required": [
+    "statistics"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/BaseUpdate"
+    }
+  ]
+}

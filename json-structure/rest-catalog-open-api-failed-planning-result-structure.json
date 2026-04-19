@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-failed-planning-result-structure.json",
+  "name": "FailedPlanningResult",
+  "description": "Failed server-side planning result",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/IcebergErrorResponse"
+    },
+    {
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "$ref": "#/components/schemas/PlanStatus",
+          "const": "failed"
+        }
+      }
+    }
+  ]
+}

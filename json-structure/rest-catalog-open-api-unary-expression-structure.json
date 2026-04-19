@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-unary-expression-structure.json",
+  "name": "UnaryExpression",
+  "description": "UnaryExpression schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "type": {
+      "$ref": "#/components/schemas/ExpressionType",
+      "enum": [
+        "is-null",
+        "not-null",
+        "is-nan",
+        "not-nan"
+      ]
+    },
+    "term": {
+      "$ref": "#/components/schemas/Term"
+    }
+  },
+  "required": [
+    "type",
+    "term"
+  ]
+}

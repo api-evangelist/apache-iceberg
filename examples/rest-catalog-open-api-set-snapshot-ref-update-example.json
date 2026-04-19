@@ -1,0 +1,4 @@
+{
+  "action": "set-snapshot-ref",
+  "ref-name": "sales_data"
+}

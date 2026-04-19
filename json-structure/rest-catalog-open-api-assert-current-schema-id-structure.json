@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-assert-current-schema-id-structure.json",
+  "name": "AssertCurrentSchemaId",
+  "description": "The table's current schema id must match the requirement's `current-schema-id`",
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "assert-current-schema-id"
+    },
+    "current-schema-id": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "current-schema-id"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/TableRequirement"
+    }
+  ]
+}

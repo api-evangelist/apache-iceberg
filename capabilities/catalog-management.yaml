@@ -1,0 +1,280 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Apache Iceberg Catalog Management"
+  description: "Workflow capability for data engineers and lakehouse architects to manage namespaces, tables, and views in Apache Iceberg catalogs via the REST Catalog API."
+  tags:
+    - Apache Iceberg
+    - Catalog Management
+    - Data Engineering
+    - Lakehouse
+    - Table Format
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      ICEBERG_CATALOG_TOKEN: ICEBERG_CATALOG_TOKEN
+
+capability:
+  consumes:
+    - import: iceberg-rest-catalog
+      location: ./shared/rest-catalog.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: iceberg-catalog-management-api
+      description: "Unified REST API for Apache Iceberg catalog management workflows."
+      resources:
+        - path: /v1/config
+          name: catalog-config
+          description: Catalog configuration
+          operations:
+            - method: GET
+              name: get-config
+              description: Get Iceberg catalog configuration settings
+              call: "iceberg-rest-catalog.get-config"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/namespaces
+          name: namespaces
+          description: Namespace management
+          operations:
+            - method: GET
+              name: list-namespaces
+              description: List all namespaces in the catalog
+              call: "iceberg-rest-catalog.list-namespaces"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-namespace
+              description: Create a new namespace
+              call: "iceberg-rest-catalog.create-namespace"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/namespaces/{namespace}
+          name: namespace
+          description: Individual namespace
+          operations:
+            - method: GET
+              name: load-namespace-metadata
+              description: Load namespace metadata
+              call: "iceberg-rest-catalog.load-namespace-metadata"
+              with:
+                namespace: "rest.namespace"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: drop-namespace
+              description: Drop a namespace
+              call: "iceberg-rest-catalog.drop-namespace"
+              with:
+                namespace: "rest.namespace"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/namespaces/{namespace}/tables
+          name: tables
+          description: Table management within a namespace
+          operations:
+            - method: GET
+              name: list-tables
+              description: List all tables in a namespace
+              call: "iceberg-rest-catalog.list-tables"
+              with:
+                namespace: "rest.namespace"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-table
+              description: Create a new Iceberg table
+              call: "iceberg-rest-catalog.create-table"
+              with:
+                namespace: "rest.namespace"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/namespaces/{namespace}/tables/{table}
+          name: table
+          description: Individual table operations
+          operations:
+            - method: GET
+              name: load-table
+              description: Load a table from the catalog
+              call: "iceberg-rest-catalog.load-table"
+              with:
+                namespace: "rest.namespace"
+                table: "rest.table"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: drop-table
+              description: Drop a table from the catalog
+              call: "iceberg-rest-catalog.drop-table"
+              with:
+                namespace: "rest.namespace"
+                table: "rest.table"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/namespaces/{namespace}/views
+          name: views
+          description: View management within a namespace
+          operations:
+            - method: GET
+              name: list-views
+              description: List all views in a namespace
+              call: "iceberg-rest-catalog.list-views"
+              with:
+                namespace: "rest.namespace"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: iceberg-catalog-management-mcp
+      transport: http
+      description: "MCP server for AI-assisted Apache Iceberg catalog management."
+      tools:
+        - name: get-catalog-config
+          description: Retrieve Iceberg catalog configuration settings
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "iceberg-rest-catalog.get-config"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-namespaces
+          description: List all namespaces in the Iceberg catalog, optionally filtered by parent namespace
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "iceberg-rest-catalog.list-namespaces"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-namespace
+          description: Create a new namespace in the Iceberg catalog
+          hints:
+            readOnly: false
+          call: "iceberg-rest-catalog.create-namespace"
+          with:
+            namespace: "tools.namespace"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: load-namespace-metadata
+          description: Load metadata and properties for a specific Iceberg namespace
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "iceberg-rest-catalog.load-namespace-metadata"
+          with:
+            namespace: "tools.namespace"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: drop-namespace
+          description: Drop an empty namespace from the Iceberg catalog
+          hints:
+            readOnly: false
+            destructive: true
+          call: "iceberg-rest-catalog.drop-namespace"
+          with:
+            namespace: "tools.namespace"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-tables
+          description: List all Iceberg table identifiers in a namespace
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "iceberg-rest-catalog.list-tables"
+          with:
+            namespace: "tools.namespace"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-table
+          description: Create a new Iceberg table in a namespace
+          hints:
+            readOnly: false
+          call: "iceberg-rest-catalog.create-table"
+          with:
+            namespace: "tools.namespace"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: load-table
+          description: Load an Iceberg table and its metadata from the catalog
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "iceberg-rest-catalog.load-table"
+          with:
+            namespace: "tools.namespace"
+            table: "tools.table"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: commit-table
+          description: Commit updates and schema changes to an Iceberg table
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "iceberg-rest-catalog.commit-table"
+          with:
+            namespace: "tools.namespace"
+            table: "tools.table"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: drop-table
+          description: Drop an Iceberg table from the catalog
+          hints:
+            readOnly: false
+            destructive: true
+          call: "iceberg-rest-catalog.drop-table"
+          with:
+            namespace: "tools.namespace"
+            table: "tools.table"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-views
+          description: List all view identifiers in a namespace
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "iceberg-rest-catalog.list-views"
+          with:
+            namespace: "tools.namespace"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-view
+          description: Create a new view in the Iceberg catalog
+          hints:
+            readOnly: false
+          call: "iceberg-rest-catalog.create-view"
+          with:
+            namespace: "tools.namespace"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-completed-planning-with-id-result-schema.json",
+  "title": "CompletedPlanningWithIDResult",
+  "description": "CompletedPlanningWithIDResult schema from Apache Iceberg REST Catalog API",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/CompletedPlanningResult"
+    },
+    {
+      "type": "object",
+      "required": [
+        "plan-id"
+      ],
+      "properties": {
+        "plan-id": {
+          "description": "ID used to track a planning request",
+          "type": "string"
+        }
+      }
+    }
+  ]
+}

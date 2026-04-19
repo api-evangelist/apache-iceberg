@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-literal-expression-schema.json",
+  "title": "LiteralExpression",
+  "description": "LiteralExpression schema from Apache Iceberg REST Catalog API",
+  "type": "object",
+  "properties": {
+    "type": {
+      "$ref": "#/components/schemas/ExpressionType",
+      "enum": [
+        "lt",
+        "lt-eq",
+        "gt",
+        "gt-eq",
+        "eq",
+        "not-eq",
+        "starts-with",
+        "not-starts-with"
+      ]
+    },
+    "term": {
+      "$ref": "#/components/schemas/Term"
+    },
+    "value": {
+      "$ref": "#/components/schemas/PrimitiveTypeValue"
+    }
+  },
+  "required": [
+    "type",
+    "term",
+    "value"
+  ]
+}

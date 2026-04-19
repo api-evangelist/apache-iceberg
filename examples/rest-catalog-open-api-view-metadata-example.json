@@ -1,0 +1,16 @@
+{
+  "view-uuid": "iceberg-1189",
+  "format-version": 1,
+  "location": "s3://my-bucket/warehouse/my_database/sales_data",
+  "current-version-id": 608,
+  "versions": [
+    "example-value"
+  ],
+  "version-log": [
+    "example-value"
+  ],
+  "schemas": [
+    "example-value"
+  ],
+  "properties": {}
+}

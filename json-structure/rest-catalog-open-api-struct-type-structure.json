@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-struct-type-structure.json",
+  "name": "StructType",
+  "description": "StructType schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "struct"
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/StructField"
+      }
+    }
+  },
+  "required": [
+    "type",
+    "fields"
+  ]
+}

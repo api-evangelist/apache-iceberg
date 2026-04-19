@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-date-type-value-schema.json",
+  "title": "DateTypeValue",
+  "description": "Date type values follow the 'YYYY-MM-DD' ISO-8601 standard date format",
+  "type": "string",
+  "format": "date",
+  "example": "2007-12-03"
+}

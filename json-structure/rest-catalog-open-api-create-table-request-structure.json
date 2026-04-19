@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-create-table-request-structure.json",
+  "name": "CreateTableRequest",
+  "description": "CreateTableRequest schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "schema": {
+      "$ref": "#/components/schemas/Schema"
+    },
+    "partition-spec": {
+      "$ref": "#/components/schemas/PartitionSpec"
+    },
+    "write-order": {
+      "$ref": "#/components/schemas/SortOrder"
+    },
+    "stage-create": {
+      "type": "boolean"
+    },
+    "properties": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "name",
+    "schema"
+  ]
+}

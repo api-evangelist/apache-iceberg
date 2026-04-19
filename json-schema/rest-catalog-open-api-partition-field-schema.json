@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-partition-field-schema.json",
+  "title": "PartitionField",
+  "description": "PartitionField schema from Apache Iceberg REST Catalog API",
+  "type": "object",
+  "properties": {
+    "field-id": {
+      "type": "integer"
+    },
+    "source-id": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "transform": {
+      "$ref": "#/components/schemas/Transform"
+    }
+  },
+  "required": [
+    "source-id",
+    "transform",
+    "name"
+  ]
+}

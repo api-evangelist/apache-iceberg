@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-partition-statistics-file-schema.json",
+  "title": "PartitionStatisticsFile",
+  "description": "PartitionStatisticsFile schema from Apache Iceberg REST Catalog API",
+  "type": "object",
+  "properties": {
+    "snapshot-id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "statistics-path": {
+      "type": "string"
+    },
+    "file-size-in-bytes": {
+      "type": "integer",
+      "format": "int64"
+    }
+  },
+  "required": [
+    "snapshot-id",
+    "statistics-path",
+    "file-size-in-bytes"
+  ]
+}

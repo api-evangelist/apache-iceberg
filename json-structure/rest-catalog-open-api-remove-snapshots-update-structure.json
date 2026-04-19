@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-remove-snapshots-update-structure.json",
+  "name": "RemoveSnapshotsUpdate",
+  "description": "RemoveSnapshotsUpdate schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "action": {
+      "type": "string",
+      "const": "remove-snapshots"
+    },
+    "snapshot-ids": {
+      "type": "array",
+      "items": {
+        "type": "int64"
+      }
+    }
+  },
+  "required": [
+    "snapshot-ids"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/BaseUpdate"
+    }
+  ]
+}

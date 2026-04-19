@@ -1,0 +1,73 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-data-file-structure.json",
+  "name": "DataFile",
+  "description": "DataFile schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "content": {
+      "type": "string",
+      "const": "data"
+    },
+    "first-row-id": {
+      "type": "int64",
+      "description": "The first row ID assigned to the first row in the data file"
+    },
+    "column-sizes": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CountMap"
+        }
+      ],
+      "description": "Map of column id to total count, including null and NaN"
+    },
+    "value-counts": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CountMap"
+        }
+      ],
+      "description": "Map of column id to null value count"
+    },
+    "null-value-counts": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CountMap"
+        }
+      ],
+      "description": "Map of column id to null value count"
+    },
+    "nan-value-counts": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CountMap"
+        }
+      ],
+      "description": "Map of column id to number of NaN values in the column"
+    },
+    "lower-bounds": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ValueMap"
+        }
+      ],
+      "description": "Map of column id to lower bound primitive type values"
+    },
+    "upper-bounds": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ValueMap"
+        }
+      ],
+      "description": "Map of column id to upper bound primitive type values"
+    }
+  },
+  "required": [
+    "content"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/ContentFile"
+    }
+  ]
+}

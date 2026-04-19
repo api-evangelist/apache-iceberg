@@ -1,0 +1,7 @@
+{
+  "type": "tag",
+  "snapshot-id": 408,
+  "max-ref-age-ms": 235,
+  "max-snapshot-age-ms": 844,
+  "min-snapshots-to-keep": 18
+}

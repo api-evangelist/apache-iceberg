@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-remote-sign-result-schema.json",
+  "title": "RemoteSignResult",
+  "description": "The result of a remote request signing operation.",
+  "type": "object",
+  "properties": {
+    "uri": {
+      "type": "string"
+    },
+    "headers": {
+      "$ref": "#/components/schemas/MultiValuedMap"
+    }
+  },
+  "required": [
+    "uri",
+    "headers"
+  ]
+}

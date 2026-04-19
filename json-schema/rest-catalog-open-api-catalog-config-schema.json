@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-catalog-config-schema.json",
+  "title": "CatalogConfig",
+  "description": "Server-provided configuration for the catalog.",
+  "type": "object",
+  "properties": {
+    "overrides": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Properties that should be used to override client configuration; applied after defaults and client configuration."
+    },
+    "defaults": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Properties that should be used as default configuration; applied before client configuration."
+    },
+    "endpoints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "A list of endpoints that the server supports. The format of each endpoint must be \"<HTTP verb> <resource path from OpenAPI REST spec>\". The HTTP verb and the resource path must be separated by a space character.",
+      "example": [
+        "GET /v1/{prefix}/namespaces/{namespace}",
+        "GET /v1/{prefix}/namespaces",
+        "POST /v1/{prefix}/namespaces",
+        "GET /v1/{prefix}/namespaces/{namespace}/tables/{table}",
+        "GET /v1/{prefix}/namespaces/{namespace}/views/{view}"
+      ]
+    },
+    "idempotency-key-lifetime": {
+      "type": "string",
+      "format": "duration",
+      "description": "Client reuse window for an Idempotency-Key (ISO-8601 duration, e.g., PT30M, PT24H). Interpreted as the maximum time from the first submission using a key to the last retry during which a client may reuse that key. Servers SHOULD accept retries for at least this duration and MAY include a grace period to account for delays/clock skew. Clients SHOULD NOT reuse an Idempotency-Key after this window elapses; they SHOULD generate a new key for any subsequent attempt. Presence of this field indicates the server supports Idempotency-Key semantics for mutation endpoints. If absent, clients MUST assume idempotency is not supported.",
+      "example": "PT30M"
+    }
+  },
+  "required": [
+    "defaults",
+    "overrides"
+  ]
+}

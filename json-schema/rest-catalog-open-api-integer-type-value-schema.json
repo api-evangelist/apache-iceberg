@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-integer-type-value-schema.json",
+  "title": "IntegerTypeValue",
+  "description": "IntegerTypeValue schema from Apache Iceberg REST Catalog API",
+  "type": "integer",
+  "example": 42
+}

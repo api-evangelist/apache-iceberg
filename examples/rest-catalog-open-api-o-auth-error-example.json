@@ -1,0 +1,5 @@
+{
+  "error": "invalid_scope",
+  "error_description": "example-value",
+  "error_uri": "s3://my-bucket/warehouse/my_database/sales_data"
+}

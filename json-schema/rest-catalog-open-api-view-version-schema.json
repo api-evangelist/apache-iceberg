@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-view-version-schema.json",
+  "title": "ViewVersion",
+  "description": "ViewVersion schema from Apache Iceberg REST Catalog API",
+  "type": "object",
+  "properties": {
+    "version-id": {
+      "type": "integer"
+    },
+    "timestamp-ms": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "schema-id": {
+      "type": "integer",
+      "description": "Schema ID to set as current, or -1 to set last added schema"
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "representations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ViewRepresentation"
+      }
+    },
+    "default-catalog": {
+      "type": "string"
+    },
+    "default-namespace": {
+      "$ref": "#/components/schemas/Namespace"
+    }
+  },
+  "required": [
+    "version-id",
+    "timestamp-ms",
+    "schema-id",
+    "summary",
+    "representations",
+    "default-namespace"
+  ]
+}

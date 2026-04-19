@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-commit-transaction-request-schema.json",
+  "title": "CommitTransactionRequest",
+  "description": "CommitTransactionRequest schema from Apache Iceberg REST Catalog API",
+  "type": "object",
+  "properties": {
+    "table-changes": {
+      "type": "array",
+      "items": {
+        "description": "Table commit request; must provide an `identifier`",
+        "$ref": "#/components/schemas/CommitTableRequest"
+      }
+    }
+  },
+  "required": [
+    "table-changes"
+  ]
+}

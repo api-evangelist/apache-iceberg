@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-remote-sign-request-schema.json",
+  "title": "RemoteSignRequest",
+  "description": "The request to be signed remotely.",
+  "type": "object",
+  "properties": {
+    "region": {
+      "type": "string"
+    },
+    "uri": {
+      "type": "string"
+    },
+    "method": {
+      "type": "string",
+      "enum": [
+        "PUT",
+        "GET",
+        "HEAD",
+        "POST",
+        "DELETE",
+        "PATCH",
+        "OPTIONS"
+      ]
+    },
+    "headers": {
+      "$ref": "#/components/schemas/MultiValuedMap"
+    },
+    "properties": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "body": {
+      "type": "string",
+      "description": "Optional body of the request to send to the signing API. This should only be populated for requests where the body of the message contains content which must be validated before a request is signed, such as the S3 DeleteObjects call."
+    },
+    "provider": {
+      "type": "string",
+      "description": "The storage provider for which the request is to be signed. The provider should correspond to the scheme used for a storage native URI. For example `s3` for AWS S3 paths. For backwards compatibility, if this is not specified, the provider is assumed to be `s3`."
+    }
+  },
+  "required": [
+    "region",
+    "uri",
+    "method",
+    "headers"
+  ]
+}

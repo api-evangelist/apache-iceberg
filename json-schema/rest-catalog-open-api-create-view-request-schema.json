@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-create-view-request-schema.json",
+  "title": "CreateViewRequest",
+  "description": "CreateViewRequest schema from Apache Iceberg REST Catalog API",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "schema": {
+      "$ref": "#/components/schemas/Schema"
+    },
+    "view-version": {
+      "$ref": "#/components/schemas/ViewVersion",
+      "description": "The view version to create, will replace the schema-id sent within the view-version with the id assigned to the provided schema"
+    },
+    "properties": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "name",
+    "schema",
+    "view-version",
+    "properties"
+  ]
+}

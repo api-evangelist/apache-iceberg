@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-set-location-update-structure.json",
+  "name": "SetLocationUpdate",
+  "description": "SetLocationUpdate schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "action": {
+      "type": "string",
+      "const": "set-location"
+    },
+    "location": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "location"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/BaseUpdate"
+    }
+  ]
+}

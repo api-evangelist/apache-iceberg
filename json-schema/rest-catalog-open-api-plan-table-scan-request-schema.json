@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-plan-table-scan-request-schema.json",
+  "title": "PlanTableScanRequest",
+  "description": "PlanTableScanRequest schema from Apache Iceberg REST Catalog API",
+  "type": "object",
+  "properties": {
+    "snapshot-id": {
+      "description": "Identifier for the snapshot to scan in a point-in-time scan",
+      "type": "integer",
+      "format": "int64"
+    },
+    "select": {
+      "description": "List of selected schema fields",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/FieldName"
+      }
+    },
+    "filter": {
+      "description": "Expression used to filter the table data",
+      "$ref": "#/components/schemas/Expression"
+    },
+    "min-rows-requested": {
+      "description": "The minimum number of rows requested for the scan. This is used as a hint to the server to not have to return more rows than necessary. It is not required for the server to return that many rows since the scan may not produce that many rows. The server can also return more rows than requested.",
+      "type": "integer",
+      "format": "int64"
+    },
+    "case-sensitive": {
+      "description": "Enables case sensitive field matching for filter and select",
+      "type": "boolean",
+      "default": true
+    },
+    "use-snapshot-schema": {
+      "description": "Whether to use the schema at the time the snapshot was written.\nWhen time travelling, the snapshot schema should be used (true). When scanning a branch, the table schema should be used (false).",
+      "type": "boolean",
+      "default": false
+    },
+    "start-snapshot-id": {
+      "description": "Starting snapshot ID for an incremental scan (exclusive)",
+      "type": "integer",
+      "format": "int64"
+    },
+    "end-snapshot-id": {
+      "description": "Ending snapshot ID for an incremental scan (inclusive).\nRequired when start-snapshot-id is specified.",
+      "type": "integer",
+      "format": "int64"
+    },
+    "stats-fields": {
+      "description": "List of fields for which the service should send column stats.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/FieldName"
+      }
+    }
+  }
+}

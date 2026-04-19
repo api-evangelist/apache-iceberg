@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-metric-result-structure.json",
+  "name": "MetricResult",
+  "description": "MetricResult schema from Apache Iceberg REST Catalog API",
+  "anyOf": [
+    {
+      "$ref": "#/components/schemas/CounterResult"
+    },
+    {
+      "$ref": "#/components/schemas/TimerResult"
+    }
+  ]
+}

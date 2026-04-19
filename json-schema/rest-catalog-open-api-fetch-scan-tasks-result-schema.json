@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-fetch-scan-tasks-result-schema.json",
+  "title": "FetchScanTasksResult",
+  "description": "Response schema for fetchScanTasks",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/ScanTasks"
+    }
+  ]
+}

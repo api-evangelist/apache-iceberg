@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-completed-planning-result-structure.json",
+  "name": "CompletedPlanningResult",
+  "description": "Completed server-side planning result",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/ScanTasks"
+    },
+    {
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "$ref": "#/components/schemas/PlanStatus",
+          "const": "completed"
+        },
+        "storage-credentials": {
+          "type": "array",
+          "description": "Storage credentials for accessing the files returned in the scan result.\nIf the server returns storage credentials as part of the completed scan planning response, the expectation is for the client to use these credentials to read the files returned in the FileScanTasks as part of the scan result.",
+          "items": {
+            "$ref": "#/components/schemas/StorageCredential"
+          }
+        }
+      }
+    }
+  ]
+}

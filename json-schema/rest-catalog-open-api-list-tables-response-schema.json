@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-list-tables-response-schema.json",
+  "title": "ListTablesResponse",
+  "description": "ListTablesResponse schema from Apache Iceberg REST Catalog API",
+  "type": "object",
+  "properties": {
+    "next-page-token": {
+      "$ref": "#/components/schemas/PageToken"
+    },
+    "identifiers": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/components/schemas/TableIdentifier"
+      }
+    }
+  }
+}

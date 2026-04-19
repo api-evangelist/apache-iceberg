@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-map-type-structure.json",
+  "name": "MapType",
+  "description": "MapType schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "map"
+    },
+    "key-id": {
+      "type": "integer"
+    },
+    "key": {
+      "$ref": "#/components/schemas/Type"
+    },
+    "value-id": {
+      "type": "integer"
+    },
+    "value": {
+      "$ref": "#/components/schemas/Type"
+    },
+    "value-required": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "type",
+    "key-id",
+    "key",
+    "value-id",
+    "value",
+    "value-required"
+  ]
+}

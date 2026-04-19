@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-remove-snapshots-update-schema.json",
+  "title": "RemoveSnapshotsUpdate",
+  "description": "RemoveSnapshotsUpdate schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "action": {
+      "type": "string",
+      "const": "remove-snapshots"
+    },
+    "snapshot-ids": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "format": "int64"
+      }
+    }
+  },
+  "required": [
+    "snapshot-ids"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/BaseUpdate"
+    }
+  ],
+  "type": "object"
+}

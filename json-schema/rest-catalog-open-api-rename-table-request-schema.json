@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-rename-table-request-schema.json",
+  "title": "RenameTableRequest",
+  "description": "RenameTableRequest schema from Apache Iceberg REST Catalog API",
+  "type": "object",
+  "properties": {
+    "source": {
+      "$ref": "#/components/schemas/TableIdentifier"
+    },
+    "destination": {
+      "$ref": "#/components/schemas/TableIdentifier"
+    }
+  },
+  "required": [
+    "source",
+    "destination"
+  ]
+}

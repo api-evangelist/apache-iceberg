@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-commit-table-response-schema.json",
+  "title": "CommitTableResponse",
+  "description": "CommitTableResponse schema from Apache Iceberg REST Catalog API",
+  "type": "object",
+  "properties": {
+    "metadata-location": {
+      "type": "string"
+    },
+    "metadata": {
+      "$ref": "#/components/schemas/TableMetadata"
+    }
+  },
+  "required": [
+    "metadata-location",
+    "metadata"
+  ]
+}

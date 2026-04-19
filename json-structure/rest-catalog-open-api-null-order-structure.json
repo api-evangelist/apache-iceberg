@@ -1,0 +1,11 @@
+{
+  "type": "string",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-null-order-structure.json",
+  "name": "NullOrder",
+  "description": "NullOrder schema from Apache Iceberg REST Catalog API",
+  "enum": [
+    "nulls-first",
+    "nulls-last"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-load-view-result-structure.json",
+  "name": "LoadViewResult",
+  "description": "Result used when a view is successfully loaded.\n\n\nThe view metadata JSON is returned in the `metadata` field. The corresponding file location of view metadata is returned in the `metadata-location` field.\nClients can check whether metadata has changed by comparing metadata locations after the view has been created.\n\nThe `config` map returns view-specific configuration for the view's resources.\n\nThe following configurations should be respected by clients:\n\n## General Configurations\n\n- `token`: Authorization bearer token to use for view requests if OAuth2 security is enabled\n",
+  "properties": {
+    "metadata-location": {
+      "type": "string"
+    },
+    "metadata": {
+      "$ref": "#/components/schemas/ViewMetadata"
+    },
+    "config": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "metadata-location",
+    "metadata"
+  ]
+}

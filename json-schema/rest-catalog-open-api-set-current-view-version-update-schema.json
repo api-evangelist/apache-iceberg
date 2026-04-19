@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-set-current-view-version-update-schema.json",
+  "title": "SetCurrentViewVersionUpdate",
+  "description": "SetCurrentViewVersionUpdate schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "action": {
+      "type": "string",
+      "const": "set-current-view-version"
+    },
+    "view-version-id": {
+      "type": "integer",
+      "description": "The view version id to set as current, or -1 to set last added view version id"
+    }
+  },
+  "required": [
+    "view-version-id"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/BaseUpdate"
+    }
+  ],
+  "type": "object"
+}

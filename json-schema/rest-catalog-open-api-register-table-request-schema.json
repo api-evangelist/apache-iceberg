@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-register-table-request-schema.json",
+  "title": "RegisterTableRequest",
+  "description": "RegisterTableRequest schema from Apache Iceberg REST Catalog API",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "metadata-location": {
+      "type": "string"
+    },
+    "overwrite": {
+      "description": "Whether to overwrite table metadata if the table already exists",
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "name",
+    "metadata-location"
+  ]
+}

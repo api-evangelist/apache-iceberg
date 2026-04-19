@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-o-auth-token-request-schema.json",
+  "title": "OAuthTokenRequest",
+  "description": "The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.",
+  "anyOf": [
+    {
+      "$ref": "#/components/schemas/OAuthClientCredentialsRequest"
+    },
+    {
+      "$ref": "#/components/schemas/OAuthTokenExchangeRequest"
+    }
+  ],
+  "deprecated": true
+}

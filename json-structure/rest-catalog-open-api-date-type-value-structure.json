@@ -1,0 +1,8 @@
+{
+  "type": "date",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-date-type-value-structure.json",
+  "name": "DateTypeValue",
+  "description": "Date type values follow the 'YYYY-MM-DD' ISO-8601 standard date format",
+  "example": "2007-12-03"
+}

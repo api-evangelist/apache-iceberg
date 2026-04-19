@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-assert-last-assigned-partition-id-schema.json",
+  "title": "AssertLastAssignedPartitionId",
+  "description": "The table's last assigned partition id must match the requirement's `last-assigned-partition-id`",
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "assert-last-assigned-partition-id"
+    },
+    "last-assigned-partition-id": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "last-assigned-partition-id"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/TableRequirement"
+    }
+  ],
+  "type": "object"
+}

@@ -1,0 +1,16 @@
+{
+  "content": "example-value",
+  "file-path": "example-value",
+  "spec-id": 78,
+  "partition": [
+    1,
+    "bar"
+  ],
+  "file-size-in-bytes": 923,
+  "record-count": 495,
+  "key-metadata": "abc123def456abc123def456",
+  "split-offsets": [
+    863
+  ],
+  "sort-order-id": 147
+}

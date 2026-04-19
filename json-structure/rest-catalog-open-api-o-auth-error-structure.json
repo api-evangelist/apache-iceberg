@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-o-auth-error-structure.json",
+  "name": "OAuthError",
+  "description": "The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.",
+  "properties": {
+    "error": {
+      "type": "string",
+      "enum": [
+        "invalid_request",
+        "invalid_client",
+        "invalid_grant",
+        "unauthorized_client",
+        "unsupported_grant_type",
+        "invalid_scope"
+      ]
+    },
+    "error_description": {
+      "type": "string"
+    },
+    "error_uri": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "error"
+  ],
+  "deprecated": true
+}

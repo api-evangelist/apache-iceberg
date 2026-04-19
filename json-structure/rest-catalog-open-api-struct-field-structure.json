@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-struct-field-structure.json",
+  "name": "StructField",
+  "description": "StructField schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "$ref": "#/components/schemas/Type"
+    },
+    "required": {
+      "type": "boolean"
+    },
+    "doc": {
+      "type": "string"
+    },
+    "initial-default": {
+      "$ref": "#/components/schemas/PrimitiveTypeValue"
+    },
+    "write-default": {
+      "$ref": "#/components/schemas/PrimitiveTypeValue"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "type",
+    "required"
+  ]
+}

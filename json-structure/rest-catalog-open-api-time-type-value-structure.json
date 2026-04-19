@@ -1,0 +1,8 @@
+{
+  "type": "string",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-time-type-value-structure.json",
+  "name": "TimeTypeValue",
+  "description": "Time type values follow the 'HH:MM:SS.ssssss' ISO-8601 format with microsecond precision",
+  "example": "22:31:08.123456"
+}

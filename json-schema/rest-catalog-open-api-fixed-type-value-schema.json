@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-fixed-type-value-schema.json",
+  "title": "FixedTypeValue",
+  "description": "Fixed length type values are stored and serialized as an uppercase hexadecimal string preserving the fixed length",
+  "type": "string",
+  "example": "78797A"
+}

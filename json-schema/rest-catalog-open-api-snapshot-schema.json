@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-snapshot-schema.json",
+  "title": "Snapshot",
+  "description": "Snapshot schema from Apache Iceberg REST Catalog API",
+  "type": "object",
+  "properties": {
+    "snapshot-id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "parent-snapshot-id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "sequence-number": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "timestamp-ms": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "manifest-list": {
+      "type": "string",
+      "description": "Location of the snapshot's manifest list file"
+    },
+    "first-row-id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The first _row_id assigned to the first row in the first data file in the first manifest"
+    },
+    "added-rows": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The upper bound of the number of rows with assigned row IDs"
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "operation"
+      ],
+      "properties": {
+        "operation": {
+          "type": "string",
+          "enum": [
+            "append",
+            "replace",
+            "overwrite",
+            "delete"
+          ]
+        }
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "schema-id": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "snapshot-id",
+    "timestamp-ms",
+    "manifest-list",
+    "summary"
+  ]
+}

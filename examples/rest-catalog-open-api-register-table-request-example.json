@@ -1,0 +1,5 @@
+{
+  "name": "sales_data",
+  "metadata-location": "s3://my-bucket/warehouse/my_database/sales_data",
+  "overwrite": false
+}

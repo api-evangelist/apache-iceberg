@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-update-namespace-properties-request-schema.json",
+  "title": "UpdateNamespacePropertiesRequest",
+  "description": "UpdateNamespacePropertiesRequest schema from Apache Iceberg REST Catalog API",
+  "type": "object",
+  "properties": {
+    "removals": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "department",
+        "access_group"
+      ]
+    },
+    "updates": {
+      "type": "object",
+      "example": {
+        "owner": "Hank Bendickson"
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  }
+}

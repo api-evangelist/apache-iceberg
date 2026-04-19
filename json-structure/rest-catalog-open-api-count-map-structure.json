@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-count-map-structure.json",
+  "name": "CountMap",
+  "description": "CountMap schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "keys": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/IntegerTypeValue"
+      },
+      "description": "List of integer column ids for each corresponding value"
+    },
+    "values": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LongTypeValue"
+      },
+      "description": "List of Long values, matched to 'keys' by index"
+    }
+  },
+  "example": {
+    "keys": [
+      1,
+      2
+    ],
+    "values": [
+      100,
+      200
+    ]
+  }
+}

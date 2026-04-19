@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-snapshot-reference-structure.json",
+  "name": "SnapshotReference",
+  "description": "SnapshotReference schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "tag",
+        "branch"
+      ]
+    },
+    "snapshot-id": {
+      "type": "int64"
+    },
+    "max-ref-age-ms": {
+      "type": "int64"
+    },
+    "max-snapshot-age-ms": {
+      "type": "int64"
+    },
+    "min-snapshots-to-keep": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "type",
+    "snapshot-id"
+  ]
+}

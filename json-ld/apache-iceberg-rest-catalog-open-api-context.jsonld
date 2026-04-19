@@ -1,0 +1,924 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "iceberg": "https://iceberg.apache.org/schema/",
+    "schema": {
+      "@id": "iceberg:schema",
+      "@type": "xsd:string"
+    },
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "EncryptedKey": "iceberg:EncryptedKey",
+    "ViewHistoryEntry": "iceberg:ViewHistoryEntry",
+    "RemoveSchemasUpdate": "iceberg:RemoveSchemasUpdate",
+    "DataFile": "iceberg:DataFile",
+    "BaseUpdate": "iceberg:BaseUpdate",
+    "RemoteSignResult": "iceberg:RemoteSignResult",
+    "AddSortOrderUpdate": "iceberg:AddSortOrderUpdate",
+    "RemoteSignRequest": "iceberg:RemoteSignRequest",
+    "FetchScanTasksRequest": "iceberg:FetchScanTasksRequest",
+    "CounterResult": "iceberg:CounterResult",
+    "AddPartitionSpecUpdate": "iceberg:AddPartitionSpecUpdate",
+    "PartitionField": "iceberg:PartitionField",
+    "SetExpression": "iceberg:SetExpression",
+    "OAuthTokenResponse": "iceberg:OAuthTokenResponse",
+    "ListNamespacesResponse": "iceberg:ListNamespacesResponse",
+    "StatisticsFile": "iceberg:StatisticsFile",
+    "LoadTableResult": "iceberg:LoadTableResult",
+    "TableRequirement": "iceberg:TableRequirement",
+    "ValueMap": "iceberg:ValueMap",
+    "SetPropertiesUpdate": "iceberg:SetPropertiesUpdate",
+    "OAuthTokenExchangeRequest": "iceberg:OAuthTokenExchangeRequest",
+    "AssertDefaultSpecId": "iceberg:AssertDefaultSpecId",
+    "CatalogConfig": "iceberg:CatalogConfig",
+    "AsyncPlanningResult": "iceberg:AsyncPlanningResult",
+    "CreateNamespaceRequest": "iceberg:CreateNamespaceRequest",
+    "AssertTableUUID": "iceberg:AssertTableUUID",
+    "SnapshotReference": "iceberg:SnapshotReference",
+    "AssertRefSnapshotId": "iceberg:AssertRefSnapshotId",
+    "CreateViewRequest": "iceberg:CreateViewRequest",
+    "TrueExpression": "iceberg:TrueExpression",
+    "SortOrder": "iceberg:SortOrder",
+    "RegisterViewRequest": "iceberg:RegisterViewRequest",
+    "AddSchemaUpdate": "iceberg:AddSchemaUpdate",
+    "ContentFile": "iceberg:ContentFile",
+    "SnapshotReferences": "iceberg:SnapshotReferences",
+    "MultiValuedMap": "iceberg:MultiValuedMap",
+    "Snapshot": "iceberg:Snapshot",
+    "BlobMetadata": "iceberg:BlobMetadata",
+    "UpdateNamespacePropertiesResponse": "iceberg:UpdateNamespacePropertiesResponse",
+    "CommitTableResponse": "iceberg:CommitTableResponse",
+    "PartitionStatisticsFile": "iceberg:PartitionStatisticsFile",
+    "StructType": "iceberg:StructType",
+    "RemoveSnapshotRefUpdate": "iceberg:RemoveSnapshotRefUpdate",
+    "UpdateNamespacePropertiesRequest": "iceberg:UpdateNamespacePropertiesRequest",
+    "CommitTableRequest": "iceberg:CommitTableRequest",
+    "PlanTableScanRequest": "iceberg:PlanTableScanRequest",
+    "UnaryExpression": "iceberg:UnaryExpression",
+    "AssertDefaultSortOrderId": "iceberg:AssertDefaultSortOrderId",
+    "ReportMetricsRequest": "iceberg:ReportMetricsRequest",
+    "FailedPlanningResult": "iceberg:FailedPlanningResult",
+    "AssertViewUUID": "iceberg:AssertViewUUID",
+    "FetchPlanningResult": "iceberg:FetchPlanningResult",
+    "ScanReport": "iceberg:ScanReport",
+    "AndOrExpression": "iceberg:AndOrExpression",
+    "ViewRequirement": "iceberg:ViewRequirement",
+    "AssertCurrentSchemaId": "iceberg:AssertCurrentSchemaId",
+    "SetCurrentSchemaUpdate": "iceberg:SetCurrentSchemaUpdate",
+    "RegisterTableRequest": "iceberg:RegisterTableRequest",
+    "AssignUUIDUpdate": "iceberg:AssignUUIDUpdate",
+    "CommitReport": "iceberg:CommitReport",
+    "LoadCredentialsResponse": "iceberg:LoadCredentialsResponse",
+    "SetStatisticsUpdate": "iceberg:SetStatisticsUpdate",
+    "FetchScanTasksResult": "iceberg:FetchScanTasksResult",
+    "AssertCreate": "iceberg:AssertCreate",
+    "SetLocationUpdate": "iceberg:SetLocationUpdate",
+    "RemoveSnapshotsUpdate": "iceberg:RemoveSnapshotsUpdate",
+    "FileScanTask": "iceberg:FileScanTask",
+    "ScanTasks": "iceberg:ScanTasks",
+    "Metrics": "iceberg:Metrics",
+    "CreateTableRequest": "iceberg:CreateTableRequest",
+    "CompletedPlanningResult": "iceberg:CompletedPlanningResult",
+    "LoadViewResult": "iceberg:LoadViewResult",
+    "ViewVersion": "iceberg:ViewVersion",
+    "EqualityDeleteFile": "iceberg:EqualityDeleteFile",
+    "RemoveEncryptionKeyUpdate": "iceberg:RemoveEncryptionKeyUpdate",
+    "RemoveStatisticsUpdate": "iceberg:RemoveStatisticsUpdate",
+    "OAuthClientCredentialsRequest": "iceberg:OAuthClientCredentialsRequest",
+    "AddViewVersionUpdate": "iceberg:AddViewVersionUpdate",
+    "RenameTableRequest": "iceberg:RenameTableRequest",
+    "CompletedPlanningWithIDResult": "iceberg:CompletedPlanningWithIDResult",
+    "ListTablesResponse": "iceberg:ListTablesResponse",
+    "AssertLastAssignedFieldId": "iceberg:AssertLastAssignedFieldId",
+    "PartitionSpec": "iceberg:PartitionSpec",
+    "AddEncryptionKeyUpdate": "iceberg:AddEncryptionKeyUpdate",
+    "TransformTerm": "iceberg:TransformTerm",
+    "SQLViewRepresentation": "iceberg:SQLViewRepresentation",
+    "CommitViewRequest": "iceberg:CommitViewRequest",
+    "RemovePartitionStatisticsUpdate": "iceberg:RemovePartitionStatisticsUpdate",
+    "TableMetadata": "iceberg:TableMetadata",
+    "AddSnapshotUpdate": "iceberg:AddSnapshotUpdate",
+    "RemovePartitionSpecsUpdate": "iceberg:RemovePartitionSpecsUpdate",
+    "SetDefaultSpecUpdate": "iceberg:SetDefaultSpecUpdate",
+    "SetSnapshotRefUpdate": "iceberg:SetSnapshotRefUpdate",
+    "StorageCredential": "iceberg:StorageCredential",
+    "SortField": "iceberg:SortField",
+    "ViewMetadata": "iceberg:ViewMetadata",
+    "AssertLastAssignedPartitionId": "iceberg:AssertLastAssignedPartitionId",
+    "CommitTransactionRequest": "iceberg:CommitTransactionRequest",
+    "NotExpression": "iceberg:NotExpression",
+    "CountMap": "iceberg:CountMap",
+    "SetPartitionStatisticsUpdate": "iceberg:SetPartitionStatisticsUpdate",
+    "OAuthError": "iceberg:OAuthError",
+    "StructField": "iceberg:StructField",
+    "FalseExpression": "iceberg:FalseExpression",
+    "PositionDeleteFile": "iceberg:PositionDeleteFile",
+    "TimerResult": "iceberg:TimerResult",
+    "SetCurrentViewVersionUpdate": "iceberg:SetCurrentViewVersionUpdate",
+    "SetDefaultSortOrderUpdate": "iceberg:SetDefaultSortOrderUpdate",
+    "PlanTableScanResult": "iceberg:PlanTableScanResult",
+    "GetNamespaceResponse": "iceberg:GetNamespaceResponse",
+    "EmptyPlanningResult": "iceberg:EmptyPlanningResult",
+    "UpgradeFormatVersionUpdate": "iceberg:UpgradeFormatVersionUpdate",
+    "ListType": "iceberg:ListType",
+    "RemovePropertiesUpdate": "iceberg:RemovePropertiesUpdate",
+    "LiteralExpression": "iceberg:LiteralExpression",
+    "CreateNamespaceResponse": "iceberg:CreateNamespaceResponse",
+    "TableIdentifier": "iceberg:TableIdentifier",
+    "MapType": "iceberg:MapType",
+    "key-id": {
+      "@id": "iceberg:key-id",
+      "@type": "xsd:string"
+    },
+    "encrypted-key-metadata": {
+      "@id": "iceberg:encrypted-key-metadata",
+      "@type": "xsd:string"
+    },
+    "encrypted-by-id": {
+      "@id": "iceberg:encrypted-by-id",
+      "@type": "xsd:string"
+    },
+    "properties": {
+      "@id": "iceberg:properties",
+      "@type": "@id"
+    },
+    "version-id": {
+      "@id": "iceberg:version-id",
+      "@type": "xsd:integer"
+    },
+    "timestamp-ms": {
+      "@id": "iceberg:timestamp-ms",
+      "@type": "xsd:integer"
+    },
+    "action": {
+      "@id": "iceberg:action",
+      "@type": "xsd:string"
+    },
+    "schema-ids": {
+      "@id": "iceberg:schema-ids",
+      "@container": "@set",
+      "@type": "xsd:integer"
+    },
+    "content": {
+      "@id": "iceberg:content",
+      "@type": "xsd:string"
+    },
+    "first-row-id": {
+      "@id": "iceberg:first-row-id",
+      "@type": "xsd:integer"
+    },
+    "column-sizes": {
+      "@id": "iceberg:column-sizes",
+      "@type": "xsd:string"
+    },
+    "value-counts": {
+      "@id": "iceberg:value-counts",
+      "@type": "xsd:string"
+    },
+    "null-value-counts": {
+      "@id": "iceberg:null-value-counts",
+      "@type": "xsd:string"
+    },
+    "nan-value-counts": {
+      "@id": "iceberg:nan-value-counts",
+      "@type": "xsd:string"
+    },
+    "lower-bounds": {
+      "@id": "iceberg:lower-bounds",
+      "@type": "xsd:string"
+    },
+    "upper-bounds": {
+      "@id": "iceberg:upper-bounds",
+      "@type": "xsd:string"
+    },
+    "uri": {
+      "@id": "iceberg:uri",
+      "@type": "xsd:string"
+    },
+    "headers": {
+      "@id": "iceberg:headers",
+      "@type": "xsd:string"
+    },
+    "sort-order": {
+      "@id": "iceberg:sort-order",
+      "@type": "xsd:string"
+    },
+    "region": {
+      "@id": "iceberg:region",
+      "@type": "xsd:string"
+    },
+    "method": {
+      "@id": "iceberg:method",
+      "@type": "xsd:string"
+    },
+    "body": {
+      "@id": "iceberg:body",
+      "@type": "xsd:string"
+    },
+    "provider": {
+      "@id": "iceberg:provider",
+      "@type": "xsd:string"
+    },
+    "plan-task": {
+      "@id": "iceberg:plan-task",
+      "@type": "xsd:string"
+    },
+    "unit": {
+      "@id": "iceberg:unit",
+      "@type": "xsd:string"
+    },
+    "value": {
+      "@id": "iceberg:value",
+      "@type": "xsd:integer"
+    },
+    "spec": {
+      "@id": "iceberg:spec",
+      "@type": "xsd:string"
+    },
+    "field-id": {
+      "@id": "iceberg:field-id",
+      "@type": "xsd:integer"
+    },
+    "source-id": {
+      "@id": "iceberg:source-id",
+      "@type": "xsd:integer"
+    },
+    "name": "schema:name",
+    "transform": {
+      "@id": "iceberg:transform",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "iceberg:type",
+      "@type": "xsd:string"
+    },
+    "term": {
+      "@id": "iceberg:term",
+      "@type": "xsd:string"
+    },
+    "values": {
+      "@id": "iceberg:values",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "accessToken": {
+      "@id": "iceberg:access_token",
+      "@type": "xsd:string"
+    },
+    "tokenType": {
+      "@id": "iceberg:token_type",
+      "@type": "xsd:string"
+    },
+    "expiresIn": {
+      "@id": "iceberg:expires_in",
+      "@type": "xsd:integer"
+    },
+    "issuedTokenType": {
+      "@id": "iceberg:issued_token_type",
+      "@type": "xsd:string"
+    },
+    "refreshToken": {
+      "@id": "iceberg:refresh_token",
+      "@type": "xsd:string"
+    },
+    "scope": {
+      "@id": "iceberg:scope",
+      "@type": "xsd:string"
+    },
+    "next-page-token": {
+      "@id": "iceberg:next-page-token",
+      "@type": "xsd:string"
+    },
+    "namespaces": {
+      "@id": "iceberg:namespaces",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "snapshot-id": {
+      "@id": "iceberg:snapshot-id",
+      "@type": "xsd:integer"
+    },
+    "statistics-path": {
+      "@id": "iceberg:statistics-path",
+      "@type": "xsd:string"
+    },
+    "file-size-in-bytes": {
+      "@id": "iceberg:file-size-in-bytes",
+      "@type": "xsd:integer"
+    },
+    "file-footer-size-in-bytes": {
+      "@id": "iceberg:file-footer-size-in-bytes",
+      "@type": "xsd:integer"
+    },
+    "blob-metadata": {
+      "@id": "iceberg:blob-metadata",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "metadata-location": {
+      "@id": "iceberg:metadata-location",
+      "@type": "xsd:string"
+    },
+    "metadata": {
+      "@id": "iceberg:metadata",
+      "@type": "xsd:string"
+    },
+    "config": {
+      "@id": "iceberg:config",
+      "@type": "@id"
+    },
+    "storage-credentials": {
+      "@id": "iceberg:storage-credentials",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "keys": {
+      "@id": "iceberg:keys",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "updates": {
+      "@id": "iceberg:updates",
+      "@type": "@id"
+    },
+    "grantType": {
+      "@id": "iceberg:grant_type",
+      "@type": "xsd:string"
+    },
+    "requestedTokenType": {
+      "@id": "iceberg:requested_token_type",
+      "@type": "xsd:string"
+    },
+    "subjectToken": {
+      "@id": "iceberg:subject_token",
+      "@type": "xsd:string"
+    },
+    "subjectTokenType": {
+      "@id": "iceberg:subject_token_type",
+      "@type": "xsd:string"
+    },
+    "actorToken": {
+      "@id": "iceberg:actor_token",
+      "@type": "xsd:string"
+    },
+    "actorTokenType": {
+      "@id": "iceberg:actor_token_type",
+      "@type": "xsd:string"
+    },
+    "metadata-file": {
+      "@id": "iceberg:metadata-file",
+      "@type": "xsd:string"
+    },
+    "default-spec-id": {
+      "@id": "iceberg:default-spec-id",
+      "@type": "xsd:integer"
+    },
+    "overrides": {
+      "@id": "iceberg:overrides",
+      "@type": "@id"
+    },
+    "defaults": {
+      "@id": "iceberg:defaults",
+      "@type": "@id"
+    },
+    "endpoints": {
+      "@id": "iceberg:endpoints",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "idempotency-key-lifetime": {
+      "@id": "iceberg:idempotency-key-lifetime",
+      "@type": "xsd:duration"
+    },
+    "status": {
+      "@id": "iceberg:status",
+      "@type": "xsd:string"
+    },
+    "plan-id": {
+      "@id": "iceberg:plan-id",
+      "@type": "xsd:string"
+    },
+    "namespace": {
+      "@id": "iceberg:namespace",
+      "@type": "xsd:string"
+    },
+    "uuid": {
+      "@id": "iceberg:uuid",
+      "@type": "xsd:string"
+    },
+    "max-ref-age-ms": {
+      "@id": "iceberg:max-ref-age-ms",
+      "@type": "xsd:integer"
+    },
+    "max-snapshot-age-ms": {
+      "@id": "iceberg:max-snapshot-age-ms",
+      "@type": "xsd:integer"
+    },
+    "min-snapshots-to-keep": {
+      "@id": "iceberg:min-snapshots-to-keep",
+      "@type": "xsd:integer"
+    },
+    "ref": {
+      "@id": "iceberg:ref",
+      "@type": "xsd:string"
+    },
+    "location": {
+      "@id": "iceberg:location",
+      "@type": "xsd:string"
+    },
+    "view-version": {
+      "@id": "iceberg:view-version",
+      "@type": "xsd:string"
+    },
+    "order-id": {
+      "@id": "iceberg:order-id",
+      "@type": "xsd:integer"
+    },
+    "fields": {
+      "@id": "iceberg:fields",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "last-column-id": {
+      "@id": "iceberg:last-column-id",
+      "@type": "xsd:integer"
+    },
+    "file-path": {
+      "@id": "iceberg:file-path",
+      "@type": "xsd:string"
+    },
+    "file-format": {
+      "@id": "iceberg:file-format",
+      "@type": "xsd:string"
+    },
+    "spec-id": {
+      "@id": "iceberg:spec-id",
+      "@type": "xsd:integer"
+    },
+    "partition": {
+      "@id": "iceberg:partition",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "record-count": {
+      "@id": "iceberg:record-count",
+      "@type": "xsd:integer"
+    },
+    "key-metadata": {
+      "@id": "iceberg:key-metadata",
+      "@type": "xsd:string"
+    },
+    "split-offsets": {
+      "@id": "iceberg:split-offsets",
+      "@container": "@set",
+      "@type": "xsd:integer"
+    },
+    "sort-order-id": {
+      "@id": "iceberg:sort-order-id",
+      "@type": "xsd:integer"
+    },
+    "parent-snapshot-id": {
+      "@id": "iceberg:parent-snapshot-id",
+      "@type": "xsd:integer"
+    },
+    "sequence-number": {
+      "@id": "iceberg:sequence-number",
+      "@type": "xsd:integer"
+    },
+    "manifest-list": {
+      "@id": "iceberg:manifest-list",
+      "@type": "xsd:string"
+    },
+    "added-rows": {
+      "@id": "iceberg:added-rows",
+      "@type": "xsd:integer"
+    },
+    "summary": {
+      "@id": "iceberg:summary",
+      "@type": "@id"
+    },
+    "operation": {
+      "@id": "iceberg:operation",
+      "@type": "xsd:string"
+    },
+    "schema-id": {
+      "@id": "iceberg:schema-id",
+      "@type": "xsd:integer"
+    },
+    "updated": {
+      "@id": "iceberg:updated",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "removed": {
+      "@id": "iceberg:removed",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "missing": {
+      "@id": "iceberg:missing",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "ref-name": {
+      "@id": "iceberg:ref-name",
+      "@type": "xsd:string"
+    },
+    "removals": {
+      "@id": "iceberg:removals",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "identifier": {
+      "@id": "iceberg:identifier",
+      "@type": "xsd:string"
+    },
+    "requirements": {
+      "@id": "iceberg:requirements",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "select": {
+      "@id": "iceberg:select",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "filter": {
+      "@id": "iceberg:filter",
+      "@type": "xsd:string"
+    },
+    "min-rows-requested": {
+      "@id": "iceberg:min-rows-requested",
+      "@type": "xsd:integer"
+    },
+    "case-sensitive": {
+      "@id": "iceberg:case-sensitive",
+      "@type": "xsd:boolean"
+    },
+    "use-snapshot-schema": {
+      "@id": "iceberg:use-snapshot-schema",
+      "@type": "xsd:boolean"
+    },
+    "start-snapshot-id": {
+      "@id": "iceberg:start-snapshot-id",
+      "@type": "xsd:integer"
+    },
+    "end-snapshot-id": {
+      "@id": "iceberg:end-snapshot-id",
+      "@type": "xsd:integer"
+    },
+    "stats-fields": {
+      "@id": "iceberg:stats-fields",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "default-sort-order-id": {
+      "@id": "iceberg:default-sort-order-id",
+      "@type": "xsd:integer"
+    },
+    "report-type": {
+      "@id": "iceberg:report-type",
+      "@type": "xsd:string"
+    },
+    "table-name": {
+      "@id": "iceberg:table-name",
+      "@type": "xsd:string"
+    },
+    "projected-field-ids": {
+      "@id": "iceberg:projected-field-ids",
+      "@container": "@set",
+      "@type": "xsd:integer"
+    },
+    "projected-field-names": {
+      "@id": "iceberg:projected-field-names",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "metrics": {
+      "@id": "iceberg:metrics",
+      "@type": "xsd:string"
+    },
+    "left": {
+      "@id": "iceberg:left",
+      "@type": "xsd:string"
+    },
+    "right": {
+      "@id": "iceberg:right",
+      "@type": "xsd:string"
+    },
+    "current-schema-id": {
+      "@id": "iceberg:current-schema-id",
+      "@type": "xsd:integer"
+    },
+    "overwrite": {
+      "@id": "iceberg:overwrite",
+      "@type": "xsd:boolean"
+    },
+    "statistics": {
+      "@id": "iceberg:statistics",
+      "@type": "xsd:string"
+    },
+    "snapshot-ids": {
+      "@id": "iceberg:snapshot-ids",
+      "@container": "@set",
+      "@type": "xsd:integer"
+    },
+    "data-file": {
+      "@id": "iceberg:data-file",
+      "@type": "xsd:string"
+    },
+    "delete-file-references": {
+      "@id": "iceberg:delete-file-references",
+      "@container": "@set",
+      "@type": "xsd:integer"
+    },
+    "residual-filter": {
+      "@id": "iceberg:residual-filter",
+      "@type": "xsd:string"
+    },
+    "delete-files": {
+      "@id": "iceberg:delete-files",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "file-scan-tasks": {
+      "@id": "iceberg:file-scan-tasks",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "plan-tasks": {
+      "@id": "iceberg:plan-tasks",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "partition-spec": {
+      "@id": "iceberg:partition-spec",
+      "@type": "xsd:string"
+    },
+    "write-order": {
+      "@id": "iceberg:write-order",
+      "@type": "xsd:string"
+    },
+    "stage-create": {
+      "@id": "iceberg:stage-create",
+      "@type": "xsd:boolean"
+    },
+    "representations": {
+      "@id": "iceberg:representations",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "default-catalog": {
+      "@id": "iceberg:default-catalog",
+      "@type": "xsd:string"
+    },
+    "default-namespace": {
+      "@id": "iceberg:default-namespace",
+      "@type": "xsd:string"
+    },
+    "equality-ids": {
+      "@id": "iceberg:equality-ids",
+      "@container": "@set",
+      "@type": "xsd:integer"
+    },
+    "clientId": {
+      "@id": "iceberg:client_id",
+      "@type": "xsd:string"
+    },
+    "clientSecret": {
+      "@id": "iceberg:client_secret",
+      "@type": "xsd:string"
+    },
+    "source": {
+      "@id": "iceberg:source",
+      "@type": "xsd:string"
+    },
+    "destination": {
+      "@id": "iceberg:destination",
+      "@type": "xsd:string"
+    },
+    "identifiers": {
+      "@id": "iceberg:identifiers",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "last-assigned-field-id": {
+      "@id": "iceberg:last-assigned-field-id",
+      "@type": "xsd:integer"
+    },
+    "encryption-key": {
+      "@id": "iceberg:encryption-key",
+      "@type": "xsd:string"
+    },
+    "sql": {
+      "@id": "iceberg:sql",
+      "@type": "xsd:string"
+    },
+    "dialect": {
+      "@id": "iceberg:dialect",
+      "@type": "xsd:string"
+    },
+    "format-version": {
+      "@id": "iceberg:format-version",
+      "@type": "xsd:integer"
+    },
+    "table-uuid": {
+      "@id": "iceberg:table-uuid",
+      "@type": "xsd:string"
+    },
+    "last-updated-ms": {
+      "@id": "iceberg:last-updated-ms",
+      "@type": "xsd:integer"
+    },
+    "next-row-id": {
+      "@id": "iceberg:next-row-id",
+      "@type": "xsd:integer"
+    },
+    "schemas": {
+      "@id": "iceberg:schemas",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "partition-specs": {
+      "@id": "iceberg:partition-specs",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "last-partition-id": {
+      "@id": "iceberg:last-partition-id",
+      "@type": "xsd:integer"
+    },
+    "sort-orders": {
+      "@id": "iceberg:sort-orders",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "encryption-keys": {
+      "@id": "iceberg:encryption-keys",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "snapshots": {
+      "@id": "iceberg:snapshots",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "refs": {
+      "@id": "iceberg:refs",
+      "@type": "xsd:string"
+    },
+    "current-snapshot-id": {
+      "@id": "iceberg:current-snapshot-id",
+      "@type": "xsd:integer"
+    },
+    "last-sequence-number": {
+      "@id": "iceberg:last-sequence-number",
+      "@type": "xsd:integer"
+    },
+    "snapshot-log": {
+      "@id": "iceberg:snapshot-log",
+      "@type": "xsd:string"
+    },
+    "metadata-log": {
+      "@id": "iceberg:metadata-log",
+      "@type": "xsd:string"
+    },
+    "partition-statistics": {
+      "@id": "iceberg:partition-statistics",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "snapshot": {
+      "@id": "iceberg:snapshot",
+      "@type": "xsd:string"
+    },
+    "spec-ids": {
+      "@id": "iceberg:spec-ids",
+      "@container": "@set",
+      "@type": "xsd:integer"
+    },
+    "prefix": {
+      "@id": "iceberg:prefix",
+      "@type": "xsd:string"
+    },
+    "direction": {
+      "@id": "iceberg:direction",
+      "@type": "xsd:string"
+    },
+    "null-order": {
+      "@id": "iceberg:null-order",
+      "@type": "xsd:string"
+    },
+    "view-uuid": {
+      "@id": "iceberg:view-uuid",
+      "@type": "xsd:string"
+    },
+    "current-version-id": {
+      "@id": "iceberg:current-version-id",
+      "@type": "xsd:integer"
+    },
+    "versions": {
+      "@id": "iceberg:versions",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "version-log": {
+      "@id": "iceberg:version-log",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "last-assigned-partition-id": {
+      "@id": "iceberg:last-assigned-partition-id",
+      "@type": "xsd:integer"
+    },
+    "table-changes": {
+      "@id": "iceberg:table-changes",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "child": {
+      "@id": "iceberg:child",
+      "@type": "xsd:string"
+    },
+    "error": {
+      "@id": "iceberg:error",
+      "@type": "xsd:string"
+    },
+    "errorDescription": {
+      "@id": "iceberg:error_description",
+      "@type": "xsd:string"
+    },
+    "errorUri": {
+      "@id": "iceberg:error_uri",
+      "@type": "xsd:string"
+    },
+    "id": {
+      "@id": "iceberg:id",
+      "@type": "xsd:integer"
+    },
+    "required": {
+      "@id": "iceberg:required",
+      "@type": "xsd:boolean"
+    },
+    "doc": {
+      "@id": "iceberg:doc",
+      "@type": "xsd:string"
+    },
+    "initial-default": {
+      "@id": "iceberg:initial-default",
+      "@type": "xsd:string"
+    },
+    "write-default": {
+      "@id": "iceberg:write-default",
+      "@type": "xsd:string"
+    },
+    "content-offset": {
+      "@id": "iceberg:content-offset",
+      "@type": "xsd:integer"
+    },
+    "content-size-in-bytes": {
+      "@id": "iceberg:content-size-in-bytes",
+      "@type": "xsd:integer"
+    },
+    "time-unit": {
+      "@id": "iceberg:time-unit",
+      "@type": "xsd:string"
+    },
+    "count": {
+      "@id": "iceberg:count",
+      "@type": "xsd:integer"
+    },
+    "total-duration": {
+      "@id": "iceberg:total-duration",
+      "@type": "xsd:integer"
+    },
+    "view-version-id": {
+      "@id": "iceberg:view-version-id",
+      "@type": "xsd:integer"
+    },
+    "element-id": {
+      "@id": "iceberg:element-id",
+      "@type": "xsd:integer"
+    },
+    "element": {
+      "@id": "iceberg:element",
+      "@type": "xsd:string"
+    },
+    "element-required": {
+      "@id": "iceberg:element-required",
+      "@type": "xsd:boolean"
+    },
+    "key": {
+      "@id": "iceberg:key",
+      "@type": "xsd:string"
+    },
+    "value-id": {
+      "@id": "iceberg:value-id",
+      "@type": "xsd:integer"
+    },
+    "value-required": {
+      "@id": "iceberg:value-required",
+      "@type": "xsd:boolean"
+    }
+  }
+}

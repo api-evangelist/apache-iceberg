@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-multi-valued-map-structure.json",
+  "name": "MultiValuedMap",
+  "description": "A map of string keys where each key can map to multiple string values.",
+  "additionalProperties": {
+    "type": "array",
+    "items": {
+      "type": "string"
+    }
+  }
+}

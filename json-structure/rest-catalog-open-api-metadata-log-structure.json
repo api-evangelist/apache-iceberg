@@ -1,0 +1,22 @@
+{
+  "type": "array",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-metadata-log-structure.json",
+  "name": "MetadataLog",
+  "description": "MetadataLog schema from Apache Iceberg REST Catalog API",
+  "items": {
+    "type": "object",
+    "required": [
+      "metadata-file",
+      "timestamp-ms"
+    ],
+    "properties": {
+      "metadata-file": {
+        "type": "string"
+      },
+      "timestamp-ms": {
+        "type": "int64"
+      }
+    }
+  }
+}

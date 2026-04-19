@@ -1,0 +1,8 @@
+{
+  "type": "double",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-double-type-value-structure.json",
+  "name": "DoubleTypeValue",
+  "description": "DoubleTypeValue schema from Apache Iceberg REST Catalog API",
+  "example": 123.456
+}

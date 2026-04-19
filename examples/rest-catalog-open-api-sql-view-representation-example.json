@@ -1,0 +1,5 @@
+{
+  "type": "struct",
+  "sql": "example-value",
+  "dialect": "example-value"
+}

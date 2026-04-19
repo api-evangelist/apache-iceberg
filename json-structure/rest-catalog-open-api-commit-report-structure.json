@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-commit-report-structure.json",
+  "name": "CommitReport",
+  "description": "CommitReport schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "table-name": {
+      "type": "string"
+    },
+    "snapshot-id": {
+      "type": "int64"
+    },
+    "sequence-number": {
+      "type": "int64"
+    },
+    "operation": {
+      "type": "string"
+    },
+    "metrics": {
+      "$ref": "#/components/schemas/Metrics"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "table-name",
+    "snapshot-id",
+    "sequence-number",
+    "operation",
+    "metrics"
+  ]
+}

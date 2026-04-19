@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-view-representation-structure.json",
+  "name": "ViewRepresentation",
+  "description": "ViewRepresentation schema from Apache Iceberg REST Catalog API",
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/SQLViewRepresentation"
+    }
+  ]
+}

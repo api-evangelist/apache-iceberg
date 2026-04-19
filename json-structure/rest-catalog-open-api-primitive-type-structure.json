@@ -1,0 +1,13 @@
+{
+  "type": "string",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-primitive-type-structure.json",
+  "name": "PrimitiveType",
+  "description": "PrimitiveType schema from Apache Iceberg REST Catalog API",
+  "example": [
+    "long",
+    "string",
+    "fixed[16]",
+    "decimal(10,2)"
+  ]
+}

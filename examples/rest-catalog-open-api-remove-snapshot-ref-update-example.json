@@ -1,0 +1,4 @@
+{
+  "action": "remove-snapshot-ref",
+  "ref-name": "sales_data"
+}

@@ -1,0 +1,34 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-statistics-file-structure.json",
+  "name": "StatisticsFile",
+  "description": "StatisticsFile schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "snapshot-id": {
+      "type": "int64"
+    },
+    "statistics-path": {
+      "type": "string"
+    },
+    "file-size-in-bytes": {
+      "type": "int64"
+    },
+    "file-footer-size-in-bytes": {
+      "type": "int64"
+    },
+    "blob-metadata": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BlobMetadata"
+      }
+    }
+  },
+  "required": [
+    "snapshot-id",
+    "statistics-path",
+    "file-size-in-bytes",
+    "file-footer-size-in-bytes",
+    "blob-metadata"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-assert-table-uuid-structure.json",
+  "name": "AssertTableUUID",
+  "description": "The table UUID must match the requirement's `uuid`",
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "assert-table-uuid"
+    },
+    "uuid": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "type",
+    "uuid"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/TableRequirement"
+    }
+  ]
+}

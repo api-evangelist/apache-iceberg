@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-transform-schema.json",
+  "title": "Transform",
+  "description": "Transform schema from Apache Iceberg REST Catalog API",
+  "type": "string",
+  "example": [
+    "identity",
+    "year",
+    "month",
+    "day",
+    "hour",
+    "bucket[256]",
+    "truncate[16]"
+  ]
+}

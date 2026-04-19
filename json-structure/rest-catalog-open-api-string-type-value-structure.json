@@ -1,0 +1,8 @@
+{
+  "type": "string",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-string-type-value-structure.json",
+  "name": "StringTypeValue",
+  "description": "StringTypeValue schema from Apache Iceberg REST Catalog API",
+  "example": "hello"
+}

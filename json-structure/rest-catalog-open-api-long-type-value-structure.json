@@ -1,0 +1,8 @@
+{
+  "type": "int64",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-long-type-value-structure.json",
+  "name": "LongTypeValue",
+  "description": "LongTypeValue schema from Apache Iceberg REST Catalog API",
+  "example": 9223372036854775807
+}

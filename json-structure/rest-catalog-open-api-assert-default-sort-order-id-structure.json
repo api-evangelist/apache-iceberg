@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-assert-default-sort-order-id-structure.json",
+  "name": "AssertDefaultSortOrderId",
+  "description": "The table's default sort order id must match the requirement's `default-sort-order-id`",
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "assert-default-sort-order-id"
+    },
+    "default-sort-order-id": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "default-sort-order-id"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/TableRequirement"
+    }
+  ]
+}

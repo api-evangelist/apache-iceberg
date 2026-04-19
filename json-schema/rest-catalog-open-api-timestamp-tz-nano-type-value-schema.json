@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-timestamp-tz-nano-type-value-schema.json",
+  "title": "TimestampTzNanoTypeValue",
+  "description": "Timestamp_ns type values follow the 'YYYY-MM-DDTHH:MM:SS.sssssssss+00:00' ISO-8601 format with nanosecond precision, and a timezone offset (+00:00 for UTC)",
+  "type": "string",
+  "example": "2007-12-03T10:15:30.123456789+00:00"
+}

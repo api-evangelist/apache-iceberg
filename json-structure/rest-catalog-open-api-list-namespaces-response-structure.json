@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-list-namespaces-response-structure.json",
+  "name": "ListNamespacesResponse",
+  "description": "ListNamespacesResponse schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "next-page-token": {
+      "$ref": "#/components/schemas/PageToken"
+    },
+    "namespaces": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/components/schemas/Namespace"
+      }
+    }
+  }
+}

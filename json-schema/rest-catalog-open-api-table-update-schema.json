@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-table-update-schema.json",
+  "title": "TableUpdate",
+  "description": "TableUpdate schema from Apache Iceberg REST Catalog API",
+  "anyOf": [
+    {
+      "$ref": "#/components/schemas/AssignUUIDUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/UpgradeFormatVersionUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/AddSchemaUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/SetCurrentSchemaUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/AddPartitionSpecUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/SetDefaultSpecUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/AddSortOrderUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/SetDefaultSortOrderUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/AddSnapshotUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/SetSnapshotRefUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/RemoveSnapshotsUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/RemoveSnapshotRefUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/SetLocationUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/SetPropertiesUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/RemovePropertiesUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/SetStatisticsUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/RemoveStatisticsUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/SetPartitionStatisticsUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/RemovePartitionStatisticsUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/RemovePartitionSpecsUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/RemoveSchemasUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/AddEncryptionKeyUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/RemoveEncryptionKeyUpdate"
+    }
+  ]
+}

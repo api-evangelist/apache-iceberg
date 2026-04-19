@@ -1,0 +1,12 @@
+{
+  "table-name": "sales_data",
+  "snapshot-id": 871,
+  "schema-id": 622,
+  "projected-field-ids": [
+    225
+  ],
+  "projected-field-names": [
+    "sales_data"
+  ],
+  "metadata": {}
+}

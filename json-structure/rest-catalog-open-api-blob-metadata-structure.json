@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-blob-metadata-structure.json",
+  "name": "BlobMetadata",
+  "description": "BlobMetadata schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "type": {
+      "type": "string"
+    },
+    "snapshot-id": {
+      "type": "int64"
+    },
+    "sequence-number": {
+      "type": "int64"
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "properties": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "type",
+    "snapshot-id",
+    "sequence-number",
+    "fields"
+  ]
+}

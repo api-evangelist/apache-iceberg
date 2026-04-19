@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-commit-view-request-structure.json",
+  "name": "CommitViewRequest",
+  "description": "CommitViewRequest schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "identifier": {
+      "description": "View identifier to update",
+      "$ref": "#/components/schemas/TableIdentifier"
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ViewRequirement"
+      }
+    },
+    "updates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ViewUpdate"
+      }
+    }
+  },
+  "required": [
+    "updates"
+  ]
+}

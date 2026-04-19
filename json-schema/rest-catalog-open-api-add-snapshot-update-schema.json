@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-add-snapshot-update-schema.json",
+  "title": "AddSnapshotUpdate",
+  "description": "AddSnapshotUpdate schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "action": {
+      "type": "string",
+      "const": "add-snapshot"
+    },
+    "snapshot": {
+      "$ref": "#/components/schemas/Snapshot"
+    }
+  },
+  "required": [
+    "snapshot"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/BaseUpdate"
+    }
+  ],
+  "type": "object"
+}

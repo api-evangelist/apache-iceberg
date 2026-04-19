@@ -1,0 +1,257 @@
+rules:
+  # INFO / METADATA
+  info-title-required:
+    description: Info title must be present and start with Apache Iceberg
+    severity: error
+    given: "$.info"
+    then:
+      field: title
+      function: pattern
+      functionOptions:
+        match: "^Apache Iceberg"
+
+  info-description-required:
+    description: Info must have a description with at least 20 characters
+    severity: warn
+    given: "$.info"
+    then:
+      field: description
+      function: length
+      functionOptions:
+        min: 20
+
+  info-version-required:
+    description: Info must have a version field
+    severity: error
+    given: "$.info"
+    then:
+      field: version
+      function: truthy
+
+  # OPENAPI VERSION
+  openapi-version:
+    description: Must use OpenAPI 3.x
+    severity: error
+    given: "$"
+    then:
+      field: openapi
+      function: pattern
+      functionOptions:
+        match: "^3\\."
+
+  # SERVERS
+  servers-defined:
+    description: Servers must be defined
+    severity: error
+    given: "$"
+    then:
+      field: servers
+      function: truthy
+
+  servers-https:
+    description: Server URLs should use HTTPS
+    severity: warn
+    given: "$.servers[*]"
+    then:
+      field: url
+      function: pattern
+      functionOptions:
+        match: "^https://"
+
+  servers-description-required:
+    description: Each server should have a description
+    severity: info
+    given: "$.servers[*]"
+    then:
+      field: description
+      function: truthy
+
+  # PATHS — NAMING CONVENTIONS
+  paths-kebab-case:
+    description: Path segments should use kebab-case
+    severity: warn
+    given: "$.paths"
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        match: "^(\\/([a-z0-9{}-]+))*$"
+
+  paths-no-trailing-slash:
+    description: Paths must not have a trailing slash
+    severity: warn
+    given: "$.paths"
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        notMatch: "\\/$"
+
+  # OPERATIONS
+  operation-summary-required:
+    description: Every operation must have a summary
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete,head,options]"
+    then:
+      field: summary
+      function: truthy
+
+  operation-summary-prefix:
+    description: Operation summaries should start with Apache Iceberg
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete,head,options]"
+    then:
+      field: summary
+      function: pattern
+      functionOptions:
+        match: "^Apache Iceberg"
+
+  operation-description-required:
+    description: Every operation must have a description
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete,head,options]"
+    then:
+      field: description
+      function: truthy
+
+  operation-id-required:
+    description: Every operation must have an operationId
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete,head,options]"
+    then:
+      field: operationId
+      function: truthy
+
+  operation-id-camel-case:
+    description: operationId should use camelCase
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete,head,options]"
+    then:
+      field: operationId
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  operation-tags-required:
+    description: Every operation must have at least one tag
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete,head,options]"
+    then:
+      field: tags
+      function: truthy
+
+  # PARAMETERS
+  parameter-description-required:
+    description: Every parameter must have a description
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete,head,options].parameters[*]"
+    then:
+      field: description
+      function: truthy
+
+  parameter-schema-required:
+    description: Every parameter must have a schema
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete,head,options].parameters[*]"
+    then:
+      field: schema
+      function: truthy
+
+  # RESPONSES
+  response-success-required:
+    description: Every operation must have at least one 2xx response
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete,head,options].responses"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: ["200"]
+            - required: ["201"]
+            - required: ["204"]
+
+  response-description-required:
+    description: Every response must have a description
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete,head,options].responses[*]"
+    then:
+      field: description
+      function: truthy
+
+  response-error-400:
+    description: Operations should document 400 Bad Request responses
+    severity: info
+    given: "$.paths[*][post,put,patch].responses"
+    then:
+      field: "400"
+      function: truthy
+
+  response-error-404:
+    description: Operations should document 404 Not Found responses
+    severity: info
+    given: "$.paths[*][get,delete].responses"
+    then:
+      field: "404"
+      function: truthy
+
+  # SCHEMAS
+  schema-property-description:
+    description: Top-level schema objects should have descriptions
+    severity: info
+    given: "$.components.schemas[*]"
+    then:
+      field: description
+      function: truthy
+
+  schema-type-defined:
+    description: Schema properties should have a type defined
+    severity: warn
+    given: "$.components.schemas[*].properties[*]"
+    then:
+      field: type
+      function: truthy
+
+  # SECURITY
+  security-schemes-defined:
+    description: Security schemes must be defined
+    severity: warn
+    given: "$.components"
+    then:
+      field: securitySchemes
+      function: truthy
+
+  # HTTP METHOD CONVENTIONS
+  get-no-request-body:
+    description: GET operations must not have a request body
+    severity: error
+    given: "$.paths[*].get"
+    then:
+      field: requestBody
+      function: falsy
+
+  delete-no-request-body:
+    description: DELETE operations should not have a request body
+    severity: warn
+    given: "$.paths[*].delete"
+    then:
+      field: requestBody
+      function: falsy
+
+  # GENERAL QUALITY
+  no-empty-descriptions:
+    description: Descriptions must not be empty strings
+    severity: warn
+    given: "$..description"
+    then:
+      function: pattern
+      functionOptions:
+        match: ".+"
+
+  examples-encouraged:
+    description: Schema properties should include examples
+    severity: info
+    given: "$.components.schemas[*].properties[*]"
+    then:
+      field: example
+      function: truthy

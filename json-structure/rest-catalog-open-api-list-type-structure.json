@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-list-type-structure.json",
+  "name": "ListType",
+  "description": "ListType schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "list"
+    },
+    "element-id": {
+      "type": "integer"
+    },
+    "element": {
+      "$ref": "#/components/schemas/Type"
+    },
+    "element-required": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "type",
+    "element-id",
+    "element",
+    "element-required"
+  ]
+}

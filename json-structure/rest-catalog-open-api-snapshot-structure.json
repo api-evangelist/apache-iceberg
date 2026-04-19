@@ -1,0 +1,62 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-snapshot-structure.json",
+  "name": "Snapshot",
+  "description": "Snapshot schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "snapshot-id": {
+      "type": "int64"
+    },
+    "parent-snapshot-id": {
+      "type": "int64"
+    },
+    "sequence-number": {
+      "type": "int64"
+    },
+    "timestamp-ms": {
+      "type": "int64"
+    },
+    "manifest-list": {
+      "type": "string",
+      "description": "Location of the snapshot's manifest list file"
+    },
+    "first-row-id": {
+      "type": "int64",
+      "description": "The first _row_id assigned to the first row in the first data file in the first manifest"
+    },
+    "added-rows": {
+      "type": "int64",
+      "description": "The upper bound of the number of rows with assigned row IDs"
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "operation"
+      ],
+      "properties": {
+        "operation": {
+          "type": "string",
+          "enum": [
+            "append",
+            "replace",
+            "overwrite",
+            "delete"
+          ]
+        }
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "schema-id": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "snapshot-id",
+    "timestamp-ms",
+    "manifest-list",
+    "summary"
+  ]
+}

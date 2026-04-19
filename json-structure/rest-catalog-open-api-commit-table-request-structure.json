@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-commit-table-request-structure.json",
+  "name": "CommitTableRequest",
+  "description": "CommitTableRequest schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "identifier": {
+      "description": "Table identifier to update; must be present for CommitTransactionRequest",
+      "$ref": "#/components/schemas/TableIdentifier"
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TableRequirement"
+      }
+    },
+    "updates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TableUpdate"
+      }
+    }
+  },
+  "required": [
+    "requirements",
+    "updates"
+  ]
+}

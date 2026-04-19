@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-assert-default-spec-id-schema.json",
+  "title": "AssertDefaultSpecId",
+  "description": "The table's default spec id must match the requirement's `default-spec-id`",
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "assert-default-spec-id"
+    },
+    "default-spec-id": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "default-spec-id"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/TableRequirement"
+    }
+  ],
+  "type": "object"
+}

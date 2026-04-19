@@ -1,0 +1,14 @@
+{
+  "snapshot-id": 887,
+  "select": [
+    "example-value"
+  ],
+  "min-rows-requested": 554,
+  "case-sensitive": true,
+  "use-snapshot-schema": false,
+  "start-snapshot-id": 365,
+  "end-snapshot-id": 1000,
+  "stats-fields": [
+    "example-value"
+  ]
+}

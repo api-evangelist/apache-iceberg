@@ -1,0 +1,8 @@
+{
+  "type": "string",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-timestamp-tz-type-value-structure.json",
+  "name": "TimestampTzTypeValue",
+  "description": "TimestampTz type values follow the 'YYYY-MM-DDTHH:MM:SS.ssssss+00:00' ISO-8601 format with microsecond precision, and a timezone offset (+00:00 for UTC)",
+  "example": "2007-12-03T10:15:30.123456+00:00"
+}

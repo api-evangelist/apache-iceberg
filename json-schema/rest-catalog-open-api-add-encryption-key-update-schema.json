@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-add-encryption-key-update-schema.json",
+  "title": "AddEncryptionKeyUpdate",
+  "description": "AddEncryptionKeyUpdate schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "action": {
+      "type": "string",
+      "const": "add-encryption-key"
+    },
+    "encryption-key": {
+      "$ref": "#/components/schemas/EncryptedKey"
+    }
+  },
+  "required": [
+    "encryption-key"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/BaseUpdate"
+    }
+  ],
+  "type": "object"
+}

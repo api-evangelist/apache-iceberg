@@ -1,0 +1,10 @@
+{
+  "type": "string",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-reference-structure.json",
+  "name": "Reference",
+  "description": "Reference schema from Apache Iceberg REST Catalog API",
+  "example": [
+    "column-name"
+  ]
+}

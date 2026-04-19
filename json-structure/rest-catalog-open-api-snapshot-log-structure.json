@@ -1,0 +1,22 @@
+{
+  "type": "array",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-snapshot-log-structure.json",
+  "name": "SnapshotLog",
+  "description": "SnapshotLog schema from Apache Iceberg REST Catalog API",
+  "items": {
+    "type": "object",
+    "required": [
+      "snapshot-id",
+      "timestamp-ms"
+    ],
+    "properties": {
+      "snapshot-id": {
+        "type": "int64"
+      },
+      "timestamp-ms": {
+        "type": "int64"
+      }
+    }
+  }
+}

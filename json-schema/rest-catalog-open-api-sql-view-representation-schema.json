@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-sql-view-representation-schema.json",
+  "title": "SQLViewRepresentation",
+  "description": "SQLViewRepresentation schema from Apache Iceberg REST Catalog API",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string"
+    },
+    "sql": {
+      "type": "string"
+    },
+    "dialect": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "type",
+    "sql",
+    "dialect"
+  ]
+}

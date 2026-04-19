@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-expression-schema.json",
+  "title": "Expression",
+  "description": "Expression schema from Apache Iceberg REST Catalog API",
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/TrueExpression"
+    },
+    {
+      "$ref": "#/components/schemas/FalseExpression"
+    },
+    {
+      "$ref": "#/components/schemas/AndOrExpression"
+    },
+    {
+      "$ref": "#/components/schemas/NotExpression"
+    },
+    {
+      "$ref": "#/components/schemas/SetExpression"
+    },
+    {
+      "$ref": "#/components/schemas/LiteralExpression"
+    },
+    {
+      "$ref": "#/components/schemas/UnaryExpression"
+    }
+  ]
+}

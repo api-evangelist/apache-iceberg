@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-encrypted-key-schema.json",
+  "title": "EncryptedKey",
+  "description": "EncryptedKey schema from Apache Iceberg REST Catalog API",
+  "type": "object",
+  "properties": {
+    "key-id": {
+      "type": "string"
+    },
+    "encrypted-key-metadata": {
+      "type": "string",
+      "format": "byte",
+      "contentEncoding": "base64"
+    },
+    "encrypted-by-id": {
+      "type": "string"
+    },
+    "properties": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "key-id",
+    "encrypted-key-metadata"
+  ]
+}

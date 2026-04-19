@@ -1,0 +1,5 @@
+{
+  "type": "assert-ref-snapshot-id",
+  "ref": "example-value",
+  "snapshot-id": 3
+}

@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-table-identifier-structure.json",
+  "name": "TableIdentifier",
+  "description": "TableIdentifier schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "namespace": {
+      "$ref": "#/components/schemas/Namespace"
+    },
+    "name": {
+      "type": "string",
+      "nullable": false
+    }
+  },
+  "required": [
+    "namespace",
+    "name"
+  ]
+}

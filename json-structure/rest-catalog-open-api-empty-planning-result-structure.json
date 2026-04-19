@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-empty-planning-result-structure.json",
+  "name": "EmptyPlanningResult",
+  "description": "Empty server-side planning result",
+  "properties": {
+    "status": {
+      "$ref": "#/components/schemas/PlanStatus",
+      "enum": [
+        "submitted",
+        "cancelled"
+      ]
+    }
+  },
+  "required": [
+    "status"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-scan-tasks-schema.json",
+  "title": "ScanTasks",
+  "description": "Scan and planning tasks for server-side scan planning\n\n- `plan-tasks` contains opaque units of planning work\n- `file-scan-tasks` contains a partial or complete list of table scan tasks\n- `delete-files` contains delete files referenced by file scan tasks\n\nEach plan task must be passed to the fetchScanTasks endpoint to fetch the file scan tasks for the plan task.\n\nThe list of delete files must contain all delete files referenced by the file scan tasks.\n",
+  "type": "object",
+  "properties": {
+    "delete-files": {
+      "description": "Delete files referenced by file scan tasks",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DeleteFile"
+      }
+    },
+    "file-scan-tasks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/FileScanTask"
+      }
+    },
+    "plan-tasks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PlanTask"
+      }
+    }
+  }
+}

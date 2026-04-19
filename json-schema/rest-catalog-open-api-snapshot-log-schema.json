@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-snapshot-log-schema.json",
+  "title": "SnapshotLog",
+  "description": "SnapshotLog schema from Apache Iceberg REST Catalog API",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "snapshot-id",
+      "timestamp-ms"
+    ],
+    "properties": {
+      "snapshot-id": {
+        "type": "integer",
+        "format": "int64"
+      },
+      "timestamp-ms": {
+        "type": "integer",
+        "format": "int64"
+      }
+    }
+  }
+}

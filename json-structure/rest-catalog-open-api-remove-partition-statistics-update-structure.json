@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-remove-partition-statistics-update-structure.json",
+  "name": "RemovePartitionStatisticsUpdate",
+  "description": "RemovePartitionStatisticsUpdate schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "action": {
+      "type": "string",
+      "const": "remove-partition-statistics"
+    },
+    "snapshot-id": {
+      "type": "int64"
+    }
+  },
+  "required": [
+    "snapshot-id"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/BaseUpdate"
+    }
+  ]
+}

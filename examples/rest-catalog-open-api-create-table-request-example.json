@@ -1,0 +1,6 @@
+{
+  "name": "sales_data",
+  "location": "s3://my-bucket/warehouse/my_database/sales_data",
+  "stage-create": false,
+  "properties": {}
+}

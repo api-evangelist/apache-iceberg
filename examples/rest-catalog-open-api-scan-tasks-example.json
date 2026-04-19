@@ -1,0 +1,11 @@
+{
+  "delete-files": [
+    "example-value"
+  ],
+  "file-scan-tasks": [
+    "example-value"
+  ],
+  "plan-tasks": [
+    "example-value"
+  ]
+}

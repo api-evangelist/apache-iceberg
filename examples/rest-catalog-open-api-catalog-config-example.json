@@ -1,0 +1,12 @@
+{
+  "overrides": {},
+  "defaults": {},
+  "endpoints": [
+    "GET /v1/{prefix}/namespaces/{namespace}",
+    "GET /v1/{prefix}/namespaces",
+    "POST /v1/{prefix}/namespaces",
+    "GET /v1/{prefix}/namespaces/{namespace}/tables/{table}",
+    "GET /v1/{prefix}/namespaces/{namespace}/views/{view}"
+  ],
+  "idempotency-key-lifetime": "PT30M"
+}

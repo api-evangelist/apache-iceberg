@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-true-expression-structure.json",
+  "name": "TrueExpression",
+  "description": "TrueExpression schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "type": {
+      "$ref": "#/components/schemas/ExpressionType",
+      "const": "true"
+    }
+  },
+  "required": [
+    "type"
+  ]
+}

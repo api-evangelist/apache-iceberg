@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-assert-create-structure.json",
+  "name": "AssertCreate",
+  "description": "The table must not already exist; used for create transactions",
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "assert-create"
+    }
+  },
+  "required": [
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/TableRequirement"
+    }
+  ]
+}

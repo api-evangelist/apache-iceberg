@@ -1,0 +1,36 @@
+{
+  "format-version": 2,
+  "table-uuid": "iceberg-2637",
+  "location": "s3://my-bucket/warehouse/my_database/sales_data",
+  "last-updated-ms": 158,
+  "next-row-id": 496,
+  "properties": {},
+  "schemas": [
+    "example-value"
+  ],
+  "current-schema-id": 658,
+  "last-column-id": 904,
+  "partition-specs": [
+    "example-value"
+  ],
+  "default-spec-id": 311,
+  "last-partition-id": 904,
+  "sort-orders": [
+    "example-value"
+  ],
+  "default-sort-order-id": 243,
+  "encryption-keys": [
+    "abc123def456abc123def456"
+  ],
+  "snapshots": [
+    "example-value"
+  ],
+  "current-snapshot-id": 921,
+  "last-sequence-number": 532,
+  "statistics": [
+    "example-value"
+  ],
+  "partition-statistics": [
+    "example-value"
+  ]
+}

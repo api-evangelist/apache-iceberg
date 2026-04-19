@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-register-view-request-schema.json",
+  "title": "RegisterViewRequest",
+  "description": "RegisterViewRequest schema from Apache Iceberg REST Catalog API",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "metadata-location": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "metadata-location"
+  ]
+}

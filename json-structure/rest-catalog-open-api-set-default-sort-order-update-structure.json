@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-set-default-sort-order-update-structure.json",
+  "name": "SetDefaultSortOrderUpdate",
+  "description": "SetDefaultSortOrderUpdate schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "action": {
+      "type": "string",
+      "const": "set-default-sort-order"
+    },
+    "sort-order-id": {
+      "type": "integer",
+      "description": "Sort order ID to set as the default, or -1 to set last added sort order"
+    }
+  },
+  "required": [
+    "sort-order-id"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/BaseUpdate"
+    }
+  ]
+}

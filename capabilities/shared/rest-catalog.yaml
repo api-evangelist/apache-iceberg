@@ -1,0 +1,368 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Apache Iceberg REST Catalog API"
+  description: "Shared per-API capability definition for the Apache Iceberg REST Catalog API covering namespace, table, view, and metrics management."
+  tags:
+    - Apache Iceberg
+    - Catalog
+    - Table Format
+    - REST
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      ICEBERG_CATALOG_TOKEN: ICEBERG_CATALOG_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: iceberg-rest-catalog
+      baseUri: https://localhost:8181
+      description: "Apache Iceberg REST Catalog API for managing namespaces, tables, and views."
+      authentication:
+        type: bearer
+        token: "{{ICEBERG_CATALOG_TOKEN}}"
+      resources:
+        - name: config
+          path: /v1/config
+          description: Catalog configuration management
+          operations:
+            - name: get-config
+              method: GET
+              description: List all catalog configuration settings
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: namespaces
+          path: /v1/namespaces
+          description: Namespace management
+          operations:
+            - name: list-namespaces
+              method: GET
+              description: List namespaces, optionally providing a parent namespace to list underneath
+              inputParameters:
+                - name: parent
+                  in: query
+                  type: string
+                  required: false
+                  description: Parent namespace to list underneath
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-namespace
+              method: POST
+              description: Create a namespace
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  namespace: "{{tools.namespace}}"
+                  properties: {}
+
+        - name: namespace
+          path: /v1/namespaces/{namespace}
+          description: Individual namespace operations
+          operations:
+            - name: load-namespace-metadata
+              method: GET
+              description: Load the metadata properties for a namespace
+              inputParameters:
+                - name: namespace
+                  in: path
+                  type: string
+                  required: true
+                  description: Namespace identifier
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: drop-namespace
+              method: DELETE
+              description: Drop a namespace from the catalog
+              inputParameters:
+                - name: namespace
+                  in: path
+                  type: string
+                  required: true
+                  description: Namespace identifier
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: tables
+          path: /v1/namespaces/{namespace}/tables
+          description: Table management
+          operations:
+            - name: list-tables
+              method: GET
+              description: List all table identifiers underneath a given namespace
+              inputParameters:
+                - name: namespace
+                  in: path
+                  type: string
+                  required: true
+                  description: Namespace identifier
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-table
+              method: POST
+              description: Create a table in the given namespace
+              inputParameters:
+                - name: namespace
+                  in: path
+                  type: string
+                  required: true
+                  description: Namespace identifier
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.table_name}}"
+                  schema: {}
+
+        - name: table
+          path: /v1/namespaces/{namespace}/tables/{table}
+          description: Individual table operations
+          operations:
+            - name: load-table
+              method: GET
+              description: Load a table from the catalog
+              inputParameters:
+                - name: namespace
+                  in: path
+                  type: string
+                  required: true
+                  description: Namespace identifier
+                - name: table
+                  in: path
+                  type: string
+                  required: true
+                  description: Table identifier
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: commit-table
+              method: POST
+              description: Commit updates to a table
+              inputParameters:
+                - name: namespace
+                  in: path
+                  type: string
+                  required: true
+                  description: Namespace identifier
+                - name: table
+                  in: path
+                  type: string
+                  required: true
+                  description: Table identifier
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: drop-table
+              method: DELETE
+              description: Drop a table from the catalog
+              inputParameters:
+                - name: namespace
+                  in: path
+                  type: string
+                  required: true
+                  description: Namespace identifier
+                - name: table
+                  in: path
+                  type: string
+                  required: true
+                  description: Table identifier
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: views
+          path: /v1/namespaces/{namespace}/views
+          description: View management
+          operations:
+            - name: list-views
+              method: GET
+              description: List all view identifiers underneath a given namespace
+              inputParameters:
+                - name: namespace
+                  in: path
+                  type: string
+                  required: true
+                  description: Namespace identifier
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-view
+              method: POST
+              description: Create a view in the given namespace
+              inputParameters:
+                - name: namespace
+                  in: path
+                  type: string
+                  required: true
+                  description: Namespace identifier
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: iceberg-rest-catalog-api
+      resources:
+        - path: /v1/config
+          name: config
+          operations:
+            - method: GET
+              name: get-config
+              description: Get catalog configuration
+              call: "iceberg-rest-catalog.get-config"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/namespaces
+          name: namespaces
+          operations:
+            - method: GET
+              name: list-namespaces
+              description: List namespaces
+              call: "iceberg-rest-catalog.list-namespaces"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-namespace
+              description: Create namespace
+              call: "iceberg-rest-catalog.create-namespace"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/namespaces/{namespace}/tables
+          name: tables
+          operations:
+            - method: GET
+              name: list-tables
+              description: List tables
+              call: "iceberg-rest-catalog.list-tables"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: iceberg-rest-catalog-mcp
+      transport: http
+      tools:
+        - name: get-catalog-config
+          description: Get Iceberg catalog configuration settings
+          hints:
+            readOnly: true
+          call: "iceberg-rest-catalog.get-config"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-namespaces
+          description: List namespaces in the Iceberg catalog
+          hints:
+            readOnly: true
+          call: "iceberg-rest-catalog.list-namespaces"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-namespace
+          description: Create a new namespace in the Iceberg catalog
+          hints:
+            readOnly: false
+          call: "iceberg-rest-catalog.create-namespace"
+          with:
+            namespace: "tools.namespace"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: load-namespace-metadata
+          description: Load metadata properties for a namespace
+          hints:
+            readOnly: true
+          call: "iceberg-rest-catalog.load-namespace-metadata"
+          with:
+            namespace: "tools.namespace"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-tables
+          description: List all tables in a namespace
+          hints:
+            readOnly: true
+          call: "iceberg-rest-catalog.list-tables"
+          with:
+            namespace: "tools.namespace"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: load-table
+          description: Load a table from the Iceberg catalog
+          hints:
+            readOnly: true
+          call: "iceberg-rest-catalog.load-table"
+          with:
+            namespace: "tools.namespace"
+            table: "tools.table"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: drop-table
+          description: Drop a table from the Iceberg catalog
+          hints:
+            readOnly: false
+            destructive: true
+          call: "iceberg-rest-catalog.drop-table"
+          with:
+            namespace: "tools.namespace"
+            table: "tools.table"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-views
+          description: List all views in a namespace
+          hints:
+            readOnly: true
+          call: "iceberg-rest-catalog.list-views"
+          with:
+            namespace: "tools.namespace"
+          outputParameters:
+            - type: object
+              mapping: "$."

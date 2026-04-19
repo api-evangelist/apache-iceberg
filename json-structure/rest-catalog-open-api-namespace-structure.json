@@ -1,0 +1,14 @@
+{
+  "type": "array",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-namespace-structure.json",
+  "name": "Namespace",
+  "description": "Reference to one or more levels of a namespace",
+  "items": {
+    "type": "string"
+  },
+  "example": [
+    "accounting",
+    "tax"
+  ]
+}

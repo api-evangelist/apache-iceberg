@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-timer-result-structure.json",
+  "name": "TimerResult",
+  "description": "TimerResult schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "time-unit": {
+      "type": "string"
+    },
+    "count": {
+      "type": "int64"
+    },
+    "total-duration": {
+      "type": "int64"
+    }
+  },
+  "required": [
+    "time-unit",
+    "count",
+    "total-duration"
+  ]
+}

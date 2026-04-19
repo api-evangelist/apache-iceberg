@@ -1,0 +1,15 @@
+{
+  "type": "string",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-token-type-structure.json",
+  "name": "TokenType",
+  "description": "Token type identifier, from RFC 8693 Section 3\n\nSee https://datatracker.ietf.org/doc/html/rfc8693#section-3",
+  "enum": [
+    "urn:ietf:params:oauth:token-type:access_token",
+    "urn:ietf:params:oauth:token-type:refresh_token",
+    "urn:ietf:params:oauth:token-type:id_token",
+    "urn:ietf:params:oauth:token-type:saml1",
+    "urn:ietf:params:oauth:token-type:saml2",
+    "urn:ietf:params:oauth:token-type:jwt"
+  ]
+}

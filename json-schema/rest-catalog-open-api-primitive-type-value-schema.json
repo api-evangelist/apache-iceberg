@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-primitive-type-value-schema.json",
+  "title": "PrimitiveTypeValue",
+  "description": "PrimitiveTypeValue schema from Apache Iceberg REST Catalog API",
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/BooleanTypeValue"
+    },
+    {
+      "$ref": "#/components/schemas/IntegerTypeValue"
+    },
+    {
+      "$ref": "#/components/schemas/LongTypeValue"
+    },
+    {
+      "$ref": "#/components/schemas/FloatTypeValue"
+    },
+    {
+      "$ref": "#/components/schemas/DoubleTypeValue"
+    },
+    {
+      "$ref": "#/components/schemas/DecimalTypeValue"
+    },
+    {
+      "$ref": "#/components/schemas/StringTypeValue"
+    },
+    {
+      "$ref": "#/components/schemas/UUIDTypeValue"
+    },
+    {
+      "$ref": "#/components/schemas/DateTypeValue"
+    },
+    {
+      "$ref": "#/components/schemas/TimeTypeValue"
+    },
+    {
+      "$ref": "#/components/schemas/TimestampTypeValue"
+    },
+    {
+      "$ref": "#/components/schemas/TimestampTzTypeValue"
+    },
+    {
+      "$ref": "#/components/schemas/TimestampNanoTypeValue"
+    },
+    {
+      "$ref": "#/components/schemas/TimestampTzNanoTypeValue"
+    },
+    {
+      "$ref": "#/components/schemas/FixedTypeValue"
+    },
+    {
+      "$ref": "#/components/schemas/BinaryTypeValue"
+    }
+  ]
+}

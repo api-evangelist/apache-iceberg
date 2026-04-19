@@ -1,0 +1,53 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-plan-table-scan-request-structure.json",
+  "name": "PlanTableScanRequest",
+  "description": "PlanTableScanRequest schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "snapshot-id": {
+      "type": "int64",
+      "description": "Identifier for the snapshot to scan in a point-in-time scan"
+    },
+    "select": {
+      "type": "array",
+      "description": "List of selected schema fields",
+      "items": {
+        "$ref": "#/components/schemas/FieldName"
+      }
+    },
+    "filter": {
+      "description": "Expression used to filter the table data",
+      "$ref": "#/components/schemas/Expression"
+    },
+    "min-rows-requested": {
+      "type": "int64",
+      "description": "The minimum number of rows requested for the scan. This is used as a hint to the server to not have to return more rows than necessary. It is not required for the server to return that many rows since the scan may not produce that many rows. The server can also return more rows than requested."
+    },
+    "case-sensitive": {
+      "type": "boolean",
+      "description": "Enables case sensitive field matching for filter and select",
+      "default": true
+    },
+    "use-snapshot-schema": {
+      "type": "boolean",
+      "description": "Whether to use the schema at the time the snapshot was written.\nWhen time travelling, the snapshot schema should be used (true). When scanning a branch, the table schema should be used (false).",
+      "default": false
+    },
+    "start-snapshot-id": {
+      "type": "int64",
+      "description": "Starting snapshot ID for an incremental scan (exclusive)"
+    },
+    "end-snapshot-id": {
+      "type": "int64",
+      "description": "Ending snapshot ID for an incremental scan (inclusive).\nRequired when start-snapshot-id is specified."
+    },
+    "stats-fields": {
+      "type": "array",
+      "description": "List of fields for which the service should send column stats.",
+      "items": {
+        "$ref": "#/components/schemas/FieldName"
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-assert-last-assigned-field-id-structure.json",
+  "name": "AssertLastAssignedFieldId",
+  "description": "The table's last assigned column id must match the requirement's `last-assigned-field-id`",
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "assert-last-assigned-field-id"
+    },
+    "last-assigned-field-id": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "last-assigned-field-id"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/TableRequirement"
+    }
+  ]
+}

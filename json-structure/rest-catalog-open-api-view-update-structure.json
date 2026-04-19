@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-view-update-structure.json",
+  "name": "ViewUpdate",
+  "description": "ViewUpdate schema from Apache Iceberg REST Catalog API",
+  "anyOf": [
+    {
+      "$ref": "#/components/schemas/AssignUUIDUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/UpgradeFormatVersionUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/AddSchemaUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/SetLocationUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/SetPropertiesUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/RemovePropertiesUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/AddViewVersionUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/SetCurrentViewVersionUpdate"
+    }
+  ]
+}

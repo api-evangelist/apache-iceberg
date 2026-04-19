@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-set-partition-statistics-update-schema.json",
+  "title": "SetPartitionStatisticsUpdate",
+  "description": "SetPartitionStatisticsUpdate schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "action": {
+      "type": "string",
+      "const": "set-partition-statistics"
+    },
+    "partition-statistics": {
+      "$ref": "#/components/schemas/PartitionStatisticsFile"
+    }
+  },
+  "required": [
+    "partition-statistics"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/BaseUpdate"
+    }
+  ],
+  "type": "object"
+}

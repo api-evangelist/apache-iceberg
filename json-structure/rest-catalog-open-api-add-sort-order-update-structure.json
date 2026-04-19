@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-add-sort-order-update-structure.json",
+  "name": "AddSortOrderUpdate",
+  "description": "AddSortOrderUpdate schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "action": {
+      "type": "string",
+      "const": "add-sort-order"
+    },
+    "sort-order": {
+      "$ref": "#/components/schemas/SortOrder"
+    }
+  },
+  "required": [
+    "sort-order"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/BaseUpdate"
+    }
+  ]
+}

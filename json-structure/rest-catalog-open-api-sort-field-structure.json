@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-sort-field-structure.json",
+  "name": "SortField",
+  "description": "SortField schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "source-id": {
+      "type": "integer"
+    },
+    "transform": {
+      "$ref": "#/components/schemas/Transform"
+    },
+    "direction": {
+      "$ref": "#/components/schemas/SortDirection"
+    },
+    "null-order": {
+      "$ref": "#/components/schemas/NullOrder"
+    }
+  },
+  "required": [
+    "source-id",
+    "transform",
+    "direction",
+    "null-order"
+  ]
+}

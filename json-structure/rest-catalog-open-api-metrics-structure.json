@@ -1,0 +1,51 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-metrics-structure.json",
+  "name": "Metrics",
+  "description": "Metrics schema from Apache Iceberg REST Catalog API",
+  "additionalProperties": {
+    "$ref": "#/components/schemas/MetricResult"
+  },
+  "example": {
+    "metrics": {
+      "total-planning-duration": {
+        "count": 1,
+        "time-unit": "nanoseconds",
+        "total-duration": 2644235116
+      },
+      "result-data-files": {
+        "unit": "count",
+        "value": 1
+      },
+      "result-delete-files": {
+        "unit": "count",
+        "value": 0
+      },
+      "total-data-manifests": {
+        "unit": "count",
+        "value": 1
+      },
+      "total-delete-manifests": {
+        "unit": "count",
+        "value": 0
+      },
+      "scanned-data-manifests": {
+        "unit": "count",
+        "value": 1
+      },
+      "skipped-data-manifests": {
+        "unit": "count",
+        "value": 0
+      },
+      "total-file-size-bytes": {
+        "unit": "bytes",
+        "value": 10
+      },
+      "total-delete-file-size-bytes": {
+        "unit": "bytes",
+        "value": 0
+      }
+    }
+  }
+}

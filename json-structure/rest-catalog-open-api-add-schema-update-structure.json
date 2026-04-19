@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-add-schema-update-structure.json",
+  "name": "AddSchemaUpdate",
+  "description": "AddSchemaUpdate schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "action": {
+      "type": "string",
+      "const": "add-schema"
+    },
+    "schema": {
+      "$ref": "#/components/schemas/Schema"
+    },
+    "last-column-id": {
+      "type": "integer",
+      "deprecated": true,
+      "description": "This optional field is **DEPRECATED for REMOVAL** since it more safe to handle this internally, and shouldn't be exposed to the clients.\nThe highest assigned column ID for the table. This is used to ensure columns are always assigned an unused ID when evolving schemas. When omitted, it will be computed on the server side."
+    }
+  },
+  "required": [
+    "schema"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/BaseUpdate"
+    }
+  ]
+}

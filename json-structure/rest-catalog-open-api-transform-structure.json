@@ -1,0 +1,16 @@
+{
+  "type": "string",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-transform-structure.json",
+  "name": "Transform",
+  "description": "Transform schema from Apache Iceberg REST Catalog API",
+  "example": [
+    "identity",
+    "year",
+    "month",
+    "day",
+    "hour",
+    "bucket[256]",
+    "truncate[16]"
+  ]
+}

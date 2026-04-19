@@ -1,0 +1,10 @@
+{
+  "content": "data",
+  "first-row-id": 181,
+  "column-sizes": "example-value",
+  "value-counts": "example-value",
+  "null-value-counts": "example-value",
+  "nan-value-counts": "example-value",
+  "lower-bounds": "example-value",
+  "upper-bounds": "example-value"
+}

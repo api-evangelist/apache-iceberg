@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-assert-view-uuid-schema.json",
+  "title": "AssertViewUUID",
+  "description": "The view UUID must match the requirement's `uuid`",
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "assert-view-uuid"
+    },
+    "uuid": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "type",
+    "uuid"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,281 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Apache Iceberg"
+  description: "Unified vocabulary mapping the operational and capability dimensions of the Apache Iceberg REST Catalog API and associated SDKs."
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - namespace: iceberg-rest-catalog
+      name: Apache Iceberg REST Catalog API
+      version: "0.0.1"
+      baseUrl: https://localhost:8181
+      status: active
+
+  resources:
+    - name: namespaces
+      description: Logical groupings of tables and views (equivalent to databases or schemas)
+      apis:
+        - iceberg-rest-catalog
+      actions:
+        - list
+        - create
+        - load
+        - drop
+        - update-properties
+
+    - name: tables
+      description: Iceberg tables storing columnar data with full ACID semantics
+      apis:
+        - iceberg-rest-catalog
+      actions:
+        - list
+        - create
+        - load
+        - commit
+        - drop
+        - rename
+        - register
+        - check-exists
+
+    - name: views
+      description: Logical views defined over Iceberg tables
+      apis:
+        - iceberg-rest-catalog
+      actions:
+        - list
+        - create
+        - load
+        - replace
+        - drop
+        - rename
+        - check-exists
+        - register
+
+    - name: config
+      description: Catalog-level configuration and properties
+      apis:
+        - iceberg-rest-catalog
+      actions:
+        - get
+
+    - name: scan-planning
+      description: Server-side scan planning for distributed query execution
+      apis:
+        - iceberg-rest-catalog
+      actions:
+        - submit
+        - get-result
+        - cancel
+        - get-tasks
+
+    - name: credentials
+      description: Vended credentials for accessing underlying object storage
+      apis:
+        - iceberg-rest-catalog
+      actions:
+        - load
+        - sign
+
+    - name: metrics
+      description: Table-level metrics reporting for backend processing
+      apis:
+        - iceberg-rest-catalog
+      actions:
+        - report
+
+  actions:
+    - name: list
+      httpMethod: GET
+      pattern: read
+      description: Enumerate collections of resources
+    - name: create
+      httpMethod: POST
+      pattern: write
+      description: Create new resources
+    - name: load
+      httpMethod: GET
+      pattern: read
+      description: Load a single resource with full metadata
+    - name: drop
+      httpMethod: DELETE
+      pattern: destructive
+      description: Remove a resource from the catalog
+    - name: commit
+      httpMethod: POST
+      pattern: write
+      description: Commit atomic updates to a table
+    - name: rename
+      httpMethod: POST
+      pattern: write
+      description: Rename a resource to a new identifier
+    - name: register
+      httpMethod: POST
+      pattern: write
+      description: Register an existing resource from a metadata file location
+    - name: replace
+      httpMethod: PUT
+      pattern: write
+      description: Replace a view definition
+    - name: report
+      httpMethod: POST
+      pattern: write
+      description: Report metrics to the catalog backend
+    - name: sign
+      httpMethod: POST
+      pattern: read
+      description: Sign object storage requests for vended credentials
+
+  schemas:
+    core:
+      - name: Namespace
+        description: Logical container for tables and views
+      - name: TableIdentifier
+        description: Unique identifier for a table (namespace + name)
+      - name: Schema
+        description: Iceberg schema definition with columns and types
+      - name: PartitionSpec
+        description: Partition specification for an Iceberg table
+      - name: SortOrder
+        description: Sort order definition for table writes
+      - name: Snapshot
+        description: Point-in-time snapshot of an Iceberg table
+      - name: MetadataLog
+        description: Log of metadata file changes
+      - name: TableMetadata
+        description: Complete metadata for an Iceberg table
+
+  parameters:
+    pagination:
+      - name: pageToken
+        description: Token for fetching the next page of results
+      - name: pageSize
+        description: Number of results per page
+    identifiers:
+      - name: namespace
+        description: Namespace identifier (one or more parts)
+      - name: table
+        description: Table name within a namespace
+      - name: prefix
+        description: Optional catalog prefix for multi-catalog deployments
+    filters:
+      - name: parent
+        description: Parent namespace for filtering child namespaces
+
+  authentication:
+    schemes:
+      - name: BearerAuth
+        type: http
+        scheme: bearer
+        description: OAuth2 bearer token authentication
+
+capability:
+  workflows:
+    - name: Catalog Management
+      file: capabilities/catalog-management.yaml
+      description: Data engineers and lakehouse architects managing namespaces, tables, and views
+      apisConbined:
+        - Apache Iceberg REST Catalog API
+      toolCount: 12
+      personas:
+        - Data Engineer
+        - Lakehouse Architect
+
+  personas:
+    - id: data-engineer
+      name: Data Engineer
+      description: Engineers who build and maintain data pipelines and manage Iceberg tables and namespaces
+      workflows:
+        - Catalog Management
+
+    - id: lakehouse-architect
+      name: Lakehouse Architect
+      description: Architects who design lakehouse schemas, partition strategies, and catalog topology
+      workflows:
+        - Catalog Management
+
+  domains:
+    - name: Catalog
+      description: Table and namespace discovery and management
+      resources:
+        - namespaces
+        - tables
+        - views
+        - config
+    - name: Query Execution
+      description: Server-side scan planning for compute engine integration
+      resources:
+        - scan-planning
+    - name: Storage
+      description: Object storage credential management
+      resources:
+        - credentials
+    - name: Observability
+      description: Metrics collection and reporting
+      resources:
+        - metrics
+
+  namespaces:
+    - name: iceberg-rest-catalog
+      type: consumed
+      description: Apache Iceberg REST Catalog API
+    - name: iceberg-catalog-management-api
+      type: rest-exposed
+      port: 8080
+    - name: iceberg-catalog-management-mcp
+      type: mcp-exposed
+      port: 9090
+
+  binds:
+    - name: ICEBERG_CATALOG_TOKEN
+      description: OAuth2 bearer token for authenticating with the Iceberg REST Catalog
+      workflows:
+        - Catalog Management
+
+crossReference:
+  - resource: namespaces
+    operations:
+      - listNamespaces
+      - createNamespace
+      - loadNamespaceMetadata
+      - namespaceExists
+      - dropNamespace
+      - updateNamespaceProperties
+    workflows:
+      - Catalog Management
+    personas:
+      - Data Engineer
+      - Lakehouse Architect
+
+  - resource: tables
+    operations:
+      - listTables
+      - createTable
+      - loadTable
+      - updateTable
+      - dropTable
+      - tableExists
+      - renameTable
+      - registerTable
+    workflows:
+      - Catalog Management
+    personas:
+      - Data Engineer
+
+  - resource: views
+    operations:
+      - listViews
+      - createView
+      - loadView
+      - replaceView
+      - dropView
+      - viewExists
+      - renameView
+      - registerView
+    workflows:
+      - Catalog Management
+    personas:
+      - Data Engineer
+      - Lakehouse Architect

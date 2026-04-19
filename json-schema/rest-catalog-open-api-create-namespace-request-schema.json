@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-create-namespace-request-schema.json",
+  "title": "CreateNamespaceRequest",
+  "description": "CreateNamespaceRequest schema from Apache Iceberg REST Catalog API",
+  "type": "object",
+  "properties": {
+    "namespace": {
+      "$ref": "#/components/schemas/Namespace"
+    },
+    "properties": {
+      "type": "object",
+      "description": "Configured string to string map of properties for the namespace",
+      "example": {
+        "owner": "Hank Bendickson"
+      },
+      "default": {},
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "namespace"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-update-namespace-properties-request-structure.json",
+  "name": "UpdateNamespacePropertiesRequest",
+  "description": "UpdateNamespacePropertiesRequest schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "removals": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "department",
+        "access_group"
+      ]
+    },
+    "updates": {
+      "type": "object",
+      "example": {
+        "owner": "Hank Bendickson"
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  }
+}

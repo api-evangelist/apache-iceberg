@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-set-current-schema-update-schema.json",
+  "title": "SetCurrentSchemaUpdate",
+  "description": "SetCurrentSchemaUpdate schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "action": {
+      "type": "string",
+      "const": "set-current-schema"
+    },
+    "schema-id": {
+      "type": "integer",
+      "description": "Schema ID to set as current, or -1 to set last added schema"
+    }
+  },
+  "required": [
+    "schema-id"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/BaseUpdate"
+    }
+  ],
+  "type": "object"
+}

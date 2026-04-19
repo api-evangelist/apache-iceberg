@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-table-metadata-schema.json",
+  "title": "TableMetadata",
+  "description": "TableMetadata schema from Apache Iceberg REST Catalog API",
+  "type": "object",
+  "properties": {
+    "format-version": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3
+    },
+    "table-uuid": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "last-updated-ms": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "next-row-id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "A long higher than all assigned row IDs; the next snapshot's first-row-id."
+    },
+    "properties": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "schemas": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Schema"
+      }
+    },
+    "current-schema-id": {
+      "type": "integer"
+    },
+    "last-column-id": {
+      "type": "integer"
+    },
+    "partition-specs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PartitionSpec"
+      }
+    },
+    "default-spec-id": {
+      "type": "integer"
+    },
+    "last-partition-id": {
+      "type": "integer"
+    },
+    "sort-orders": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SortOrder"
+      }
+    },
+    "default-sort-order-id": {
+      "type": "integer"
+    },
+    "encryption-keys": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/EncryptedKey"
+      }
+    },
+    "snapshots": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Snapshot"
+      }
+    },
+    "refs": {
+      "$ref": "#/components/schemas/SnapshotReferences"
+    },
+    "current-snapshot-id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "last-sequence-number": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "snapshot-log": {
+      "$ref": "#/components/schemas/SnapshotLog"
+    },
+    "metadata-log": {
+      "$ref": "#/components/schemas/MetadataLog"
+    },
+    "statistics": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/StatisticsFile"
+      }
+    },
+    "partition-statistics": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PartitionStatisticsFile"
+      }
+    }
+  },
+  "required": [
+    "format-version",
+    "table-uuid"
+  ]
+}

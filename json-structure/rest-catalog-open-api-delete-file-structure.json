@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-delete-file-structure.json",
+  "name": "DeleteFile",
+  "description": "DeleteFile schema from Apache Iceberg REST Catalog API",
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/PositionDeleteFile"
+    },
+    {
+      "$ref": "#/components/schemas/EqualityDeleteFile"
+    }
+  ]
+}

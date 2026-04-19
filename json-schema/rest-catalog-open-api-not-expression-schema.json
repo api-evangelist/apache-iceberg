@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-not-expression-schema.json",
+  "title": "NotExpression",
+  "description": "NotExpression schema from Apache Iceberg REST Catalog API",
+  "type": "object",
+  "properties": {
+    "type": {
+      "$ref": "#/components/schemas/ExpressionType",
+      "const": "not"
+    },
+    "child": {
+      "$ref": "#/components/schemas/Expression"
+    }
+  },
+  "required": [
+    "type",
+    "child"
+  ]
+}

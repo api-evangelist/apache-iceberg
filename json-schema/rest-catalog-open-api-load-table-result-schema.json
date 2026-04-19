@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-load-table-result-schema.json",
+  "title": "LoadTableResult",
+  "description": "Result used when a table is successfully loaded.\n\n\nThe table metadata JSON is returned in the `metadata` field. The corresponding file location of table metadata should be returned in the `metadata-location` field, unless the metadata is not yet committed. For example, a create transaction may return metadata that is staged but not committed.\nClients can check whether metadata has changed by comparing metadata locations after the table has been created.\n\n\nThe `config` map returns table-specific configuration for the table's resources, including its HTTP client and FileIO. For example, config may contain a specific FileIO implementation class for the table depending on its underlying storage.\n\n\nThe following configurations should be respected by clients:\n\n## General Configurations\n\n- `token`: Authorization bearer token to use for table requests if OAuth2 security is enabled\n- `scan-planning-mode`: Communicates to clients the supported planning mode. Clients should use this value to fail fast if the supported scanning mode is not available on the client. Valid values:\n  - `client`: Clients MUST use client-side scan planning\n  - `server`: Clients MUST use server-side scan planning via the `planTableScan` endpoint\n\n## AWS Configurations\n\nThe following configurations should be respected when working with tables stored in AWS S3\n - `client.region`: region to configure client for making requests to AWS\n - `s3.access-key-id`: id for credentials that provide access to the data in S3\n - `s3.secret-access-key`: secret for credentials that provide access to data in S3\n - `s3.session-token`: if present, this value should be used for as the session token\n - `s3.remote-signing-enabled`: if `true` remote signing should be performed as described in the `RemoteSignRequest` schema section of this spec document.\n - `s3.cross-region-access-enabled`: if `true`, S3 Cross-Region bucket access is enabled\n\n## Storage Credentials\n\nCredentials for ADLS / GCS / S3 / ... are provided through the `storage-credentials` field.\nClients must first check whether the respective credentials exist in the `storage-credentials` field before checking the `config` for credentials.\n\n## Remote Signing\n\nIf remote signing for a specific storage provider is enabled, clients must respect the following configurations when creating a remote signer client:\n - `signer.endpoint`: the remote signer endpoint. Required. Can either be a relative path (to be resolved against `signer.uri`) or an absolute URI.\n - `signer.uri`: the base URI to resolve `signer.endpoint` against. Optional. Only meaningful if `signer.endpoint` is a relative path. Defaults to the catalog's base URI if not set.\n",
+  "type": "object",
+  "properties": {
+    "metadata-location": {
+      "type": "string",
+      "description": "May be null if the table is staged as part of a transaction",
+      "nullable": true
+    },
+    "metadata": {
+      "$ref": "#/components/schemas/TableMetadata"
+    },
+    "config": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "storage-credentials": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/StorageCredential"
+      }
+    }
+  },
+  "required": [
+    "metadata"
+  ]
+}

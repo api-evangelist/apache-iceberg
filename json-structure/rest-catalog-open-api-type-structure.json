@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-type-structure.json",
+  "name": "Type",
+  "description": "Type schema from Apache Iceberg REST Catalog API",
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/PrimitiveType"
+    },
+    {
+      "$ref": "#/components/schemas/StructType"
+    },
+    {
+      "$ref": "#/components/schemas/ListType"
+    },
+    {
+      "$ref": "#/components/schemas/MapType"
+    }
+  ]
+}

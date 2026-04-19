@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-time-type-value-schema.json",
+  "title": "TimeTypeValue",
+  "description": "Time type values follow the 'HH:MM:SS.ssssss' ISO-8601 format with microsecond precision",
+  "type": "string",
+  "example": "22:31:08.123456"
+}

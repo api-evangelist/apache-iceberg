@@ -1,0 +1,6 @@
+{
+  "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+  "scope": "example-value",
+  "subject_token": "abc123def456abc123def456",
+  "actor_token": "abc123def456abc123def456"
+}

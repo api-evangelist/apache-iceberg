@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-commit-table-response-structure.json",
+  "name": "CommitTableResponse",
+  "description": "CommitTableResponse schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "metadata-location": {
+      "type": "string"
+    },
+    "metadata": {
+      "$ref": "#/components/schemas/TableMetadata"
+    }
+  },
+  "required": [
+    "metadata-location",
+    "metadata"
+  ]
+}

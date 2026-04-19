@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-fetch-scan-tasks-request-schema.json",
+  "title": "FetchScanTasksRequest",
+  "description": "FetchScanTasksRequest schema from Apache Iceberg REST Catalog API",
+  "type": "object",
+  "properties": {
+    "plan-task": {
+      "$ref": "#/components/schemas/PlanTask"
+    }
+  },
+  "required": [
+    "plan-task"
+  ]
+}

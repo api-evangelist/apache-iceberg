@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-set-expression-structure.json",
+  "name": "SetExpression",
+  "description": "SetExpression schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "type": {
+      "$ref": "#/components/schemas/ExpressionType",
+      "enum": [
+        "in",
+        "not-in"
+      ]
+    },
+    "term": {
+      "$ref": "#/components/schemas/Term"
+    },
+    "values": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PrimitiveTypeValue"
+      }
+    }
+  },
+  "required": [
+    "type",
+    "term",
+    "values"
+  ]
+}

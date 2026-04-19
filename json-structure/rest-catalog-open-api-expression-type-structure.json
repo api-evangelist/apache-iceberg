@@ -1,0 +1,28 @@
+{
+  "type": "string",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-expression-type-structure.json",
+  "name": "ExpressionType",
+  "description": "ExpressionType schema from Apache Iceberg REST Catalog API",
+  "example": [
+    "true",
+    "false",
+    "eq",
+    "and",
+    "or",
+    "not",
+    "in",
+    "not-in",
+    "lt",
+    "lt-eq",
+    "gt",
+    "gt-eq",
+    "not-eq",
+    "starts-with",
+    "not-starts-with",
+    "is-null",
+    "not-null",
+    "is-nan",
+    "not-nan"
+  ]
+}

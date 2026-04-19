@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-report-metrics-request-structure.json",
+  "name": "ReportMetricsRequest",
+  "description": "ReportMetricsRequest schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "report-type": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "report-type"
+  ],
+  "anyOf": [
+    {
+      "$ref": "#/components/schemas/ScanReport"
+    },
+    {
+      "$ref": "#/components/schemas/CommitReport"
+    }
+  ]
+}

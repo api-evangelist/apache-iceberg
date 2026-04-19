@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-o-auth-token-response-schema.json",
+  "title": "OAuthTokenResponse",
+  "description": "The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.",
+  "type": "object",
+  "properties": {
+    "access_token": {
+      "type": "string",
+      "description": "The access token, for client credentials or token exchange"
+    },
+    "token_type": {
+      "type": "string",
+      "enum": [
+        "bearer",
+        "mac",
+        "N_A"
+      ],
+      "description": "Access token type for client credentials or token exchange\n\nSee https://datatracker.ietf.org/doc/html/rfc6749#section-7.1"
+    },
+    "expires_in": {
+      "type": "integer",
+      "description": "Lifetime of the access token in seconds for client credentials or token exchange"
+    },
+    "issued_token_type": {
+      "$ref": "#/components/schemas/TokenType"
+    },
+    "refresh_token": {
+      "type": "string",
+      "description": "Refresh token for client credentials or token exchange"
+    },
+    "scope": {
+      "type": "string",
+      "description": "Authorization scope for client credentials or token exchange"
+    }
+  },
+  "required": [
+    "access_token",
+    "token_type"
+  ],
+  "deprecated": true
+}

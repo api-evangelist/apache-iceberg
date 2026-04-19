@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-equality-delete-file-schema.json",
+  "title": "EqualityDeleteFile",
+  "description": "EqualityDeleteFile schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "content": {
+      "type": "string",
+      "const": "equality-deletes"
+    },
+    "equality-ids": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "description": "List of equality field IDs"
+    }
+  },
+  "required": [
+    "content"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/ContentFile"
+    }
+  ],
+  "type": "object"
+}

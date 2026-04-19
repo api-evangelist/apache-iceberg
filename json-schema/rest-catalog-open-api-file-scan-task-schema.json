@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-file-scan-task-schema.json",
+  "title": "FileScanTask",
+  "description": "FileScanTask schema from Apache Iceberg REST Catalog API",
+  "type": "object",
+  "properties": {
+    "data-file": {
+      "$ref": "#/components/schemas/DataFile"
+    },
+    "delete-file-references": {
+      "description": "A list of indices in the delete files array (0-based)",
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "residual-filter": {
+      "description": "An optional filter to be applied to rows in this file scan task.\nIf the residual is not present, the client must produce the residual or use the original filter.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Expression"
+        }
+      ]
+    }
+  },
+  "required": [
+    "data-file"
+  ]
+}

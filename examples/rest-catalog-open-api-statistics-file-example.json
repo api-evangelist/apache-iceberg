@@ -1,0 +1,9 @@
+{
+  "snapshot-id": 54,
+  "statistics-path": "example-value",
+  "file-size-in-bytes": 849,
+  "file-footer-size-in-bytes": 411,
+  "blob-metadata": [
+    "example-value"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-schema/rest-catalog-open-api-metadata-log-schema.json",
+  "title": "MetadataLog",
+  "description": "MetadataLog schema from Apache Iceberg REST Catalog API",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "metadata-file",
+      "timestamp-ms"
+    ],
+    "properties": {
+      "metadata-file": {
+        "type": "string"
+      },
+      "timestamp-ms": {
+        "type": "integer",
+        "format": "int64"
+      }
+    }
+  }
+}

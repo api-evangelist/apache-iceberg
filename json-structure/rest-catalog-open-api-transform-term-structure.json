@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-transform-term-structure.json",
+  "name": "TransformTerm",
+  "description": "TransformTerm schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "transform"
+    },
+    "transform": {
+      "$ref": "#/components/schemas/Transform"
+    },
+    "term": {
+      "$ref": "#/components/schemas/Reference"
+    }
+  },
+  "required": [
+    "type",
+    "transform",
+    "term"
+  ]
+}

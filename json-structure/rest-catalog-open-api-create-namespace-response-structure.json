@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-create-namespace-response-structure.json",
+  "name": "CreateNamespaceResponse",
+  "description": "CreateNamespaceResponse schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "namespace": {
+      "$ref": "#/components/schemas/Namespace"
+    },
+    "properties": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Properties stored on the namespace, if supported by the server.",
+      "example": {
+        "owner": "Ralph",
+        "created_at": "1452120468"
+      },
+      "default": {}
+    }
+  },
+  "required": [
+    "namespace"
+  ]
+}

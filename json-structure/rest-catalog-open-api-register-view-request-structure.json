@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-register-view-request-structure.json",
+  "name": "RegisterViewRequest",
+  "description": "RegisterViewRequest schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "metadata-location": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "metadata-location"
+  ]
+}

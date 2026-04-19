@@ -1,0 +1,6 @@
+{
+  "action": "remove-properties",
+  "removals": [
+    "example-value"
+  ]
+}

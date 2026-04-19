@@ -1,0 +1,9 @@
+{
+  "removals": [
+    "department",
+    "access_group"
+  ],
+  "updates": {
+    "owner": "Hank Bendickson"
+  }
+}

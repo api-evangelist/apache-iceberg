@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-set-snapshot-ref-update-structure.json",
+  "name": "SetSnapshotRefUpdate",
+  "description": "SetSnapshotRefUpdate schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "action": {
+      "type": "string",
+      "const": "set-snapshot-ref"
+    },
+    "ref-name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "ref-name"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/BaseUpdate"
+    },
+    {
+      "$ref": "#/components/schemas/SnapshotReference"
+    }
+  ]
+}

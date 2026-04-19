@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/json-structure/rest-catalog-open-api-set-default-spec-update-structure.json",
+  "name": "SetDefaultSpecUpdate",
+  "description": "SetDefaultSpecUpdate schema from Apache Iceberg REST Catalog API",
+  "properties": {
+    "action": {
+      "type": "string",
+      "const": "set-default-spec"
+    },
+    "spec-id": {
+      "type": "integer",
+      "description": "Partition spec ID to set as the default, or -1 to set last added spec"
+    }
+  },
+  "required": [
+    "spec-id"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/BaseUpdate"
+    }
+  ]
+}
