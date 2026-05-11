@@ -148,6 +148,12 @@ common:
         description: Use BigQuery as a compute engine over Iceberg tables with BigLake Metastore.
       - name: Databricks
         description: Create and query Iceberg tables on Databricks using Unity Catalog.
+  - type: Integrations
+    url: https://iceberg.apache.org/integrations/
+integrations:
+  - name: amoro/
+  - name: daft/
+  - name: risingwave/
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
