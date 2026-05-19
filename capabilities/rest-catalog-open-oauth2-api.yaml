@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache Iceberg REST Catalog API — OAuth2 API
+  description: 'Apache Iceberg REST Catalog API — OAuth2 API. 1 operations. Lead operation: Apache Iceberg Get a Token Using
+    an OAuth2 Flow (DEPRECATED for REMOVAL). Self-contained Naftiko capability covering one Apache Iceberg business surface.'
+  tags:
+  - Apache Iceberg
+  - OAuth2 API
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APACHE_ICEBERG_API_KEY: APACHE_ICEBERG_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-catalog-open-oauth2-api
+    baseUri: ''
+    description: Apache Iceberg REST Catalog API — OAuth2 API business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-oauth-tokens
+      path: /v1/oauth/tokens
+      operations:
+      - name: gettoken
+        method: POST
+        description: Apache Iceberg Get a Token Using an OAuth2 Flow (DEPRECATED for REMOVAL)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.APACHE_ICEBERG_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: rest-catalog-open-oauth2-api-rest
+    port: 8080
+    description: REST adapter for Apache Iceberg REST Catalog API — OAuth2 API. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/oauth/tokens
+      name: v1-oauth-tokens
+      description: REST surface for v1-oauth-tokens.
+      operations:
+      - method: POST
+        name: gettoken
+        description: Apache Iceberg Get a Token Using an OAuth2 Flow (DEPRECATED for REMOVAL)
+        call: rest-catalog-open-oauth2-api.gettoken
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-catalog-open-oauth2-api-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apache Iceberg REST Catalog API — OAuth2 API. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: apache-iceberg-get-token-using
+      description: Apache Iceberg Get a Token Using an OAuth2 Flow (DEPRECATED for REMOVAL)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: rest-catalog-open-oauth2-api.gettoken
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

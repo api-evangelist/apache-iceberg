@@ -1,0 +1,79 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache Iceberg REST Catalog API — Configuration API
+  description: 'Apache Iceberg REST Catalog API — Configuration API. 1 operations. Lead operation: Apache Iceberg List All
+    Catalog Configuration Settings. Self-contained Naftiko capability covering one Apache Iceberg business surface.'
+  tags:
+  - Apache Iceberg
+  - Configuration API
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APACHE_ICEBERG_API_KEY: APACHE_ICEBERG_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-catalog-open-configuration-api
+    baseUri: ''
+    description: Apache Iceberg REST Catalog API — Configuration API business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-config
+      path: /v1/config
+      operations:
+      - name: getconfig
+        method: GET
+        description: Apache Iceberg List All Catalog Configuration Settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: warehouse
+          in: query
+          type: string
+          description: Warehouse location or identifier to request from the service
+    authentication:
+      type: bearer
+      token: '{{env.APACHE_ICEBERG_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: rest-catalog-open-configuration-api-rest
+    port: 8080
+    description: REST adapter for Apache Iceberg REST Catalog API — Configuration API. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/config
+      name: v1-config
+      description: REST surface for v1-config.
+      operations:
+      - method: GET
+        name: getconfig
+        description: Apache Iceberg List All Catalog Configuration Settings
+        call: rest-catalog-open-configuration-api.getconfig
+        with:
+          warehouse: rest.warehouse
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-catalog-open-configuration-api-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apache Iceberg REST Catalog API — Configuration API. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: apache-iceberg-list-all-catalog
+      description: Apache Iceberg List All Catalog Configuration Settings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-catalog-open-configuration-api.getconfig
+      with:
+        warehouse: tools.warehouse
+      outputParameters:
+      - type: object
+        mapping: $.
