@@ -2,12 +2,20 @@
   "repo": "apache-iceberg",
   "feeds": [
     {
-      "source": "https://iceberg.apache.org/blogs/",
+      "source": "https://iceberg.apache.org/rss.xml",
       "feed_url": "https://iceberg.apache.org/rss.xml",
-      "title": "Apache Iceberg\u2122",
-      "saved": 0
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://www.apache.org/licenses/LICENSE-2.0",
+      "feed_url": "https://www.apache.org/licenses/LICENSE-2.0",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "fetched": "2026-05-17T20:20:35Z",
+  "fetched": "2026-06-01T23:35:02Z",
   "post_count": 7
 }
