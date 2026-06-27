@@ -36,11 +36,11 @@ apis:
     url: https://iceberg.apache.org/rest-catalog-spec/
   - type: OpenAPI
     url: openapi/apache-iceberg-rest-catalog-open-api.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/rest-catalog-open-catalog-api.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/rest-catalog-open-configuration-api.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/rest-catalog-open-oauth2-api.yaml
 - aid: apache-iceberg:java-api
   name: Apache Iceberg Java API
@@ -71,7 +71,7 @@ apis:
   properties:
   - type: Documentation
     url: https://py.iceberg.apache.org/
-  - type: SDK
+  - type: SDKs
     url: https://pypi.org/project/pyiceberg/
   - type: GitHubRepository
     url: https://github.com/apache/iceberg-python
