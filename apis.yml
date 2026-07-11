@@ -76,6 +76,12 @@ apis:
   - type: GitHubRepository
     url: https://github.com/apache/iceberg-python
 common:
+- type: VulnerabilityDisclosure
+  url: security/apache-iceberg-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/apache-iceberg-domain-security.yml
+- type: Authentication
+  url: authentication/apache-iceberg-authentication.yml
 - type: OAuthScopes
   url: scopes/apache-iceberg-scopes.yml
 - type: LinkedIn

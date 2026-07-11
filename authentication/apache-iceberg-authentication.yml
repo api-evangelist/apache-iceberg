@@ -1,0 +1,28 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/apache-iceberg-rest-catalog-open-api.yaml
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - clientCredentials
+schemes:
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: /v1/oauth/tokens
+    scopes: 1
+  description: |-
+    This scheme is used for OAuth2 authorization.
+
+    For unauthorized requests, services should return an appropriate 401 or 403 response. Implementations must not return altered success (200) responses when a request is unauthenticated or unauthorized.
+    If a separate authorization server is used, substitute the tokenUrl with the full token path of the external authorization server, and use the resulting
+  sources:
+  - openapi/apache-iceberg-rest-catalog-open-api.yaml
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  sources:
+  - openapi/apache-iceberg-rest-catalog-open-api.yaml
