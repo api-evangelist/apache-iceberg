@@ -76,6 +76,8 @@ apis:
   - type: GitHubRepository
     url: https://github.com/apache/iceberg-python
 common:
+- type: OAuthScopes
+  url: scopes/apache-iceberg-scopes.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/apacheiceberg
 - type: GitHubOrganization
