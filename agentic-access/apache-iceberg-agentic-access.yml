@@ -1,0 +1,523 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/apache-iceberg-rest-catalog-open-api.yaml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 32
+  by_action_class:
+    connected: 12
+    acting: 20
+  by_consequence:
+    read: 12
+    write: 19
+    physical: 1
+  human_in_the_loop_required: 0
+operations:
+- path: /v1/config
+  method: get
+  operationId: getConfig
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - catalog
+- path: /v1/oauth/tokens
+  method: post
+  operationId: getToken
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces
+  method: get
+  operationId: listNamespaces
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces
+  method: post
+  operationId: createNamespace
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}
+  method: get
+  operationId: loadNamespaceMetadata
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}
+  method: head
+  operationId: namespaceExists
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}
+  method: delete
+  operationId: dropNamespace
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}/properties
+  method: post
+  operationId: updateProperties
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}/tables
+  method: get
+  operationId: listTables
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}/tables
+  method: post
+  operationId: createTable
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}/tables/{table}/plan
+  method: post
+  operationId: planTableScan
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}/tables/{table}/plan/{plan-id}
+  method: get
+  operationId: fetchPlanningResult
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}/tables/{table}/plan/{plan-id}
+  method: delete
+  operationId: cancelPlanning
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}/tables/{table}/tasks
+  method: post
+  operationId: fetchScanTasks
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}/register
+  method: post
+  operationId: registerTable
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}/tables/{table}
+  method: get
+  operationId: loadTable
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}/tables/{table}
+  method: post
+  operationId: updateTable
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}/tables/{table}
+  method: delete
+  operationId: dropTable
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}/tables/{table}
+  method: head
+  operationId: tableExists
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}/tables/{table}/credentials
+  method: get
+  operationId: loadCredentials
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}/tables/{table}/sign
+  method: post
+  operationId: signRequest
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - catalog
+- path: /v1/{prefix}/tables/rename
+  method: post
+  operationId: renameTable
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}/tables/{table}/metrics
+  method: post
+  operationId: reportMetrics
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - catalog
+- path: /v1/{prefix}/transactions/commit
+  method: post
+  operationId: commitTransaction
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}/views
+  method: get
+  operationId: listViews
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}/views
+  method: post
+  operationId: createView
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}/views/{view}
+  method: get
+  operationId: loadView
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}/views/{view}
+  method: post
+  operationId: replaceView
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}/views/{view}
+  method: delete
+  operationId: dropView
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}/views/{view}
+  method: head
+  operationId: viewExists
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - catalog
+- path: /v1/{prefix}/views/rename
+  method: post
+  operationId: renameView
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - catalog
+- path: /v1/{prefix}/namespaces/{namespace}/register-view
+  method: post
+  operationId: registerView
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - catalog

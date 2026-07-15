@@ -76,6 +76,8 @@ apis:
   - type: GitHubRepository
     url: https://github.com/apache/iceberg-python
 common:
+- type: AgenticAccess
+  url: agentic-access/apache-iceberg-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/apache-iceberg-vulnerability-disclosure.yml
 - type: DomainSecurity
