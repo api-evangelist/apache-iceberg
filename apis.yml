@@ -4,9 +4,22 @@ description: Apache Iceberg is an open table format for large analytic datasets 
   hidden partitioning, and time travel. It works with Spark, Flink, Hive, Presto, Trino, DuckDB, ClickHouse, and many more
   compute engines. Governed by the Apache Software Foundation under the Apache 2.0 license.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/apache-iceberg.png
 tags:
 - ACID
 - Analytics
@@ -20,33 +33,12 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-- aid: apache-iceberg:rest-catalog-api
-  name: Apache Iceberg REST Catalog API
-  description: The Iceberg REST Catalog API defines the specification for catalog server implementations, enabling table discovery,
-    creation, metadata management, namespace management, and multi-table transactions over HTTP. It is the standard integration
-    point for compute engines connecting to Iceberg catalogs.
-  humanURL: https://iceberg.apache.org/rest-catalog-spec/
-  tags:
-  - Catalog
-  - Namespace
-  - REST
-  - Table Format
-  properties:
-  - type: Documentation
-    url: https://iceberg.apache.org/rest-catalog-spec/
-  - type: OpenAPI
-    url: openapi/apache-iceberg-rest-catalog-open-api.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-catalog-open-catalog-api.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-catalog-open-configuration-api.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-catalog-open-oauth2-api.yaml
 - aid: apache-iceberg:java-api
   name: Apache Iceberg Java API
-  description: The Iceberg Java API provides programmatic access to table operations, schema management, partition management,
-    and catalog implementations. It is the primary library for integrating Iceberg with JVM-based compute engines including
-    Spark, Flink, Hive, Trino, and Presto.
+  description: >-
+    The Iceberg Java API provides programmatic access to table operations, schema management, partition
+    management, and catalog implementations. It is the primary library for integrating Iceberg with JVM-based
+    compute engines including Spark, Flink, Hive, Trino, and Presto.
   humanURL: https://iceberg.apache.org/javadoc/latest/
   tags:
   - Java
@@ -60,9 +52,10 @@ apis:
     url: https://iceberg.apache.org/docs/latest/java-api-quickstart/
 - aid: apache-iceberg:python-api
   name: PyIceberg Python API
-  description: PyIceberg is the official Python implementation of the Apache Iceberg table specification. It provides programmatic
-    access to Iceberg table metadata and data, with integrations for PyArrow, Pandas, DuckDB, Ray, Polars, and multiple catalog
-    backends.
+  description: >-
+    PyIceberg is the official Python implementation of the Apache Iceberg table specification. It provides
+    programmatic access to Iceberg table metadata and data, with integrations for PyArrow, Pandas, DuckDB,
+    Ray, Polars, and multiple catalog backends.
   humanURL: https://py.iceberg.apache.org/
   tags:
   - Python
@@ -75,6 +68,57 @@ apis:
     url: https://pypi.org/project/pyiceberg/
   - type: GitHubRepository
     url: https://github.com/apache/iceberg-python
+- aid: apache-iceberg:apache-iceberg-catalog-api-api
+  name: Apache Iceberg Catalog API API
+  description: The Catalog API API from Apache Iceberg — 18 operation(s) for catalog api.
+  humanURL: https://iceberg.apache.org/rest-catalog-spec/
+  tags:
+  - Catalog API
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-iceberg-catalog-api-api-openapi.yml
+  - type: Documentation
+    url: https://iceberg.apache.org/rest-catalog-spec/
+  - type: X-NaftikoCapability
+    url: capabilities/rest-catalog-open-catalog-api.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-catalog-open-configuration-api.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-catalog-open-oauth2-api.yaml
+- aid: apache-iceberg:apache-iceberg-configuration-api-api
+  name: Apache Iceberg Configuration API API
+  description: The Configuration API API from Apache Iceberg — 1 operation(s) for configuration api.
+  humanURL: https://iceberg.apache.org/rest-catalog-spec/
+  tags:
+  - Configuration API
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-iceberg-configuration-api-api-openapi.yml
+  - type: Documentation
+    url: https://iceberg.apache.org/rest-catalog-spec/
+  - type: X-NaftikoCapability
+    url: capabilities/rest-catalog-open-catalog-api.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-catalog-open-configuration-api.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-catalog-open-oauth2-api.yaml
+- aid: apache-iceberg:apache-iceberg-oauth2-api-api
+  name: Apache Iceberg OAuth2 API API
+  description: The OAuth2 API API from Apache Iceberg — 1 operation(s) for oauth2 api.
+  humanURL: https://iceberg.apache.org/rest-catalog-spec/
+  tags:
+  - OAuth2 API
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-iceberg-oauth2-api-api-openapi.yml
+  - type: Documentation
+    url: https://iceberg.apache.org/rest-catalog-spec/
+  - type: X-NaftikoCapability
+    url: capabilities/rest-catalog-open-catalog-api.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-catalog-open-configuration-api.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-catalog-open-oauth2-api.yaml
 common:
 - type: AgenticAccess
   url: agentic-access/apache-iceberg-agentic-access.yml
