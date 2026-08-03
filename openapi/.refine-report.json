@@ -1,0 +1,18 @@
+{
+  "provider": "apache-iceberg",
+  "sources": [
+    "apache-iceberg-catalog-api-api-openapi.yml",
+    "apache-iceberg-configuration-api-api-openapi.yml",
+    "apache-iceberg-oauth2-api-api-openapi.yml"
+  ],
+  "outputs": [
+    "apache-iceberg-catalog-api-api-openapi.yml",
+    "apache-iceberg-configuration-api-api-openapi.yml",
+    "apache-iceberg-oauth2-api-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
