@@ -79,12 +79,6 @@ apis:
     url: openapi/apache-iceberg-catalog-api-api-openapi.yml
   - type: Documentation
     url: https://iceberg.apache.org/rest-catalog-spec/
-  - type: X-NaftikoCapability
-    url: capabilities/rest-catalog-open-catalog-api.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-catalog-open-configuration-api.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-catalog-open-oauth2-api.yaml
 - aid: apache-iceberg:apache-iceberg-configuration-api-api
   name: Apache Iceberg Configuration API API
   description: The Configuration API API from Apache Iceberg — 1 operation(s) for configuration api.
@@ -96,12 +90,6 @@ apis:
     url: openapi/apache-iceberg-configuration-api-api-openapi.yml
   - type: Documentation
     url: https://iceberg.apache.org/rest-catalog-spec/
-  - type: X-NaftikoCapability
-    url: capabilities/rest-catalog-open-catalog-api.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-catalog-open-configuration-api.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-catalog-open-oauth2-api.yaml
 - aid: apache-iceberg:apache-iceberg-oauth2-api-api
   name: Apache Iceberg OAuth2 API API
   description: The OAuth2 API API from Apache Iceberg — 1 operation(s) for oauth2 api.
@@ -113,13 +101,16 @@ apis:
     url: openapi/apache-iceberg-oauth2-api-api-openapi.yml
   - type: Documentation
     url: https://iceberg.apache.org/rest-catalog-spec/
-  - type: X-NaftikoCapability
-    url: capabilities/rest-catalog-open-catalog-api.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-catalog-open-configuration-api.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-catalog-open-oauth2-api.yaml
 common:
+- type: IssueTracker
+  url: https://github.com/apache/iceberg-python/issues
+- type: Releases
+  url: https://github.com/apache/iceberg-python/releases
+- type: CodeOfConduct
+  url: https://github.com/apache/.github/blob/main/.github/CODE_OF_CONDUCT.md
+- type: License
+  name: Apache-2.0
+  url: https://github.com/apache/iceberg-python/blob/main/LICENSE
 - type: AgenticAccess
   url: agentic-access/apache-iceberg-agentic-access.yml
 - type: VulnerabilityDisclosure
