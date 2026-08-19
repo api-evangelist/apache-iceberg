@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Iceberg REST Catalog Catalog API OAuth2 API API",
+    "version": "0.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "/v1/oauth/tokens",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OAuth2 API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Iceberg Get a Token Using an OAuth2 Flow (DEPRECATED for REMOVAL)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{scheme}://{host}/{basePath}/v1/oauth/tokens",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "The `oauth/tokens` endpoint is **DEPRECATED for REMOVAL**. It is _not_ recommended to implement this endpoint, unless you are fully aware of the potential security implications.\nAll clients are encouraged to explicitly set the configuration property `oauth2-server-uri` to the correct OAuth endpoint.\nDeprecated since Iceberg (Java) 1.6.0. The endpoint and related types will be removed from this spec in Iceberg (Java) 2.0.\nSee [Security improvements in the Iceberg REST specification](https://githu"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

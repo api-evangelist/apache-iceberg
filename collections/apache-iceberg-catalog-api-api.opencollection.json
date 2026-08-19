@@ -1,0 +1,1114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Iceberg REST Catalog Catalog API API",
+    "version": "0.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "/v1/oauth/tokens",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Catalog API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Iceberg List Namespaces, Optionally Providing a Parent Namespace to List Underneath",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces",
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "For servers that support pagination, this signals an upper bound of the number of results that a client will receive. For servers that do not support pagination, clients may receive results larger than the indicated `pageSize`."
+              },
+              {
+                "name": "parent",
+                "value": "accounting%1Ftax",
+                "type": "query",
+                "description": "An optional namespace, underneath which to list namespaces. If not provided, all top-level namespaces should be listed. For backward compatibility, empty string is treated as absent for now. If parent is a multipart namespace, the parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              }
+            ]
+          },
+          "docs": "List all namespaces at a certain level, optionally starting from a given parent namespace. If table accounting.tax.paid.info exists, using 'SELECT NAMESPACE IN accounting' would translate into `GET /namespaces?parent=accounting` and must return a namespace, [\"accounting\", \"tax\"] only. Using 'SELECT NAMESPACE IN accounting.tax' would translate into `GET /namespaces?parent=accounting%1Ftax` and must return a namespace, [\"accounting\", \"tax\", \"paid\"]. If `parent` is not provided, all top-level names"
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Create a Namespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces",
+            "headers": [
+              {
+                "name": "Idempotency-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a namespace, with an optional set of properties. The server might also add properties, such as `last_modified_time` etc."
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Load the Metadata Properties for a Namespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace",
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              }
+            ]
+          },
+          "docs": "Return all stored metadata properties for a given namespace"
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Drop a Namespace from the Catalog. Namespace Must Be Empty.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace",
+            "headers": [
+              {
+                "name": "Idempotency-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              }
+            ]
+          },
+          "docs": "Apache Iceberg Drop a Namespace from the Catalog. Namespace Must Be Empty."
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Check if a Namespace Exists",
+            "type": "http"
+          },
+          "http": {
+            "method": "HEAD",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace",
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              }
+            ]
+          },
+          "docs": "Check if a namespace exists. The response does not contain a body."
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Set or Remove Properties on a Namespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace/properties",
+            "headers": [
+              {
+                "name": "Idempotency-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set and/or remove properties on a namespace. The request body specifies a list of properties to remove and a map of key value pairs to update.\nProperties that are not in the request are not modified or removed by this call.\nServer implementations are not required to support namespace properties."
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg List All Table Identifiers Underneath a Given Namespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace/tables",
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "For servers that support pagination, this signals an upper bound of the number of results that a client will receive. For servers that do not support pagination, clients may receive results larger than the indicated `pageSize`."
+              }
+            ]
+          },
+          "docs": "Return all table identifiers under this namespace"
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Create a Table in the Given Namespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace/tables",
+            "headers": [
+              {
+                "name": "X-Iceberg-Access-Delegation",
+                "value": "vended-credentials,remote-signing"
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a table or start a create transaction, like atomic CTAS.\n\nIf `stage-create` is false, the table is created immediately.\n\nIf `stage-create` is true, the table is not created, but table metadata is initialized and returned. The service should prepare as needed for a commit to the table commit endpoint to complete the create transaction. The client uses the returned metadata to begin a transaction. To commit the transaction, the client sends all create and subsequent changes to the table com"
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Submit a Scan for Planning",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace/tables/:table/plan",
+            "headers": [
+              {
+                "name": "X-Iceberg-Access-Delegation",
+                "value": "vended-credentials,remote-signing"
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              },
+              {
+                "name": "table",
+                "value": "sales",
+                "type": "path",
+                "description": "A table name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a scan for server-side planning.\n\nPoint-in-time scans are planned by passing snapshot-id to identify the table snapshot to scan. Incremental scans are planned by passing both start-snapshot-id and end-snapshot-id. Requests that include both point in time config properties and incremental config properties are invalid. If the request does not include either incremental or point-in-time config properties, scan planning should produce a point-in-time scan of the latest snapshot in the table"
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Fetches the Result of Scan Planning for a Plan-id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace/tables/:table/plan/:plan-id",
+            "headers": [
+              {
+                "name": "X-Iceberg-Access-Delegation",
+                "value": "vended-credentials,remote-signing"
+              }
+            ],
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              },
+              {
+                "name": "table",
+                "value": "sales",
+                "type": "path",
+                "description": "A table name"
+              },
+              {
+                "name": "plan-id",
+                "value": "",
+                "type": "path",
+                "description": "ID used to track a planning request"
+              }
+            ]
+          },
+          "docs": "Fetches the result of scan planning for a plan-id.\n\nResponses must include a valid status\n- When \"completed\" the planning operation has produced plan-tasks and\n  file-scan-tasks that must be returned in the response\n\n- When \"submitted\" the planning operation has not completed; the client\n  should wait to call this endpoint again to fetch a completed response\n\n- When \"failed\" the response must be a valid error response\n- When \"cancelled\" the plan-id is invalid and should be discarded\n\nThe respons"
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Cancels Scan Planning for a Plan-id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace/tables/:table/plan/:plan-id",
+            "headers": [
+              {
+                "name": "X-Iceberg-Access-Delegation",
+                "value": "vended-credentials,remote-signing"
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              },
+              {
+                "name": "table",
+                "value": "sales",
+                "type": "path",
+                "description": "A table name"
+              },
+              {
+                "name": "plan-id",
+                "value": "",
+                "type": "path",
+                "description": "ID used to track a planning request"
+              }
+            ]
+          },
+          "docs": "Cancels scan planning for a plan-id.\n\nThis notifies the service that it can release resources held for the scan. Clients should cancel scans that are no longer needed, either while the plan-id returns a \"submitted\" status or while there are remaining plan tasks that have not been fetched.\n\nCancellation is not necessary when\n- Scan tasks for each plan task have been fetched using fetchScanTasks\n- A plan-id has produced a \"failed\" or \"cancelled\" status from\n  planTableScan or fetchPlanningResult\n"
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Fetches Result Tasks for a Plan Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace/tables/:table/tasks",
+            "headers": [
+              {
+                "name": "Idempotency-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              },
+              {
+                "name": "table",
+                "value": "sales",
+                "type": "path",
+                "description": "A table name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fetches result tasks for a plan task."
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Register a Table in the Given Namespace Using Given Metadata File Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace/register",
+            "headers": [
+              {
+                "name": "X-Iceberg-Access-Delegation",
+                "value": "vended-credentials,remote-signing"
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register a table using given metadata file location."
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Load a Table from the Catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace/tables/:table",
+            "headers": [
+              {
+                "name": "X-Iceberg-Access-Delegation",
+                "value": "vended-credentials,remote-signing"
+              },
+              {
+                "name": "If-None-Match",
+                "value": "example-value"
+              }
+            ],
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              },
+              {
+                "name": "table",
+                "value": "sales",
+                "type": "path",
+                "description": "A table name"
+              },
+              {
+                "name": "snapshots",
+                "value": "all",
+                "type": "query",
+                "description": "The snapshots to return in the body of the metadata. Setting the value to `all` would return the full set of snapshots currently valid for the table. Setting the value to `refs` would load all snapshots referenced by branches or tags.\nDefault if no param is provided is `all`."
+              },
+              {
+                "name": "referenced-by",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of fully qualified view names (namespace and view name) representing the view reference chain when an entity (table or view) is loaded via a view. The list should be ordered with the outermost view first, followed by any intermediate views it references, down to the view that directly references the entity. For a simple case where a view directly references the entity, the list contains a single view identifier. For nested views (a view referencing another view which references the entity), the list contains multiple view identifiers representing the complete dependency chain.\nThe view identifier is a composite string of the format {namespace}{separator}{viewName}. The namespace-separator (defined in /config) acts as the delimiter. When parsing, the last occurrence of this separator identifies the boundary between the namespace and the view name. Multipart namespaces must follow the encoding rules of the parent parameter in the list namespaces endpoint.\nMultiple view identifiers are separated by commas. Servers should split the parameter value on comma characters to parse individual view identifiers. If view names contain commas, they must be url-encoded as %2C.\nExample with multiple views (where prod%1Fanalytics is a nested namespace which has a quarterly_view which references to monthly_view which then references the entity being loaded) - prod%1Fanalytics%1Fquarterly_view,prod%1Fanalytics%1Fmonthly_view"
+              }
+            ]
+          },
+          "docs": "Load a table from the catalog.\n\nThe response contains both configuration and table metadata. The configuration, if non-empty is used as additional configuration for the table that overrides catalog configuration. For example, this configuration may change the FileIO implementation to be used for the table.\n\nThe response also contains the table's full metadata, matching the table metadata JSON file.\n\nThe catalog configuration may contain credentials that should be used for subsequent requests for"
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Commit Updates to a Table",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace/tables/:table",
+            "headers": [
+              {
+                "name": "Idempotency-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              },
+              {
+                "name": "table",
+                "value": "sales",
+                "type": "path",
+                "description": "A table name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Commit updates to a table.\n\nCommits have two parts, requirements and updates. Requirements are assertions that will be validated before attempting to make and commit changes. For example, `assert-ref-snapshot-id` will check that a named ref's snapshot ID has a certain value. Server implementations are required to fail with a 400 status code if any unknown updates or requirements are received.\n\nUpdates are changes to make to table metadata. For example, after asserting that the current main ref i"
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Drop a Table from the Catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace/tables/:table",
+            "headers": [
+              {
+                "name": "Idempotency-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              },
+              {
+                "name": "table",
+                "value": "sales",
+                "type": "path",
+                "description": "A table name"
+              },
+              {
+                "name": "purgeRequested",
+                "value": "true",
+                "type": "query",
+                "description": "Whether the user requested to purge the underlying table's data and metadata"
+              }
+            ]
+          },
+          "docs": "Remove a table from the catalog"
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Check if a Table Exists",
+            "type": "http"
+          },
+          "http": {
+            "method": "HEAD",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace/tables/:table",
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              },
+              {
+                "name": "table",
+                "value": "sales",
+                "type": "path",
+                "description": "A table name"
+              }
+            ]
+          },
+          "docs": "Check if a table exists within a given namespace. The response does not contain a body."
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Load Vended Credentials for a Table from the Catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace/tables/:table/credentials",
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              },
+              {
+                "name": "table",
+                "value": "sales",
+                "type": "path",
+                "description": "A table name"
+              },
+              {
+                "name": "planId",
+                "value": "snapshot-1236",
+                "type": "query",
+                "description": "The plan ID that has been used for server-side scan planning"
+              },
+              {
+                "name": "referenced-by",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of fully qualified view names (namespace and view name) representing the view reference chain when an entity (table or view) is loaded via a view. The list should be ordered with the outermost view first, followed by any intermediate views it references, down to the view that directly references the entity. For a simple case where a view directly references the entity, the list contains a single view identifier. For nested views (a view referencing another view which references the entity), the list contains multiple view identifiers representing the complete dependency chain.\nThe view identifier is a composite string of the format {namespace}{separator}{viewName}. The namespace-separator (defined in /config) acts as the delimiter. When parsing, the last occurrence of this separator identifies the boundary between the namespace and the view name. Multipart namespaces must follow the encoding rules of the parent parameter in the list namespaces endpoint.\nMultiple view identifiers are separated by commas. Servers should split the parameter value on comma characters to parse individual view identifiers. If view names contain commas, they must be url-encoded as %2C.\nExample with multiple views (where prod%1Fanalytics is a nested namespace which has a quarterly_view which references to monthly_view which then references the entity being loaded) - prod%1Fanalytics%1Fquarterly_view,prod%1Fanalytics%1Fmonthly_view"
+              }
+            ]
+          },
+          "docs": "Load vended credentials for a table from the catalog."
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Remotely Signs Requests to Object Storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace/tables/:table/sign",
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              },
+              {
+                "name": "table",
+                "value": "sales",
+                "type": "path",
+                "description": "A table name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Apache Iceberg Remotely Signs Requests to Object Storage"
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Rename a Table from its Current Name to a New Name",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/tables/rename",
+            "headers": [
+              {
+                "name": "Idempotency-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rename a table from one identifier to another. It's valid to move a table across namespaces, but the server implementation is not required to support it."
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Send a Metrics Report to This Endpoint to Be Processed by the Backend",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace/tables/:table/metrics",
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              },
+              {
+                "name": "table",
+                "value": "sales",
+                "type": "path",
+                "description": "A table name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Apache Iceberg Send a Metrics Report to This Endpoint to Be Processed by the Backend"
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Commit Updates to Multiple Tables in an Atomic Operation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/transactions/commit",
+            "headers": [
+              {
+                "name": "Idempotency-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Apache Iceberg Commit Updates to Multiple Tables in an Atomic Operation"
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg List All View Identifiers Underneath a Given Namespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace/views",
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "For servers that support pagination, this signals an upper bound of the number of results that a client will receive. For servers that do not support pagination, clients may receive results larger than the indicated `pageSize`."
+              }
+            ]
+          },
+          "docs": "Return all view identifiers under this namespace"
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Create a View in the Given Namespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace/views",
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a view in the given namespace."
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Load a View from the Catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace/views/:view",
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              },
+              {
+                "name": "view",
+                "value": "sales",
+                "type": "path",
+                "description": "A view name"
+              },
+              {
+                "name": "referenced-by",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of fully qualified view names (namespace and view name) representing the view reference chain when an entity (table or view) is loaded via a view. The list should be ordered with the outermost view first, followed by any intermediate views it references, down to the view that directly references the entity. For a simple case where a view directly references the entity, the list contains a single view identifier. For nested views (a view referencing another view which references the entity), the list contains multiple view identifiers representing the complete dependency chain.\nThe view identifier is a composite string of the format {namespace}{separator}{viewName}. The namespace-separator (defined in /config) acts as the delimiter. When parsing, the last occurrence of this separator identifies the boundary between the namespace and the view name. Multipart namespaces must follow the encoding rules of the parent parameter in the list namespaces endpoint.\nMultiple view identifiers are separated by commas. Servers should split the parameter value on comma characters to parse individual view identifiers. If view names contain commas, they must be url-encoded as %2C.\nExample with multiple views (where prod%1Fanalytics is a nested namespace which has a quarterly_view which references to monthly_view which then references the entity being loaded) - prod%1Fanalytics%1Fquarterly_view,prod%1Fanalytics%1Fmonthly_view"
+              }
+            ]
+          },
+          "docs": "Load a view from the catalog.\n\nThe response contains both configuration and view metadata. The configuration, if non-empty is used as additional configuration for the view that overrides catalog configuration.\n\nThe response also contains the view's full metadata, matching the view metadata JSON file.\n\nThe catalog configuration may contain credentials that should be used for subsequent requests for the view. The configuration key \"token\" is used to pass an access token to be used as a bearer toke"
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Replace a View",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace/views/:view",
+            "headers": [
+              {
+                "name": "Idempotency-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              },
+              {
+                "name": "view",
+                "value": "sales",
+                "type": "path",
+                "description": "A view name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Commit updates to a view."
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Drop a View from the Catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace/views/:view",
+            "headers": [
+              {
+                "name": "Idempotency-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              },
+              {
+                "name": "view",
+                "value": "sales",
+                "type": "path",
+                "description": "A view name"
+              }
+            ]
+          },
+          "docs": "Remove a view from the catalog"
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Check if a View Exists",
+            "type": "http"
+          },
+          "http": {
+            "method": "HEAD",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace/views/:view",
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              },
+              {
+                "name": "view",
+                "value": "sales",
+                "type": "path",
+                "description": "A view name"
+              }
+            ]
+          },
+          "docs": "Check if a view exists within a given namespace. This request does not return a response body."
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Rename a View from its Current Name to a New Name",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/views/rename",
+            "headers": [
+              {
+                "name": "Idempotency-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rename a view from one identifier to another. It's valid to move a view across namespaces, but the server implementation is not required to support it."
+        },
+        {
+          "info": {
+            "name": "Apache Iceberg Register a View in the Catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{scheme}://{host}/{basePath}/v1/:prefix/namespaces/:namespace/register-view",
+            "headers": [
+              {
+                "name": "Idempotency-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "path",
+                "description": "An optional prefix in the path"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register a view in the given namespace using given metadata file location."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

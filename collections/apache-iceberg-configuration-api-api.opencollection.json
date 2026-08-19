@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Iceberg REST Catalog Catalog API Configuration API API",
+    "version": "0.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "/v1/oauth/tokens",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Configuration API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Iceberg List All Catalog Configuration Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{scheme}://{host}/{basePath}/v1/config",
+            "params": [
+              {
+                "name": "warehouse",
+                "value": "example-value",
+                "type": "query",
+                "description": "Warehouse location or identifier to request from the service"
+              }
+            ]
+          },
+          "docs": " All REST clients should first call this route to get catalog configuration properties from the server to configure the catalog and its HTTP client. Configuration from the server consists of two sets of key/value pairs.\n- defaults -  properties that should be used as default configuration; applied before client configuration\n- overrides - properties that should be used to override client configuration; applied after defaults and client configuration\n\nCatalog configuration is constructed by setti"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
