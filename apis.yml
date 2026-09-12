@@ -124,6 +124,8 @@ apis:
   - type: Documentation
     url: https://iceberg.apache.org/rest-catalog-spec/
 common:
+- type: Website
+  url: https://www.apache.org/
 - type: IssueTracker
   url: https://github.com/apache/iceberg-python/issues
 - type: Releases
