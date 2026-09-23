@@ -1,9 +1,7 @@
 {
   "provider": "apache-iceberg",
   "sources": [
-    "apache-iceberg-catalog-api-api-openapi.yml",
-    "apache-iceberg-configuration-api-api-openapi.yml",
-    "apache-iceberg-oauth2-api-api-openapi.yml"
+    "_original/apache-iceberg-rest-catalog-open-api.yaml"
   ],
   "outputs": [
     "apache-iceberg-catalog-api-api-openapi.yml",
@@ -13,6 +11,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "apache-iceberg-rest-catalog-open-api.yaml: upgraded openapi 3.1.1 -> OpenAPI 3.2.0",
+    "apache-iceberg-rest-catalog-open-api.yaml: declared missing tag: Catalog API",
+    "apache-iceberg-rest-catalog-open-api.yaml: declared missing tag: Configuration API",
+    "apache-iceberg-rest-catalog-open-api.yaml: declared missing tag: OAuth2 API",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "apache-iceberg-catalog-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "apache-iceberg-configuration-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "apache-iceberg-oauth2-api-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

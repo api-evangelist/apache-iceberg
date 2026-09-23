@@ -1,6 +1,6 @@
-openapi: 3.1.1
+openapi: 3.2.0
 info:
-  title: Apache Iceberg REST Catalog Catalog API OAuth2 API API
+  title: Apache Iceberg REST Catalog OAuth2 API
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
@@ -54,7 +54,7 @@ paths:
 
         Deprecated since Iceberg (Java) 1.6.0. The endpoint and related types will be removed from this spec in Iceberg (Java) 2.0.
 
-        See [Security improvements in the Iceberg REST specification](https://github.com/apache/iceberg/issues/10537)
+        See Security improvements in the Iceberg REST specification
 
 
         Exchange credentials for a token using the OAuth2 client credentials flow or token exchange.
@@ -96,6 +96,38 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    OAuthTokenResponse:
+      deprecated: true
+      description: The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
+      type: object
+      required:
+      - access_token
+      - token_type
+      properties:
+        access_token:
+          type: string
+          description: The access token, for client credentials or token exchange
+        token_type:
+          type: string
+          enum:
+          - bearer
+          - mac
+          - N_A
+          description: 'Access token type for client credentials or token exchange
+
+
+            See https://datatracker.ietf.org/doc/html/rfc6749#section-7.1'
+        expires_in:
+          type: integer
+          description: Lifetime of the access token in seconds for client credentials or token exchange
+        issued_token_type:
+          $ref: '#/components/schemas/TokenType'
+        refresh_token:
+          type: string
+          description: Refresh token for client credentials or token exchange
+        scope:
+          type: string
+          description: Authorization scope for client credentials or token exchange
     OAuthClientCredentialsRequest:
       deprecated: true
       description: 'The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
@@ -175,6 +207,12 @@ components:
 
 
         See https://datatracker.ietf.org/doc/html/rfc8693#section-3'
+    OAuthTokenRequest:
+      deprecated: true
+      description: The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
+      anyOf:
+      - $ref: '#/components/schemas/OAuthClientCredentialsRequest'
+      - $ref: '#/components/schemas/OAuthTokenExchangeRequest'
     OAuthError:
       deprecated: true
       description: The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
@@ -195,57 +233,19 @@ components:
           type: string
         error_uri:
           type: string
-    OAuthTokenRequest:
-      deprecated: true
-      description: The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
-      anyOf:
-      - $ref: '#/components/schemas/OAuthClientCredentialsRequest'
-      - $ref: '#/components/schemas/OAuthTokenExchangeRequest'
-    OAuthTokenResponse:
-      deprecated: true
-      description: The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
-      type: object
-      required:
-      - access_token
-      - token_type
-      properties:
-        access_token:
-          type: string
-          description: The access token, for client credentials or token exchange
-        token_type:
-          type: string
-          enum:
-          - bearer
-          - mac
-          - N_A
-          description: 'Access token type for client credentials or token exchange
-
-
-            See https://datatracker.ietf.org/doc/html/rfc6749#section-7.1'
-        expires_in:
-          type: integer
-          description: Lifetime of the access token in seconds for client credentials or token exchange
-        issued_token_type:
-          $ref: '#/components/schemas/TokenType'
-        refresh_token:
-          type: string
-          description: Refresh token for client credentials or token exchange
-        scope:
-          type: string
-          description: Authorization scope for client credentials or token exchange
   responses:
-    OAuthErrorResponse:
-      description: OAuth2 error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/OAuthError'
     OAuthTokenResponse:
       description: OAuth2 token response for client credentials or token exchange
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/OAuthTokenResponse'
+    OAuthErrorResponse:
+      description: OAuth2 error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OAuthError'
   securitySchemes:
     OAuth2:
       type: oauth2
