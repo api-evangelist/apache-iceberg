@@ -44,7 +44,7 @@ tags:
 - Apache
 - Data Lake
 - Lakehouse
-- Open-Source
+- Open Source
 - Table Format
 tags_raw:
 - ACID
@@ -54,6 +54,7 @@ tags_raw:
 - Lakehouse
 - Open Source
 - Table Format
+- Open-Source
 created: '2026-03-16'
 modified: '2026-09-16'
 url: https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/apis.yml

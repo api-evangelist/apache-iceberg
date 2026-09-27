@@ -153,39 +153,6 @@ components:
           type: NoSuchWarehouseException
           code: 404
   responses:
-    ServerErrorResponse:
-      description: A server-side problem that might not be addressable from the client side. Used for server 5xx errors without more specific documentation in individual routes.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/IcebergErrorResponse'
-          example:
-            error:
-              message: Internal Server Error
-              type: InternalServerError
-              code: 500
-    ForbiddenResponse:
-      description: Forbidden. Authenticated user does not have the necessary permissions.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/IcebergErrorResponse'
-          example:
-            error:
-              message: Not authorized to make this request
-              type: NotAuthorizedException
-              code: 403
-    AuthenticationTimeoutResponse:
-      description: This is an optional status response type that the REST Catalog can issue when the token has expired. The client MAY request a new access token and retry the request. 401 UnauthorizedResponse SHOULD be preferred over this response type on token expiry.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/IcebergErrorResponse'
-          example:
-            error:
-              message: Credentials have timed out
-              type: AuthenticationTimeoutException
-              code: 419
     ServiceUnavailableResponse:
       description: 'The service is not ready to handle the request, request could have been partially processed.
 
@@ -199,17 +166,6 @@ components:
               message: Slow down
               type: SlowDownException
               code: 503
-    UnauthorizedResponse:
-      description: Unauthorized. The REST Catalog SHOULD respond with the 401 UnauthorizedResponse when the access token provided is expired, revoked, malformed, or invalid for other reasons. The client MAY request a new access token and retry the request.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/IcebergErrorResponse'
-          example:
-            error:
-              message: Not authorized to make this request
-              type: NotAuthorizedException
-              code: 401
     BadRequestErrorResponse:
       description: Indicates a bad request error. It could be caused by an unexpected request body format or other forms of request validation failure, such as invalid json. Usually serves application/json content, although in some cases simple text/plain content might be returned by the server's middleware.
       content:
@@ -221,6 +177,50 @@ components:
               message: Malformed request
               type: BadRequestException
               code: 400
+    ForbiddenResponse:
+      description: Forbidden. Authenticated user does not have the necessary permissions.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/IcebergErrorResponse'
+          example:
+            error:
+              message: Not authorized to make this request
+              type: NotAuthorizedException
+              code: 403
+    UnauthorizedResponse:
+      description: Unauthorized. The REST Catalog SHOULD respond with the 401 UnauthorizedResponse when the access token provided is expired, revoked, malformed, or invalid for other reasons. The client MAY request a new access token and retry the request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/IcebergErrorResponse'
+          example:
+            error:
+              message: Not authorized to make this request
+              type: NotAuthorizedException
+              code: 401
+    ServerErrorResponse:
+      description: A server-side problem that might not be addressable from the client side. Used for server 5xx errors without more specific documentation in individual routes.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/IcebergErrorResponse'
+          example:
+            error:
+              message: Internal Server Error
+              type: InternalServerError
+              code: 500
+    AuthenticationTimeoutResponse:
+      description: This is an optional status response type that the REST Catalog can issue when the token has expired. The client MAY request a new access token and retry the request. 401 UnauthorizedResponse SHOULD be preferred over this response type on token expiry.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/IcebergErrorResponse'
+          example:
+            error:
+              message: Credentials have timed out
+              type: AuthenticationTimeoutException
+              code: 419
   schemas:
     ErrorModel:
       type: object
