@@ -96,39 +96,19 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    OAuthTokenExchangeRequest:
-      deprecated: true
-      description: 'The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
+    TokenType:
+      type: string
+      enum:
+      - urn:ietf:params:oauth:token-type:access_token
+      - urn:ietf:params:oauth:token-type:refresh_token
+      - urn:ietf:params:oauth:token-type:id_token
+      - urn:ietf:params:oauth:token-type:saml1
+      - urn:ietf:params:oauth:token-type:saml2
+      - urn:ietf:params:oauth:token-type:jwt
+      description: 'Token type identifier, from RFC 8693 Section 3
 
 
-        OAuth2 token exchange request
-
-
-        See https://datatracker.ietf.org/doc/html/rfc8693'
-      type: object
-      required:
-      - grant_type
-      - subject_token
-      - subject_token_type
-      properties:
-        grant_type:
-          type: string
-          enum:
-          - urn:ietf:params:oauth:grant-type:token-exchange
-        scope:
-          type: string
-        requested_token_type:
-          $ref: '#/components/schemas/TokenType'
-        subject_token:
-          type: string
-          description: Subject token for token exchange request
-        subject_token_type:
-          $ref: '#/components/schemas/TokenType'
-        actor_token:
-          type: string
-          description: Actor token for token exchange request
-        actor_token_type:
-          $ref: '#/components/schemas/TokenType'
+        See https://datatracker.ietf.org/doc/html/rfc8693#section-3'
     OAuthClientCredentialsRequest:
       deprecated: true
       description: 'The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
@@ -162,12 +142,6 @@ components:
 
 
             This can be sent in the request body, but OAuth2 recommends sending it in a Basic Authorization header.'
-    OAuthTokenRequest:
-      deprecated: true
-      description: The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
-      anyOf:
-      - $ref: '#/components/schemas/OAuthClientCredentialsRequest'
-      - $ref: '#/components/schemas/OAuthTokenExchangeRequest'
     OAuthTokenResponse:
       deprecated: true
       description: The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
@@ -220,19 +194,45 @@ components:
           type: string
         error_uri:
           type: string
-    TokenType:
-      type: string
-      enum:
-      - urn:ietf:params:oauth:token-type:access_token
-      - urn:ietf:params:oauth:token-type:refresh_token
-      - urn:ietf:params:oauth:token-type:id_token
-      - urn:ietf:params:oauth:token-type:saml1
-      - urn:ietf:params:oauth:token-type:saml2
-      - urn:ietf:params:oauth:token-type:jwt
-      description: 'Token type identifier, from RFC 8693 Section 3
+    OAuthTokenRequest:
+      deprecated: true
+      description: The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
+      anyOf:
+      - $ref: '#/components/schemas/OAuthClientCredentialsRequest'
+      - $ref: '#/components/schemas/OAuthTokenExchangeRequest'
+    OAuthTokenExchangeRequest:
+      deprecated: true
+      description: 'The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
 
 
-        See https://datatracker.ietf.org/doc/html/rfc8693#section-3'
+        OAuth2 token exchange request
+
+
+        See https://datatracker.ietf.org/doc/html/rfc8693'
+      type: object
+      required:
+      - grant_type
+      - subject_token
+      - subject_token_type
+      properties:
+        grant_type:
+          type: string
+          enum:
+          - urn:ietf:params:oauth:grant-type:token-exchange
+        scope:
+          type: string
+        requested_token_type:
+          $ref: '#/components/schemas/TokenType'
+        subject_token:
+          type: string
+          description: Subject token for token exchange request
+        subject_token_type:
+          $ref: '#/components/schemas/TokenType'
+        actor_token:
+          type: string
+          description: Actor token for token exchange request
+        actor_token_type:
+          $ref: '#/components/schemas/TokenType'
   responses:
     OAuthErrorResponse:
       description: OAuth2 error response
