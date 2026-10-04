@@ -145,50 +145,6 @@ paths:
         dispatcher: FALLBACK
 components:
   responses:
-    ServerErrorResponse:
-      description: A server-side problem that might not be addressable from the client side. Used for server 5xx errors without more specific documentation in individual routes.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/IcebergErrorResponse'
-          example:
-            error:
-              message: Internal Server Error
-              type: InternalServerError
-              code: 500
-    BadRequestErrorResponse:
-      description: Indicates a bad request error. It could be caused by an unexpected request body format or other forms of request validation failure, such as invalid json. Usually serves application/json content, although in some cases simple text/plain content might be returned by the server's middleware.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/IcebergErrorResponse'
-          example:
-            error:
-              message: Malformed request
-              type: BadRequestException
-              code: 400
-    ForbiddenResponse:
-      description: Forbidden. Authenticated user does not have the necessary permissions.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/IcebergErrorResponse'
-          example:
-            error:
-              message: Not authorized to make this request
-              type: NotAuthorizedException
-              code: 403
-    UnauthorizedResponse:
-      description: Unauthorized. The REST Catalog SHOULD respond with the 401 UnauthorizedResponse when the access token provided is expired, revoked, malformed, or invalid for other reasons. The client MAY request a new access token and retry the request.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/IcebergErrorResponse'
-          example:
-            error:
-              message: Not authorized to make this request
-              type: NotAuthorizedException
-              code: 401
     ServiceUnavailableResponse:
       description: 'The service is not ready to handle the request, request could have been partially processed.
 
@@ -213,21 +169,51 @@ components:
               message: Credentials have timed out
               type: AuthenticationTimeoutException
               code: 419
+    ForbiddenResponse:
+      description: Forbidden. Authenticated user does not have the necessary permissions.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/IcebergErrorResponse'
+          example:
+            error:
+              message: Not authorized to make this request
+              type: NotAuthorizedException
+              code: 403
+    ServerErrorResponse:
+      description: A server-side problem that might not be addressable from the client side. Used for server 5xx errors without more specific documentation in individual routes.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/IcebergErrorResponse'
+          example:
+            error:
+              message: Internal Server Error
+              type: InternalServerError
+              code: 500
+    UnauthorizedResponse:
+      description: Unauthorized. The REST Catalog SHOULD respond with the 401 UnauthorizedResponse when the access token provided is expired, revoked, malformed, or invalid for other reasons. The client MAY request a new access token and retry the request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/IcebergErrorResponse'
+          example:
+            error:
+              message: Not authorized to make this request
+              type: NotAuthorizedException
+              code: 401
+    BadRequestErrorResponse:
+      description: Indicates a bad request error. It could be caused by an unexpected request body format or other forms of request validation failure, such as invalid json. Usually serves application/json content, although in some cases simple text/plain content might be returned by the server's middleware.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/IcebergErrorResponse'
+          example:
+            error:
+              message: Malformed request
+              type: BadRequestException
+              code: 400
   schemas:
-    IcebergErrorResponse:
-      description: JSON wrapper for all error responses (non-2xx)
-      type: object
-      required:
-      - error
-      properties:
-        error:
-          $ref: '#/components/schemas/ErrorModel'
-      additionalProperties: false
-      example:
-        error:
-          message: The server does not support this operation
-          type: UnsupportedOperationException
-          code: 406
     ErrorModel:
       type: object
       description: JSON error payload returned in a response with further details on the error
@@ -253,6 +239,20 @@ components:
           type: array
           items:
             type: string
+    IcebergErrorResponse:
+      description: JSON wrapper for all error responses (non-2xx)
+      type: object
+      required:
+      - error
+      properties:
+        error:
+          $ref: '#/components/schemas/ErrorModel'
+      additionalProperties: false
+      example:
+        error:
+          message: The server does not support this operation
+          type: UnsupportedOperationException
+          code: 406
     CatalogConfig:
       type: object
       description: Server-provided configuration for the catalog.

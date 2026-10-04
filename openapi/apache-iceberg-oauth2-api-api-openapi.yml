@@ -109,6 +109,39 @@ components:
 
 
         See https://datatracker.ietf.org/doc/html/rfc8693#section-3'
+    OAuthTokenExchangeRequest:
+      deprecated: true
+      description: 'The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
+
+
+        OAuth2 token exchange request
+
+
+        See https://datatracker.ietf.org/doc/html/rfc8693'
+      type: object
+      required:
+      - grant_type
+      - subject_token
+      - subject_token_type
+      properties:
+        grant_type:
+          type: string
+          enum:
+          - urn:ietf:params:oauth:grant-type:token-exchange
+        scope:
+          type: string
+        requested_token_type:
+          $ref: '#/components/schemas/TokenType'
+        subject_token:
+          type: string
+          description: Subject token for token exchange request
+        subject_token_type:
+          $ref: '#/components/schemas/TokenType'
+        actor_token:
+          type: string
+          description: Actor token for token exchange request
+        actor_token_type:
+          $ref: '#/components/schemas/TokenType'
     OAuthClientCredentialsRequest:
       deprecated: true
       description: 'The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
@@ -174,6 +207,12 @@ components:
         scope:
           type: string
           description: Authorization scope for client credentials or token exchange
+    OAuthTokenRequest:
+      deprecated: true
+      description: The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
+      anyOf:
+      - $ref: '#/components/schemas/OAuthClientCredentialsRequest'
+      - $ref: '#/components/schemas/OAuthTokenExchangeRequest'
     OAuthError:
       deprecated: true
       description: The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
@@ -194,58 +233,19 @@ components:
           type: string
         error_uri:
           type: string
-    OAuthTokenRequest:
-      deprecated: true
-      description: The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
-      anyOf:
-      - $ref: '#/components/schemas/OAuthClientCredentialsRequest'
-      - $ref: '#/components/schemas/OAuthTokenExchangeRequest'
-    OAuthTokenExchangeRequest:
-      deprecated: true
-      description: 'The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
-
-
-        OAuth2 token exchange request
-
-
-        See https://datatracker.ietf.org/doc/html/rfc8693'
-      type: object
-      required:
-      - grant_type
-      - subject_token
-      - subject_token_type
-      properties:
-        grant_type:
-          type: string
-          enum:
-          - urn:ietf:params:oauth:grant-type:token-exchange
-        scope:
-          type: string
-        requested_token_type:
-          $ref: '#/components/schemas/TokenType'
-        subject_token:
-          type: string
-          description: Subject token for token exchange request
-        subject_token_type:
-          $ref: '#/components/schemas/TokenType'
-        actor_token:
-          type: string
-          description: Actor token for token exchange request
-        actor_token_type:
-          $ref: '#/components/schemas/TokenType'
   responses:
-    OAuthErrorResponse:
-      description: OAuth2 error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/OAuthError'
     OAuthTokenResponse:
       description: OAuth2 token response for client credentials or token exchange
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/OAuthTokenResponse'
+    OAuthErrorResponse:
+      description: OAuth2 error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OAuthError'
   securitySchemes:
     OAuth2:
       type: oauth2
