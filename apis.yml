@@ -127,6 +127,12 @@ apis:
   - type: Documentation
     url: https://iceberg.apache.org/rest-catalog-spec/
 common:
+- type: Plans
+  url: plans/apache-iceberg-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/apache-iceberg-rate-limits.yml
+- type: FinOps
+  url: finops/apache-iceberg-finops.yml
 - type: Website
   url: https://www.apache.org/
 - type: IssueTracker
