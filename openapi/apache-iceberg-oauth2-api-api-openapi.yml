@@ -96,6 +96,12 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    OAuthTokenRequest:
+      deprecated: true
+      description: The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
+      anyOf:
+      - $ref: '#/components/schemas/OAuthClientCredentialsRequest'
+      - $ref: '#/components/schemas/OAuthTokenExchangeRequest'
     TokenType:
       type: string
       enum:
@@ -109,39 +115,38 @@ components:
 
 
         See https://datatracker.ietf.org/doc/html/rfc8693#section-3'
-    OAuthTokenExchangeRequest:
+    OAuthTokenResponse:
       deprecated: true
-      description: 'The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
-
-
-        OAuth2 token exchange request
-
-
-        See https://datatracker.ietf.org/doc/html/rfc8693'
+      description: The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
       type: object
       required:
-      - grant_type
-      - subject_token
-      - subject_token_type
+      - access_token
+      - token_type
       properties:
-        grant_type:
+        access_token:
+          type: string
+          description: The access token, for client credentials or token exchange
+        token_type:
           type: string
           enum:
-          - urn:ietf:params:oauth:grant-type:token-exchange
+          - bearer
+          - mac
+          - N_A
+          description: 'Access token type for client credentials or token exchange
+
+
+            See https://datatracker.ietf.org/doc/html/rfc6749#section-7.1'
+        expires_in:
+          type: integer
+          description: Lifetime of the access token in seconds for client credentials or token exchange
+        issued_token_type:
+          $ref: '#/components/schemas/TokenType'
+        refresh_token:
+          type: string
+          description: Refresh token for client credentials or token exchange
         scope:
           type: string
-        requested_token_type:
-          $ref: '#/components/schemas/TokenType'
-        subject_token:
-          type: string
-          description: Subject token for token exchange request
-        subject_token_type:
-          $ref: '#/components/schemas/TokenType'
-        actor_token:
-          type: string
-          description: Actor token for token exchange request
-        actor_token_type:
-          $ref: '#/components/schemas/TokenType'
+          description: Authorization scope for client credentials or token exchange
     OAuthClientCredentialsRequest:
       deprecated: true
       description: 'The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
@@ -175,44 +180,39 @@ components:
 
 
             This can be sent in the request body, but OAuth2 recommends sending it in a Basic Authorization header.'
-    OAuthTokenResponse:
+    OAuthTokenExchangeRequest:
       deprecated: true
-      description: The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
+      description: 'The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
+
+
+        OAuth2 token exchange request
+
+
+        See https://datatracker.ietf.org/doc/html/rfc8693'
       type: object
       required:
-      - access_token
-      - token_type
+      - grant_type
+      - subject_token
+      - subject_token_type
       properties:
-        access_token:
-          type: string
-          description: The access token, for client credentials or token exchange
-        token_type:
+        grant_type:
           type: string
           enum:
-          - bearer
-          - mac
-          - N_A
-          description: 'Access token type for client credentials or token exchange
-
-
-            See https://datatracker.ietf.org/doc/html/rfc6749#section-7.1'
-        expires_in:
-          type: integer
-          description: Lifetime of the access token in seconds for client credentials or token exchange
-        issued_token_type:
-          $ref: '#/components/schemas/TokenType'
-        refresh_token:
-          type: string
-          description: Refresh token for client credentials or token exchange
+          - urn:ietf:params:oauth:grant-type:token-exchange
         scope:
           type: string
-          description: Authorization scope for client credentials or token exchange
-    OAuthTokenRequest:
-      deprecated: true
-      description: The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
-      anyOf:
-      - $ref: '#/components/schemas/OAuthClientCredentialsRequest'
-      - $ref: '#/components/schemas/OAuthTokenExchangeRequest'
+        requested_token_type:
+          $ref: '#/components/schemas/TokenType'
+        subject_token:
+          type: string
+          description: Subject token for token exchange request
+        subject_token_type:
+          $ref: '#/components/schemas/TokenType'
+        actor_token:
+          type: string
+          description: Actor token for token exchange request
+        actor_token_type:
+          $ref: '#/components/schemas/TokenType'
     OAuthError:
       deprecated: true
       description: The `oauth/tokens` endpoint and related schemas are **DEPRECATED for REMOVAL** from this spec, see description of the endpoint.
@@ -234,18 +234,18 @@ components:
         error_uri:
           type: string
   responses:
-    OAuthTokenResponse:
-      description: OAuth2 token response for client credentials or token exchange
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/OAuthTokenResponse'
     OAuthErrorResponse:
       description: OAuth2 error response
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/OAuthError'
+    OAuthTokenResponse:
+      description: OAuth2 token response for client credentials or token exchange
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OAuthTokenResponse'
   securitySchemes:
     OAuth2:
       type: oauth2
