@@ -1,655 +1,469 @@
 {
+  "info": {
+    "_postman_id": "340df29e-bb7b-4068-b58e-acb375676462",
+    "name": "Apache Iceberg REST Catalog Configuration API",
+    "description": "Defines the specification for the first version of the REST Catalog API. Implementations should ideally support all Iceberg table spec versions.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:50:27.000Z",
+    "updatedAt": "2026-10-22T02:50:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-340df29e-bb7b-4068-b58e-acb375676462"
+  },
   "item": [
     {
-      "id": "27a3348b-b249-4bc2-a9d5-c41d6a1201f5",
-      "name": "Configuration API",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "1f420d3a-4b77-4115-ac0c-2537165de7eb",
-          "name": "Apache Iceberg List All Catalog Configuration Settings",
-          "request": {
-            "name": "Apache Iceberg List All Catalog Configuration Settings",
-            "description": {
-              "content": " All REST clients should first call this route to get catalog configuration properties from the server to configure the catalog and its HTTP client. Configuration from the server consists of two sets of key/value pairs.\n- defaults -  properties that should be used as default configuration; applied before client configuration\n- overrides - properties that should be used to override client configuration; applied after defaults and client configuration\n\nCatalog configuration is constructed by setting the defaults, then client- provided configuration, and finally overrides. The final property set is then used to configure the catalog.\n\nFor example, a default configuration property might set the size of the client pool, which can be replaced with a client-specific setting. An override might be used to set the warehouse location, which is stored on the server rather than in client configuration.\n\nCommon catalog configuration settings are documented at https://iceberg.apache.org/docs/latest/configuration/#catalog-properties\n\nThe catalog configuration also holds an optional `endpoints` field that contains information about the endpoints supported by the server. If a server does not send the `endpoints` field, a default set of endpoints is assumed:\n- GET /v1/{prefix}/namespaces\n- POST /v1/{prefix}/namespaces\n- GET /v1/{prefix}/namespaces/{namespace}\n- DELETE /v1/{prefix}/namespaces/{namespace}\n- POST /v1/{prefix}/namespaces/{namespace}/properties\n- GET /v1/{prefix}/namespaces/{namespace}/tables\n- POST /v1/{prefix}/namespaces/{namespace}/tables\n- GET /v1/{prefix}/namespaces/{namespace}/tables/{table}\n- POST /v1/{prefix}/namespaces/{namespace}/tables/{table}\n- DELETE /v1/{prefix}/namespaces/{namespace}/tables/{table}\n- POST /v1/{prefix}/namespaces/{namespace}/register\n- POST /v1/{prefix}/namespaces/{namespace}/tables/{table}/metrics\n- POST /v1/{prefix}/tables/rename\n- POST /v1/{prefix}/transactions/commit ",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v1",
-                "config"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "warehouse",
-                  "value": "<string>",
-                  "description": "Warehouse location or identifier to request from the service"
-                }
-              ],
-              "variable": [
-                {
-                  "description": "The scheme of the URI, either http or https.",
-                  "type": "any",
-                  "value": "{{scheme}}",
-                  "key": "scheme"
-                },
-                {
-                  "description": "The host address for the specified server",
-                  "type": "any",
-                  "value": "{{host}}",
-                  "key": "host"
-                },
-                {
-                  "description": "Optional prefix to be appended to all routes",
-                  "type": "any",
-                  "value": "{{basePath}}",
-                  "key": "basePath"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "config",
+          "item": [
             {
-              "id": "9cfb0fb5-708e-47c2-9fc0-2d5db7e7729d",
-              "name": "Server specified configuration values.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "config"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "warehouse",
-                      "value": "example-value"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "description": "The scheme of the URI, either http or https.",
-                      "type": "any",
-                      "value": "{{scheme}}",
-                      "key": "scheme"
-                    },
-                    {
-                      "description": "The host address for the specified server",
-                      "type": "any",
-                      "value": "{{host}}",
-                      "key": "host"
-                    },
-                    {
-                      "description": "Optional prefix to be appended to all routes",
-                      "type": "any",
-                      "value": "{{basePath}}",
-                      "key": "basePath"
-                    }
-                  ]
-                },
+              "name": "Apache Iceberg List All Catalog Configuration Settings",
+              "id": "34c836fc-8119-4b67-bae6-ad0f42c7da97",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"overrides\": {\n    \"warehouse\": \"s3://bucket/warehouse/\"\n  },\n  \"defaults\": {\n    \"clients\": \"4\"\n  },\n  \"idempotency-key-lifetime\": \"PT30M\",\n  \"endpoints\": [\n    \"GET /v1/{prefix}/namespaces/{namespace}\",\n    \"GET /v1/{prefix}/namespaces\",\n    \"POST /v1/{prefix}/namespaces\",\n    \"GET /v1/{prefix}/namespaces/{namespace}/tables/{table}\",\n    \"GET /v1/{prefix}/namespaces/{namespace}/views/{view}\"\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "427bc03c-fe22-4d05-a5aa-e6581a09ba32",
-              "name": "Indicates a bad request error. It could be caused by an unexpected request body format or other forms of request validation failure, such as invalid json. Usually serves application/json content, although in some cases simple text/plain content might be returned by the server's middleware.",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/v1/config?warehouse=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "v1",
                     "config"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Warehouse location or identifier to request from the service",
                       "key": "warehouse",
-                      "value": "example-value"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "description": "The scheme of the URI, either http or https.",
-                      "type": "any",
-                      "value": "{{scheme}}",
-                      "key": "scheme"
-                    },
-                    {
-                      "description": "The host address for the specified server",
-                      "type": "any",
-                      "value": "{{host}}",
-                      "key": "host"
-                    },
-                    {
-                      "description": "Optional prefix to be appended to all routes",
-                      "type": "any",
-                      "value": "{{basePath}}",
-                      "key": "basePath"
+                      "value": "<string>"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "All REST clients should first call this route to get catalog configuration properties from the server to configure the catalog and its HTTP client. Configuration from the server consists of two sets of key/value pairs.\n- defaults - properties that should be used as default configuration; applied before client configuration\n- overrides - properties that should be used to override client configuration; applied after defaults and client configuration\n\nCatalog configuration is constructed by setting the defaults, then client- provided configuration, and finally overrides. The final property set is then used to configure the catalog.\n\nFor example, a default configuration property might set the size of the client pool, which can be replaced with a client-specific setting. An override might be used to set the warehouse location, which is stored on the server rather than in client configuration.\n\nCommon catalog configuration settings are documented at https://iceberg.apache.org/docs/latest/configuration/#catalog-properties\n\nThe catalog configuration also holds an optional `endpoints` field that contains information about the endpoints supported by the server. If a server does not send the `endpoints` field, a default set of endpoints is assumed:\n- GET /v1/{prefix}/namespaces\n- POST /v1/{prefix}/namespaces\n- GET /v1/{prefix}/namespaces/{namespace}\n- DELETE /v1/{prefix}/namespaces/{namespace}\n- POST /v1/{prefix}/namespaces/{namespace}/properties\n- GET /v1/{prefix}/namespaces/{namespace}/tables\n- POST /v1/{prefix}/namespaces/{namespace}/tables\n- GET /v1/{prefix}/namespaces/{namespace}/tables/{table}\n- POST /v1/{prefix}/namespaces/{namespace}/tables/{table}\n- DELETE /v1/{prefix}/namespaces/{namespace}/tables/{table}\n- POST /v1/{prefix}/namespaces/{namespace}/register\n- POST /v1/{prefix}/namespaces/{namespace}/tables/{table}/metrics\n- POST /v1/{prefix}/tables/rename\n- POST /v1/{prefix}/transactions/commit"
               },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": {\n    \"message\": \"Malformed request\",\n    \"type\": \"BadRequestException\",\n    \"code\": 400\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "91cd4448-5815-4d92-9798-e011f948a4ed",
-              "name": "Unauthorized. The REST Catalog SHOULD respond with the 401 UnauthorizedResponse when the access token provided is expired, revoked, malformed, or invalid for other reasons. The client MAY request a new access token and retry the request.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "config"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "f62b9eb0-a2f5-4afd-b25f-ee666bb25cbb",
+                  "name": "Server specified configuration values.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/config?warehouse=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "config"
+                      ],
+                      "query": [
+                        {
+                          "description": "Warehouse location or identifier to request from the service",
+                          "key": "warehouse",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "warehouse",
-                      "value": "example-value"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": [
-                    {
-                      "description": "The scheme of the URI, either http or https.",
-                      "type": "any",
-                      "value": "{{scheme}}",
-                      "key": "scheme"
-                    },
-                    {
-                      "description": "The host address for the specified server",
-                      "type": "any",
-                      "value": "{{host}}",
-                      "key": "host"
-                    },
-                    {
-                      "description": "Optional prefix to be appended to all routes",
-                      "type": "any",
-                      "value": "{{basePath}}",
-                      "key": "basePath"
-                    }
-                  ]
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"defaults\": {\n    \"nisi9\": \"<string>\"\n  },\n  \"overrides\": {\n    \"enim_7\": \"<string>\",\n    \"Duis_22\": \"<string>\"\n  },\n  \"endpoints\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"idempotency-key-lifetime\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T02:50:28.000Z",
+                  "updatedAt": "2026-10-22T02:50:28.000Z",
+                  "uid": "35240-f62b9eb0-a2f5-4afd-b25f-ee666bb25cbb"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": {\n    \"message\": \"Not authorized to make this request\",\n    \"type\": \"NotAuthorizedException\",\n    \"code\": 401\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f6e79e81-593d-4895-a4ec-c1a8b7fee75a",
-              "name": "Forbidden. Authenticated user does not have the necessary permissions.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "config"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "639394a8-bda3-406e-a68d-82c04e1ca81a",
+                  "name": "Indicates a bad request error. It could be caused by an unexpected request body format or other forms of request validation failure, such as invalid json. Usually serves application/json content, although in some cases simple text/plain content might be r",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/config?warehouse=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "config"
+                      ],
+                      "query": [
+                        {
+                          "description": "Warehouse location or identifier to request from the service",
+                          "key": "warehouse",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "warehouse",
-                      "value": "example-value"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": [
-                    {
-                      "description": "The scheme of the URI, either http or https.",
-                      "type": "any",
-                      "value": "{{scheme}}",
-                      "key": "scheme"
-                    },
-                    {
-                      "description": "The host address for the specified server",
-                      "type": "any",
-                      "value": "{{host}}",
-                      "key": "host"
-                    },
-                    {
-                      "description": "Optional prefix to be appended to all routes",
-                      "type": "any",
-                      "value": "{{basePath}}",
-                      "key": "basePath"
-                    }
-                  ]
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\",\n    \"type\": \"<string>\",\n    \"code\": \"<integer>\",\n    \"stack\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "createdAt": "2026-10-22T02:50:28.000Z",
+                  "updatedAt": "2026-10-22T02:50:28.000Z",
+                  "uid": "35240-639394a8-bda3-406e-a68d-82c04e1ca81a"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": {\n    \"message\": \"Not authorized to make this request\",\n    \"type\": \"NotAuthorizedException\",\n    \"code\": 403\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "8e87bb97-56b3-4841-bb5f-1779713061c6",
-              "name": "Not Found - Warehouse provided in the `warehouse` query parameter is not found.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "config"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "1e608e83-beb1-46f1-97d5-75ebc5248fa1",
+                  "name": "Unauthorized. The REST Catalog SHOULD respond with the 401 UnauthorizedResponse when the access token provided is expired, revoked, malformed, or invalid for other reasons. The client MAY request a new access token and retry the request.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/config?warehouse=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "config"
+                      ],
+                      "query": [
+                        {
+                          "description": "Warehouse location or identifier to request from the service",
+                          "key": "warehouse",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "warehouse",
-                      "value": "example-value"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": [
-                    {
-                      "description": "The scheme of the URI, either http or https.",
-                      "type": "any",
-                      "value": "{{scheme}}",
-                      "key": "scheme"
-                    },
-                    {
-                      "description": "The host address for the specified server",
-                      "type": "any",
-                      "value": "{{host}}",
-                      "key": "host"
-                    },
-                    {
-                      "description": "Optional prefix to be appended to all routes",
-                      "type": "any",
-                      "value": "{{basePath}}",
-                      "key": "basePath"
-                    }
-                  ]
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\",\n    \"type\": \"<string>\",\n    \"code\": \"<integer>\",\n    \"stack\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "createdAt": "2026-10-22T02:50:28.000Z",
+                  "updatedAt": "2026-10-22T02:50:28.000Z",
+                  "uid": "35240-1e608e83-beb1-46f1-97d5-75ebc5248fa1"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": {\n    \"message\": \"The given warehouse does not exist\",\n    \"type\": \"NoSuchWarehouseException\",\n    \"code\": 404\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9a9b3ad2-39d0-420a-bfad-4b5c066d882c",
-              "name": "This is an optional status response type that the REST Catalog can issue when the token has expired. The client MAY request a new access token and retry the request. 401 UnauthorizedResponse SHOULD be preferred over this response type on token expiry.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "config"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "3b600c83-f663-4142-b602-3782cf3d9599",
+                  "name": "Forbidden. Authenticated user does not have the necessary permissions.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/config?warehouse=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "config"
+                      ],
+                      "query": [
+                        {
+                          "description": "Warehouse location or identifier to request from the service",
+                          "key": "warehouse",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "warehouse",
-                      "value": "example-value"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": [
-                    {
-                      "description": "The scheme of the URI, either http or https.",
-                      "type": "any",
-                      "value": "{{scheme}}",
-                      "key": "scheme"
-                    },
-                    {
-                      "description": "The host address for the specified server",
-                      "type": "any",
-                      "value": "{{host}}",
-                      "key": "host"
-                    },
-                    {
-                      "description": "Optional prefix to be appended to all routes",
-                      "type": "any",
-                      "value": "{{basePath}}",
-                      "key": "basePath"
-                    }
-                  ]
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\",\n    \"type\": \"<string>\",\n    \"code\": \"<integer>\",\n    \"stack\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "createdAt": "2026-10-22T02:50:28.000Z",
+                  "updatedAt": "2026-10-22T02:50:28.000Z",
+                  "uid": "35240-3b600c83-f663-4142-b602-3782cf3d9599"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "code": 419,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": {\n    \"message\": \"Credentials have timed out\",\n    \"type\": \"AuthenticationTimeoutException\",\n    \"code\": 419\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "eca9af96-2823-47cf-90b5-b39cc59e1566",
-              "name": "The service is not ready to handle the request, request could have been partially processed.\nThe service may additionally send a Retry-After header to indicate when to retry, a non idempotent request should only be retried by the client when the Retry-After header is present.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "config"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "6823b10f-2ceb-4410-a461-33057cf99b4f",
+                  "name": "Not Found - Warehouse provided in the `warehouse` query parameter is not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/config?warehouse=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "config"
+                      ],
+                      "query": [
+                        {
+                          "description": "Warehouse location or identifier to request from the service",
+                          "key": "warehouse",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "warehouse",
-                      "value": "example-value"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": [
-                    {
-                      "description": "The scheme of the URI, either http or https.",
-                      "type": "any",
-                      "value": "{{scheme}}",
-                      "key": "scheme"
-                    },
-                    {
-                      "description": "The host address for the specified server",
-                      "type": "any",
-                      "value": "{{host}}",
-                      "key": "host"
-                    },
-                    {
-                      "description": "Optional prefix to be appended to all routes",
-                      "type": "any",
-                      "value": "{{basePath}}",
-                      "key": "basePath"
-                    }
-                  ]
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\",\n    \"type\": \"<string>\",\n    \"code\": \"<integer>\",\n    \"stack\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "createdAt": "2026-10-22T02:50:28.000Z",
+                  "updatedAt": "2026-10-22T02:50:28.000Z",
+                  "uid": "35240-6823b10f-2ceb-4410-a461-33057cf99b4f"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Service Unavailable",
-              "code": 503,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"error\": {\n    \"message\": \"Slow down\",\n    \"type\": \"SlowDownException\",\n    \"code\": 503\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c6823596-813f-4bef-933c-9e875531b1fd",
-              "name": "A server-side problem that might not be addressable from the client side. Used for server 5xx errors without more specific documentation in individual routes.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "config"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "366ecb11-ca5f-4ec1-becf-3fee9a2d34ea",
+                  "name": "This is an optional status response type that the REST Catalog can issue when the token has expired. The client MAY request a new access token and retry the request. 401 UnauthorizedResponse SHOULD be preferred over this response type on token expiry.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/config?warehouse=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "config"
+                      ],
+                      "query": [
+                        {
+                          "description": "Warehouse location or identifier to request from the service",
+                          "key": "warehouse",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "warehouse",
-                      "value": "example-value"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": [
-                    {
-                      "description": "The scheme of the URI, either http or https.",
-                      "type": "any",
-                      "value": "{{scheme}}",
-                      "key": "scheme"
-                    },
-                    {
-                      "description": "The host address for the specified server",
-                      "type": "any",
-                      "value": "{{host}}",
-                      "key": "host"
-                    },
-                    {
-                      "description": "Optional prefix to be appended to all routes",
-                      "type": "any",
-                      "value": "{{basePath}}",
-                      "key": "basePath"
-                    }
-                  ]
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\",\n    \"type\": \"<string>\",\n    \"code\": \"<integer>\",\n    \"stack\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "createdAt": "2026-10-22T02:50:28.000Z",
+                  "updatedAt": "2026-10-22T02:50:28.000Z",
+                  "uid": "35240-366ecb11-ca5f-4ec1-becf-3fee9a2d34ea"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "39504e63-02f2-4d95-8f4c-3b0ed1896980",
+                  "name": "The service is not ready to handle the request, request could have been partially processed.\nThe service may additionally send a Retry-After header to indicate when to retry, a non idempotent request should only be retried by the client when the Retry-Aft",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/config?warehouse=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "config"
+                      ],
+                      "query": [
+                        {
+                          "description": "Warehouse location or identifier to request from the service",
+                          "key": "warehouse",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Service Unavailable",
+                  "code": 503,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\",\n    \"type\": \"<string>\",\n    \"code\": \"<integer>\",\n    \"stack\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "createdAt": "2026-10-22T02:50:28.000Z",
+                  "updatedAt": "2026-10-22T02:50:28.000Z",
+                  "uid": "35240-39504e63-02f2-4d95-8f4c-3b0ed1896980"
+                },
+                {
+                  "id": "27c965ea-9baa-4ca4-a9c5-04824f9473ec",
+                  "name": "A server-side problem that might not be addressable from the client side. Used for server 5xx errors without more specific documentation in individual routes.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/config?warehouse=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "config"
+                      ],
+                      "query": [
+                        {
+                          "description": "Warehouse location or identifier to request from the service",
+                          "key": "warehouse",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"message\": \"<string>\",\n    \"type\": \"<string>\",\n    \"code\": \"<integer>\",\n    \"stack\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "createdAt": "2026-10-22T02:50:28.000Z",
+                  "updatedAt": "2026-10-22T02:50:28.000Z",
+                  "uid": "35240-27c965ea-9baa-4ca4-a9c5-04824f9473ec"
                 }
               ],
-              "body": "{\n  \"error\": {\n    \"message\": \"Internal Server Error\",\n    \"type\": \"InternalServerError\",\n    \"code\": 500\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-22T02:50:28.000Z",
+              "updatedAt": "2026-10-22T02:50:28.000Z",
+              "uid": "35240-34c836fc-8119-4b67-bae6-ad0f42c7da97"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "4906d677-ea69-4b1d-8f5d-ded2ee82d487",
+          "createdAt": "2026-10-22T02:50:28.000Z",
+          "updatedAt": "2026-10-22T02:50:28.000Z",
+          "uid": "35240-4906d677-ea69-4b1d-8f5d-ded2ee82d487"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "The scheme of the URI, either http or https.",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "https",
-      "key": "scheme"
-    },
-    {
-      "description": {
-        "content": "The host address for the specified server",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "localhost",
-      "key": "host"
-    },
-    {
-      "description": {
-        "content": "Optional prefix to be appended to all routes",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "",
-      "key": "basePath"
-    },
-    {
-      "type": "string",
-      "value": "{{scheme}}://{{host}}/{{basePath}}",
-      "key": "baseUrl"
+      "id": "b0dc36f5-9982-4c53-b56a-9e5ac03c3f3c",
+      "createdAt": "2026-10-22T02:50:28.000Z",
+      "updatedAt": "2026-10-22T02:50:28.000Z",
+      "uid": "35240-b0dc36f5-9982-4c53-b56a-9e5ac03c3f3c"
     }
   ],
   "auth": {
@@ -657,25 +471,37 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "catalog"
+        "value": "catalog",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "/v1/oauth/tokens"
+        "value": "/v1/oauth/tokens",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "client_credentials"
+        "value": "client_credentials",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "a76647b1-0e2a-4d86-bb0d-be08f6351794",
-    "name": "Apache Iceberg REST Catalog Catalog API Configuration API API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Defines the specification for the first version of the REST Catalog API. Implementations should ideally support all Iceberg table spec versions.",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "scheme",
+      "value": "https"
+    },
+    {
+      "key": "host",
+      "value": "localhost"
+    },
+    {
+      "key": "basePath",
+      "value": ""
+    },
+    {
+      "key": "baseUrl",
+      "value": "{{scheme}}://{{host}}/{{basePath}}"
     }
-  }
+  ]
 }
