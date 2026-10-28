@@ -1,4 +1,4 @@
-# Apache Iceberg (apache-iceberg)
+# Apache Iceberg
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,166 +66,243 @@
 
 Apache Iceberg is an open table format for large analytic datasets that provides ACID transactions, schema evolution, hidden partitioning, and time travel. It works with Spark, Flink, Hive, Presto, Trino, DuckDB, ClickHouse, and many more compute engines. Governed by the Apache Software Foundation under the Apache 2.0 license.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/apache-iceberg/refs/heads/main/apis.yml)
+**Areas:** ACID · Analytics · Apache · Data Lake · Lakehouse · Open Source · Table Format
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Apache Iceberg on APIs.io
 
-## Tags:
+Everything profiled for Apache Iceberg is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/apache-iceberg/](https://apis.io/providers/apache-iceberg/)** — or go straight to one of the APIs or properties below.
 
- - ACID, Analytics, Apache, Data Lake, Lakehouse, Open Source, Table Format
+### APIs (5)
 
-## Timestamps
+- [Apache Iceberg Java API](https://apis.io/apis/apache-iceberg/java-api/) — The Iceberg Java API provides programmatic access to table operations, schema management, partition management, and catalog implementations. It is the…
+- [PyIceberg Python API](https://apis.io/apis/apache-iceberg/python-api/) — PyIceberg is the official Python implementation of the Apache Iceberg table specification. It provides programmatic access to Iceberg table metadata and…
+- [Apache Iceberg Catalog API](https://apis.io/apis/apache-iceberg/apache-iceberg-catalog-api-api/) — The Catalog API API from Apache Iceberg — 18 operation(s) for catalog api.
+- [Apache Iceberg Configuration API](https://apis.io/apis/apache-iceberg/apache-iceberg-configuration-api-api/) — The Configuration API API from Apache Iceberg — 1 operation(s) for configuration api.
+- [Apache Iceberg OAuth2 API](https://apis.io/apis/apache-iceberg/apache-iceberg-oauth2-api-api/) — The OAuth2 API API from Apache Iceberg — 1 operation(s) for oauth2 api.
 
-- **Created:** 2026-03-16
-- **Modified:** 2026-04-19
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Apache Iceberg REST Catalog API
-The Iceberg REST Catalog API defines the specification for catalog server implementations, enabling table discovery, creation, metadata management, namespace management, and multi-table transactions over HTTP. It is the standard integration point for compute engines connecting to Iceberg catalogs.
+#### Agentic access (1)
 
-**Human URL:** [https://iceberg.apache.org/rest-catalog-spec/](https://iceberg.apache.org/rest-catalog-spec/)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags:
+- [Apache Iceberg Agentic Access](https://apis.io/agentic-access/apache-iceberg/apache-iceberg-agentic-access/)
 
- - Catalog, Namespace, REST, Table Format
+#### JSON Schema (160)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://iceberg.apache.org/rest-catalog-spec/)
-- [OpenAPI](openapi/apache-iceberg-rest-catalog-open-api.yaml)
+- [AddEncryptionKeyUpdate](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-add-encryption-key-update/)
+- [AddPartitionSpecUpdate](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-add-partition-spec-update/)
+- [AddSchemaUpdate](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-add-schema-update/)
+- [AddSnapshotUpdate](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-add-snapshot-update/)
+- [AddSortOrderUpdate](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-add-sort-order-update/)
+- [AddViewVersionUpdate](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-add-view-version-update/)
+- [AndOrExpression](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-and-or-expression/)
+- [AssertCreate](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-assert-create/)
+- [AssertCurrentSchemaId](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-assert-current-schema-id/)
+- [AssertDefaultSortOrderId](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-assert-default-sort-order-id/)
+- [AssertDefaultSpecId](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-assert-default-spec-id/)
+- [AssertLastAssignedFieldId](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-assert-last-assigned-field-id/)
+- [AssertLastAssignedPartitionId](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-assert-last-assigned-partition-id/)
+- [AssertRefSnapshotId](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-assert-ref-snapshot-id/)
+- [AssertTableUUID](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-assert-table-uuid/)
+- [AssertViewUUID](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-assert-view-uuid/)
+- [AssignUUIDUpdate](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-assign-uuid-update/)
+- [AsyncPlanningResult](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-async-planning-result/)
+- [BaseUpdate](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-base-update/)
+- [BinaryTypeValue](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-binary-type-value/)
+- [BlobMetadata](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-blob-metadata/)
+- [BooleanTypeValue](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-boolean-type-value/)
+- [CatalogConfig](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-catalog-config/)
+- [CommitReport](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-commit-report/)
+- [CommitTableRequest](https://apis.io/schemas/apache-iceberg/rest-catalog-open-api-commit-table-request/)
+- …and 135 more published on APIs.io
 
-### Apache Iceberg Java API
-The Iceberg Java API provides programmatic access to table operations, schema management, partition management, and catalog implementations. It is the primary library for integrating Iceberg with JVM-based compute engines including Spark, Flink, Hive, Trino, and Presto.
+#### JSON Structure (160)
 
-**Human URL:** [https://iceberg.apache.org/javadoc/latest/](https://iceberg.apache.org/javadoc/latest/)
+Data models expressed in JSON Structure.
 
-#### Tags:
+- [Rest Catalog Open Api Add Encryption Key Update Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-add-encryption-key-update-structure/)
+- [Rest Catalog Open Api Add Partition Spec Update Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-add-partition-spec-update-structure/)
+- [Rest Catalog Open Api Add Schema Update Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-add-schema-update-structure/)
+- [Rest Catalog Open Api Add Snapshot Update Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-add-snapshot-update-structure/)
+- [Rest Catalog Open Api Add Sort Order Update Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-add-sort-order-update-structure/)
+- [Rest Catalog Open Api Add View Version Update Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-add-view-version-update-structure/)
+- [Rest Catalog Open Api And Or Expression Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-and-or-expression-structure/)
+- [Rest Catalog Open Api Assert Create Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-assert-create-structure/)
+- [Rest Catalog Open Api Assert Current Schema Id Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-assert-current-schema-id-structure/)
+- [Rest Catalog Open Api Assert Default Sort Order Id Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-assert-default-sort-order-id-structure/)
+- [Rest Catalog Open Api Assert Default Spec Id Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-assert-default-spec-id-structure/)
+- [Rest Catalog Open Api Assert Last Assigned Field Id Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-assert-last-assigned-field-id-structure/)
+- [Rest Catalog Open Api Assert Last Assigned Partition Id Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-assert-last-assigned-partition-id-structure/)
+- [Rest Catalog Open Api Assert Ref Snapshot Id Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-assert-ref-snapshot-id-structure/)
+- [Rest Catalog Open Api Assert Table Uuid Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-assert-table-uuid-structure/)
+- [Rest Catalog Open Api Assert View Uuid Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-assert-view-uuid-structure/)
+- [Rest Catalog Open Api Assign Uuid Update Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-assign-uuid-update-structure/)
+- [Rest Catalog Open Api Async Planning Result Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-async-planning-result-structure/)
+- [Rest Catalog Open Api Base Update Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-base-update-structure/)
+- [Rest Catalog Open Api Binary Type Value Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-binary-type-value-structure/)
+- [Rest Catalog Open Api Blob Metadata Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-blob-metadata-structure/)
+- [Rest Catalog Open Api Boolean Type Value Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-boolean-type-value-structure/)
+- [Rest Catalog Open Api Catalog Config Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-catalog-config-structure/)
+- [Rest Catalog Open Api Commit Report Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-commit-report-structure/)
+- [Rest Catalog Open Api Commit Table Request Structure](https://apis.io/json-structure/apache-iceberg/rest-catalog-open-api-commit-table-request-structure/)
+- …and 135 more published on APIs.io
 
- - Java, JVM, SDK, Table Format
+#### JSON-LD (1)
 
-#### Properties
+Linked-data contexts for the provider's vocabulary.
 
-- [Documentation](https://iceberg.apache.org/javadoc/latest/)
-- [GettingStarted](https://iceberg.apache.org/docs/latest/java-api-quickstart/)
+- [Apache Iceberg Rest Catalog Open Api Context](https://apis.io/jsonld/apache-iceberg/apache-iceberg-rest-catalog-open-api-context/)
 
-### PyIceberg Python API
-PyIceberg is the official Python implementation of the Apache Iceberg table specification. It provides programmatic access to Iceberg table metadata and data, with integrations for PyArrow, Pandas, DuckDB, Ray, Polars, and multiple catalog backends.
+#### Vocabulary (1)
 
-**Human URL:** [https://py.iceberg.apache.org/](https://py.iceberg.apache.org/)
+The provider's domain terms, defined.
 
-#### Tags:
+- [Apache Iceberg Vocabulary](https://apis.io/vocabularies/apache-iceberg/apache-iceberg-vocabulary/)
 
- - Python, SDK, Table Format
+#### Examples (160)
 
-#### Properties
+Example requests and responses.
 
-- [Documentation](https://py.iceberg.apache.org/)
-- [SDK](https://pypi.org/project/pyiceberg/)
-- [GitHubRepository](https://github.com/apache/iceberg-python)
+- [Rest Catalog Open Api Add Encryption Key Update Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-add-encryption-key-update-example/)
+- [Rest Catalog Open Api Add Partition Spec Update Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-add-partition-spec-update-example/)
+- [Rest Catalog Open Api Add Schema Update Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-add-schema-update-example/)
+- [Rest Catalog Open Api Add Snapshot Update Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-add-snapshot-update-example/)
+- [Rest Catalog Open Api Add Sort Order Update Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-add-sort-order-update-example/)
+- [Rest Catalog Open Api Add View Version Update Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-add-view-version-update-example/)
+- [Rest Catalog Open Api And Or Expression Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-and-or-expression-example/)
+- [Rest Catalog Open Api Assert Create Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-assert-create-example/)
+- [Rest Catalog Open Api Assert Current Schema Id Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-assert-current-schema-id-example/)
+- [Rest Catalog Open Api Assert Default Sort Order Id Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-assert-default-sort-order-id-example/)
+- [Rest Catalog Open Api Assert Default Spec Id Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-assert-default-spec-id-example/)
+- [Rest Catalog Open Api Assert Last Assigned Field Id Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-assert-last-assigned-field-id-example/)
+- [Rest Catalog Open Api Assert Last Assigned Partition Id Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-assert-last-assigned-partition-id-example/)
+- [Rest Catalog Open Api Assert Ref Snapshot Id Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-assert-ref-snapshot-id-example/)
+- [Rest Catalog Open Api Assert Table Uuid Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-assert-table-uuid-example/)
+- [Rest Catalog Open Api Assert View Uuid Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-assert-view-uuid-example/)
+- [Rest Catalog Open Api Assign Uuid Update Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-assign-uuid-update-example/)
+- [Rest Catalog Open Api Async Planning Result Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-async-planning-result-example/)
+- [Rest Catalog Open Api Base Update Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-base-update-example/)
+- [Rest Catalog Open Api Binary Type Value Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-binary-type-value-example/)
+- [Rest Catalog Open Api Blob Metadata Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-blob-metadata-example/)
+- [Rest Catalog Open Api Boolean Type Value Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-boolean-type-value-example/)
+- [Rest Catalog Open Api Catalog Config Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-catalog-config-example/)
+- [Rest Catalog Open Api Commit Report Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-commit-report-example/)
+- [Rest Catalog Open Api Commit Table Request Example](https://apis.io/examples/apache-iceberg/rest-catalog-open-api-commit-table-request-example/)
+- …and 135 more published on APIs.io
 
-## Common Properties
+#### Collections (3)
 
-- [GitHubOrganization](https://github.com/apache)
-- [GitHubRepository](https://github.com/apache/iceberg)
+Postman and Open Collection request collections.
+
+- [Apache Iceberg REST Catalog Catalog API API](https://apis.io/collections/apache-iceberg/open-apache-iceberg-catalog-api-api/)
+- [Apache Iceberg REST Catalog Catalog API Configuration API API](https://apis.io/collections/apache-iceberg/open-apache-iceberg-configuration-api-api/)
+- [Apache Iceberg REST Catalog Catalog API OAuth2 API API](https://apis.io/collections/apache-iceberg/open-apache-iceberg-oauth2-api-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Apache Iceberg — jsonschema rules](https://apis.io/rules/apache-iceberg/apache-iceberg-jsonschema-spectral-rules/)
+- [Apache Iceberg API Rules](https://apis.io/rules/apache-iceberg/apache-iceberg-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Apache Iceberg Authentication](https://apis.io/security/apache-iceberg/apache-iceberg-authentication/)
+- [Apache Iceberg Domain Security](https://apis.io/security/apache-iceberg/apache-iceberg-domain-security/)
+- [Apache Iceberg Vulnerability Disclosure](https://apis.io/security/apache-iceberg/apache-iceberg-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Apache Iceberg Scopes](https://apis.io/scopes/apache-iceberg/apache-iceberg-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Apache Iceberg Plans Pricing](https://apis.io/plans/apache-iceberg/apache-iceberg-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Apache Iceberg Rate Limits](https://apis.io/rate-limits/apache-iceberg/apache-iceberg-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Apache Iceberg Finops](https://apis.io/finops/apache-iceberg/apache-iceberg-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.apache.org/)
 - [Documentation](https://iceberg.apache.org/docs/latest/)
-- [TermsOfService](https://www.apache.org/licenses/LICENSE-2.0)
 - [Blog](https://iceberg.apache.org/blogs/)
-- [YouTube](https://www.youtube.com/@ApacheIceberg)
-- [Versioning](https://iceberg.apache.org/releases/)
-- [ReleaseNotes](https://iceberg.apache.org/releases/)
-- [SpectralRules](rules/apache-iceberg-spectral-rules.yml)
-- [Vocabulary](vocabulary/apache-iceberg-vocabulary.yaml)
-- [NaftikoCapability](capabilities/catalog-management.yaml)
+- [Terms of service](https://www.apache.org/licenses/LICENSE-2.0)
+- [GitHub](https://github.com/apache)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| ACID Transactions | Full ACID transaction support with serializable isolation for concurrent readers and writers. |
-| Schema Evolution | Add, drop, update, or rename columns without rewriting existing data files. |
-| Hidden Partitioning | Automatic partition management that prevents common user mistakes and silently incorrect results. |
-| Partition Evolution | Change partition layout over time without rewriting existing data. |
-| Time Travel | Query historical snapshots of tables and roll back to any prior version. |
-| Row-Level Updates | Supports upserts, deletes, and updates at the row level via merge-on-read and copy-on-write modes. |
-| Multi-Engine Support | Works with Spark, Flink, Hive, Trino, Presto, Impala, DuckDB, ClickHouse, and more. |
-| Cloud-Native Storage | Native support for S3, ADLS, GCS, and HDFS with no filesystem dependencies. |
+**Kin Score 44.0** — developing · rubric 0.25.0 · scored 2026-10-23
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 62.5 |
+| Contract quality | 38.7 |
+| Contract governance | 27.3 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 44.8 |
+| Access clarity | 18.4 |
 
-| Name | Description |
-|------|-------------|
-| Lakehouse Analytics | Build open lakehouse architectures with ACID guarantees across petabyte-scale datasets. |
-| Real-Time Data Pipelines | Stream data into Iceberg tables via Flink or Kafka Connect with exactly-once semantics. |
-| Data Versioning and Auditing | Use time travel to audit historical data states and implement regulatory compliance. |
-| Multi-Engine Query Federation | Query the same Iceberg tables from multiple engines (Spark, Trino, DuckDB) without data duplication. |
-| Cloud Data Migration | Migrate on-premises Hive workloads to cloud-native Iceberg tables with full compatibility. |
+**Agent readiness 19.6** — agent-aware
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
 
-| Name | Description |
-|------|-------------|
-| Apache Spark | Full read/write support for Iceberg tables in Spark batch and streaming workloads. |
-| Apache Flink | Streaming and batch integration with exactly-once write support. |
-| Apache Hive | Read and write Iceberg tables from Hive queries using the Iceberg Hive integration. |
-| Trino | Query Iceberg tables from Trino with full partition pruning and predicate pushdown. |
-| AWS Glue Catalog | Use AWS Glue as the Iceberg catalog backend with full metadata management. |
-| AWS Athena | Query Iceberg tables stored in S3 using Amazon Athena. |
-| Project Nessie | Git-like catalog branching and versioning via Nessie catalog integration. |
-| DuckDB | Local analytics on Iceberg tables via the DuckDB Iceberg extension. |
-| ClickHouse | Query Iceberg tables from ClickHouse via the ClickHouse Iceberg integration. |
-| Snowflake | Access Iceberg tables managed in Snowflake's Polaris catalog. |
-| Google BigQuery | Use BigQuery as a compute engine over Iceberg tables with BigLake Metastore. |
-| Databricks | Create and query Iceberg tables on Databricks using Unity Catalog. |
+**Regulatory alignment 36.3** — Horizontal (data, software, accessibility, platform)
 
-## Artifacts
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/apache-iceberg/](https://apis.io/providers/apache-iceberg/).
 
-Machine-readable API specifications organized by format.
+## How this profile is made
 
-### OpenAPI
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-- [Apache Iceberg REST Catalog Open API](openapi/apache-iceberg-rest-catalog-open-api.yaml)
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Apache Iceberg: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-### JSON Schema
+## Open an issue
 
-160 schema files extracted from the REST Catalog API OpenAPI specification covering tables, namespaces, views, snapshots, schemas, partition specs, and more.
-
-### JSON Structure
-
-160 JSON Structure files (json-structure.org format) converted from JSON Schema files.
-
-### JSON-LD
-
-- [Apache Iceberg REST Catalog Open API Context](json-ld/apache-iceberg-rest-catalog-open-api-context.jsonld)
-
-### Examples
-
-160 example JSON files generated from JSON Schema definitions.
-
-## Capabilities
-
-Naftiko capabilities organized as shared per-API definitions composed into customer-facing workflows.
-
-### Shared Per-API Definitions
-
-- [Apache Iceberg REST Catalog API](capabilities/shared/rest-catalog.yaml) — 12 operations for namespace, table, view, config, and credential management
-
-### Workflow Capabilities
-
-| Workflow | APIs Combined | Tools | Persona |
-|----------|--------------|-------|---------|
-| [Apache Iceberg Catalog Management](capabilities/catalog-management.yaml) | Apache Iceberg REST Catalog API | 12 | Data Engineer, Lakehouse Architect |
-
-## Vocabulary
-
-- [Apache Iceberg Vocabulary](vocabulary/apache-iceberg-vocabulary.yaml) — Unified taxonomy mapping 7 resources, 11 actions, 1 workflow, and 2 personas across operational (OpenAPI) and capability (Naftiko) dimensions
-
-## Rules
-
-- [Apache Iceberg Spectral Rules](rules/apache-iceberg-spectral-rules.yml) — 28 rules across 13 categories enforcing Apache Iceberg REST Catalog API conventions
-
-## Maintainers
-
-**FN:** Kin Lane
-
-**Email:** info@apievangelist.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/apache-iceberg/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
